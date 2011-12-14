@@ -40,6 +40,7 @@
     ctrl-d  half page down
     ctrl-u  half page up
     ctrl-G  show current line
+      ^^    go back to the last file edited. 
 
 ### Jumps
 
@@ -128,16 +129,14 @@ You can return to that position with the `"''"` and `"``"` command, unless the l
 
 ## Miscellany 
 
-    ^L      →   Clear and redraw the screen. 
-    ^R      →   Redraw the screen removing false lines. 
-    ^[      →   Escape key. Cancels partially formed command. 
-    ^^      →   Go back to the last file edited. 
-    &       →   Repeat the previous ":s" command. 
-    .       →   Repeat the last command that modified the file. 
-    :       →   Begin typing an EX editor command. The command is executed once the user types return. (See section below.) 
-    @       →   Type the command stored in the specified buffer. 
-    m       →   Mark the current position with the character specified after the 'm' command. 
-    z       →   Redraw the screen
+    ^L      Clear and redraw the screen. 
+    ^R      Redraw the screen removing false lines. 
+    z       Redraw the screen
+    ^[      Escape key. Cancels partially formed command. 
+    &       Repeat the previous ":s" command. 
+    .       Repeat the last command that modified the file. 
+    @       Type the command stored in the specified buffer. 
+    m       Mark the current position with the char specified after the 'm' command. 
 
 ## Shell execution
 
