@@ -16,6 +16,11 @@ if has("gui_macvim")
   imap <D-]> <Esc>>>i
   imap <D-[> <Esc><<i
 
+  if has("autocmd")
+    " Automatically resize splits when resizing MacVim window
+    autocmd VimResized * wincmd =
+  endif
+
   " Command-Return for fullscreen
   macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-CR>
 

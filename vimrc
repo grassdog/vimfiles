@@ -98,15 +98,8 @@ set history=1000
 " Undo files
 set undodir=~/.vim/tmp/undo//
 
-""
-"" Gui settings
-""
-
-if has("gui_running")
-  " Automatically resize splits when resizing MacVim window
-  autocmd VimResized * wincmd =
-endif
-
+" Don't close buffers, hide them
+set hidden
 
 """""""""""""""
 "" Status bar
@@ -183,11 +176,16 @@ au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 " Less and Sass
 au BufNewFile,BufRead *.less set filetype=less
 
-" Add indent stuff for scheme files
-autocmd filetype lisp,scheme,art setlocal equalprg=~/.vim/janus-tools/scheme-indent/scmindent.scm
+if has('autocmd')
+  " Add indent stuff for scheme files
+  autocmd filetype lisp,scheme,art setlocal equalprg=~/.vim/janus-tools/scheme-indent/scmindent.scm
+endif
 
 " Change tab width for markdown
 au FileType markdown set softtabstop=4 tabstop=4 shiftwidth=4
+
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" General Mappings (Normal, Visual, Operator-pending)
