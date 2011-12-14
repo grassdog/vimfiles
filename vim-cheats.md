@@ -17,6 +17,18 @@
     :32,56s/guy/gal/g                     Search and replace from line 32 to 56 
     :%s/search_string/replace_string/g    Search and replace entire doc 
 
+#### Global search and replace
+
+Define a list of tasks to do using the command `args`. Then execute a command using `argdo` 
+
+First I will apply the substitute 's' command and then 'update' which will only save the modified files.
+
+    :args app/views/*/*
+    :argdo %s/old_string/new_string/gec | update
+
+    The 'e' flag stops Vim alerting if it didn't find the pattern
+    The 'c' flag will make Vim ask confirmation before each substitution.
+
 ## Movement
 
     →   ←   description
