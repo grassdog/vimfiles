@@ -118,3 +118,6 @@
 [submodule "tools/repeat"]
 	path = tools/repeat
 	url = git://github.com/tpope/vim-repeat.git
+[submodule "tools/tcomment"]
+	path = tools/tcomment
+	url = https://github.com/tomtom/tcomment_vim.git
