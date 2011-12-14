@@ -34,8 +34,8 @@ hi DiffAdd term=bold ctermbg=LightBlue guibg=LightBlue
 hi DiffChange term=bold ctermbg=LightMagenta guibg=LightMagenta
 hi DiffDelete term=bold ctermfg=Blue ctermbg=LightCyan gui=bold guifg=Blue guibg=LightCyan
 
-hi StatusLine	cterm=bold ctermbg=blue ctermfg=yellow guibg=gold guifg=blue
-hi StatusLineNC	cterm=bold ctermbg=blue ctermfg=black  guibg=gold guifg=blue
+hi StatusLine	cterm=bold ctermbg=blue ctermfg=DarkGrey guibg=DarkGrey guifg=blue
+hi StatusLineNC	cterm=bold ctermbg=blue ctermfg=DarkGrey  guibg=DarkGrey guifg=blue
 hi NonText term=bold ctermfg=Blue gui=bold guifg=gray guibg=white
 hi Cursor guibg=fg guifg=bg
 
