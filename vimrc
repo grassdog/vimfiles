@@ -122,7 +122,7 @@ if has("statusline") && !&cp
   set statusline=%f\ %m\ %r
 
   " Finish the statusline
-  set statusline+=Line:%l/%L[%p%%]
+  set statusline+=\ \ Line:%l/%L[%p%%]
   set statusline+=\ \ Col:%v
   set statusline+=\ \ Buf:#%n
   set statusline+=\ \ [%b][0x%B]

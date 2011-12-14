@@ -52,7 +52,7 @@ A "jump" is one of the following commands:
 
 If you make the cursor "jump" with one of these commands, the position of the cursor before the jump is remembered.
 
-You can return to that position with the `"''"` and `"``"` command, unless the line containing that position was changed or deleted.
+You can return to that position with the _''_ and _``_ command, unless the line containing that position was changed or deleted.
 
 ## Insert mode
 
