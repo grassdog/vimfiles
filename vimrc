@@ -320,9 +320,6 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
-" Duplicate current line
-map <leader>d yyp
-
 " Map Ack
 map <leader>a :Ack<space>
 imap <leader>a <Esc>:Ack<space>
@@ -396,7 +393,7 @@ map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
 map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
 map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
+map <leader>d :CommandTFlush<cr>\|:CommandT %%<cr>
 
 " Switch to last buffer
 nnoremap <leader><leader> <c-^>
