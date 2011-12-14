@@ -118,3 +118,6 @@
 [submodule "tools/abolish"]
 	path = tools/abolish
 	url = https://github.com/tpope/vim-abolish.git
+[submodule "tools/repeat"]
+	path = tools/repeat
+	url = git://github.com/tpope/vim-repeat.git
