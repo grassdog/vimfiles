@@ -323,9 +323,9 @@ map <leader>a :Ack<space>
 imap <leader>a <Esc>:Ack<space>
 
 " Comment lines
-nmap <leader>/ <plug>NERDCommenterToggle<CR>
-vmap <leader>/ <plug>NERDCommenterToggle<CR>
-imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
+"nmap <leader>/ <plug>NERDCommenterToggle<CR>
+"vmap <leader>/ <plug>NERDCommenterToggle<CR>
+"imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
 
 
 """"""""""""""""""""""""""
