@@ -344,13 +344,13 @@ abbreviate teh the
 """"""""""""""""""""""""""
 
 " Open tag bar
-map <Leader>tb <Esc>:TagbarToggle<CR>
+map <leader>tb <Esc>:TagbarToggle<CR>
 
 " Set our custom tag path
 set tags=./.tags
 
 " Regenerate the tag lib
-map <Leader>zrt :!ctags --extra=+f --exclude=.git --exclude=log -f .tags -R * $GEM_HOME/gems/*<CR><CR>
+map <leader>zrt :!ctags --extra=+f --exclude=.git --exclude=log -f .tags -R * $GEM_HOME/gems/*<CR><CR>
 
 
 """""""""""""""""
