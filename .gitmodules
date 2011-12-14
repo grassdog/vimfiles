@@ -115,3 +115,6 @@
 [submodule "tools/command-t"]
 	path = tools/command-t
 	url = https://github.com/wycats/Command-T.git
+[submodule "tools/abolish"]
+	path = tools/abolish
+	url = https://github.com/tpope/vim-abolish.git
