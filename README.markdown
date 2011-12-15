@@ -9,3 +9,11 @@ This configuration has been built up over the years and has drawn inspiration mo
 
 Plugins are managed via [Pathogen](https://github.com/tpope/vim-pathogen) and git submodules.
 
+## Installation
+
+Installation requires `git` and `ruby`.
+
+    git clone https://github.com/grassdog/vimfiles ~/.vim
+    cd ~/.vim
+    rake setup
+

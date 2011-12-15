@@ -76,9 +76,6 @@ map <leader><space> :set hlsearch! hlsearch?<CR>
 "" Tab Completion
 """"""""""""""""""""
 
-" TODO: Investigate the precise meaning of these settings
-" set wildmode=list:longest,list:full
-
 " Disable output and VCS files
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem
 
@@ -146,13 +143,6 @@ set dictionary=/usr/share/dict/words
 " This is likely a bludgeon to solve some other issue, but it works
 set noequalalways
 
-" Remember last location in file, but not for commit messages.
-" see :help last-position-jump
-if has("autocmd")
-  au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal! g`\"" | endif
-endif
-
 
 """""""""""""""""
 "" File Types
@@ -160,29 +150,35 @@ endif
 
 filetype plugin indent on " Turn on filetype plugins (:help filetype-plugin)
 
-" In Makefiles, use real tabs, not tabs expanded to spaces
-au FileType make set noexpandtab
+if has("autocmd")
+
+  " Remember last location in file, but not for commit messages.
+  " see :help last-position-jump
+  au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g`\"" | endif
+
+  " In Makefiles, use real tabs, not tabs expanded to spaces
+  au FileType make set noexpandtab
 
 
-" Markdown and txt files should wrap
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} call s:setupWrapping()
+  " Markdown and txt files should wrap
+  au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} call s:setupWrapping()
 
-" Setup JSON files
-au BufNewFile,BufRead *.json set ft=json
+  " Setup JSON files
+  au BufNewFile,BufRead *.json set ft=json
 
-" make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+  " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
+  au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
-" Less and Sass
-au BufNewFile,BufRead *.less set filetype=less
+  " Less and Sass
+  au BufNewFile,BufRead *.less set filetype=less
 
-if has('autocmd')
   " Add indent stuff for scheme files
-  autocmd filetype lisp,scheme,art setlocal equalprg=~/.vim/janus-tools/scheme-indent/scmindent.scm
-endif
+  au filetype lisp,scheme,art setlocal equalprg=~/.vim/janus-tools/scheme-indent/scmindent.scm
 
-" Change tab width for markdown
-au FileType markdown set softtabstop=4 tabstop=4 shiftwidth=4
+  " Change tab width for markdown
+  au FileType markdown set softtabstop=4 tabstop=4 shiftwidth=4
+endif
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
