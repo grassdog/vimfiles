@@ -117,6 +117,7 @@ You can return to that position with the _''_ and _``_ command, unless the line 
     ctrl+w +      increase size of window
     ctrl+w x      exchange current window with next one
     ctrl+w r      rotate windows clockwise 
+    :copen        open quick fix window
     :ccl          close quick fix window
 
 ## Edit file
@@ -155,3 +156,20 @@ You can return to that position with the _''_ and _``_ command, unless the line 
 Execute a shell with `!`. If a is specified, the program which is executed using ! uses the specified line(s) as standard input, and will replace those lines with the standard output of the program executed.
 
 `!!` executes a program using the current line as input. For example, `!4jsort` will take five lines from the current cursor position and execute sort. After typing the command, there will be a single exclamation point where you can type the command in. 
+
+## Fugitive
+
+    :Gstatus    show git status
+    :Glog       load up previous versions into the quick fix window
+    :Gblame     open the blame in a vertical split
+    :Gmove      git mv on a file and rename buffer
+
+### Commands in status window
+
+    <CR>  |:Gedit|
+    -     |:Git| add
+    -     |:Git| reset (staged files)
+    C     |:Gcommit|
+    cA    |Gcommit| --amend --reuse-message=HEAD
+    ca    |Gcommit| --amend
+
