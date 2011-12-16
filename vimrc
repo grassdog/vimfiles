@@ -341,7 +341,7 @@ map <leader>tb <Esc>:TagbarToggle<CR>
 set tags+=.tags
 
 " Regenerate the tag lib
-map <leader>zrt :!ctags --extra=+f --exclude=.git --exclude=log -f .tags -R * $GEM_HOME/gems/*<CR><CR>
+map <leader>zrt :!gen-bundle-tags<cr><cr>
 
 
 """""""""""""""""
@@ -372,6 +372,7 @@ let g:jasmine_snippets_directory = "~/.vim/mysnippets/jasmine"
 
 " Gundo
 let g:gundo_right = 1
+
 
 """"""""""""""""""""""
 "" Command T config
