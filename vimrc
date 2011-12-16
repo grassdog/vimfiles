@@ -337,8 +337,8 @@ abbreviate teh the
 " Open tag bar
 map <leader>tb <Esc>:TagbarToggle<CR>
 
-" Set our custom tag path
-set tags=./.tags
+" Set our custom tag file path
+set tags+=.tags
 
 " Regenerate the tag lib
 map <leader>zrt :!ctags --extra=+f --exclude=.git --exclude=log -f .tags -R * $GEM_HOME/gems/*<CR><CR>
