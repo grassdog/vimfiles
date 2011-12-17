@@ -339,9 +339,11 @@ map <leader>tb <Esc>:TagbarToggle<CR>
 
 " Set our custom tag file path
 set tags+=.tags
+set tags+=.gems.tags
 
 " Regenerate the tag lib
-map <leader>zrt :!gen-bundle-tags<cr><cr>
+map <leader>zrt :!ctags-ruby -f .tags *<cr><cr>
+map <leader>zrgt :!gen-bundle-tags<cr><cr>
 
 
 """""""""""""""""
