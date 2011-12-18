@@ -343,8 +343,14 @@ set tags+=.gems.tags
 
 " Regenerate the tag lib
 map <leader>zrt :!ctags-ruby -f .tags *<cr><cr>
-map <leader>zrgt :!gen-bundle-tags<cr><cr>
+map <leader>zrgt :!ctags-bundle<cr><cr>
 
+" Reverse tag commands
+nnoremap <c-]> g<c-]>
+vnoremap <c-]> g<c-]>
+
+nnoremap g<c-]> <c-]>
+vnoremap g<c-]> <c-]>
 
 """""""""""""""""
 "" Plugin Config
