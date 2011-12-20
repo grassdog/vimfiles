@@ -173,3 +173,15 @@ Execute a shell with `!`. If a is specified, the program which is executed using
     cA    |Gcommit| --amend --reuse-message=HEAD
     ca    |Gcommit| --amend
 
+## Method navigation
+
+    ]m  Go to next start of a method definition
+    ]M  Go to next end of a method definition
+    [m  Go to previous start of a method definition
+    [M  Go to previous end of a method definition
+
+## Ruby blocks
+
+When `textobj-rubyblock` is installed you will gain two new text objects, which are triggered by `ar` and `ir` respectively. These follow Vim convention, so that `ar` selects _all_ of a ruby block, and `ir` selects the _inner_ portion of a rubyblock. 
+
+Note that you can use `ir` and `ar` to expand and contract an existing selection.
