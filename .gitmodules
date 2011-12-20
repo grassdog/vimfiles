@@ -127,3 +127,6 @@
 [submodule "tools/textobj-user"]
 	path = tools/textobj-user
 	url = https://github.com/kana/vim-textobj-user.git
+[submodule "tools/tslime/plugin"]
+	path = tools/tslime/plugin
+	url = https://github.com/kikijump/tslime.vim.git
