@@ -54,6 +54,14 @@ First I will apply the substitute 's' command and then 'update' which will only 
     ctrl-G  show current line
       ^^    go back to the last file edited. 
 
+### Method navigation
+
+    ]m  Go to next start of a method definition
+    ]M  Go to next end of a method definition
+    [m  Go to previous start of a method definition
+    [M  Go to previous end of a method definition
+
+
 ### Jumps
 
 A "jump" is one of the following commands: 
@@ -173,12 +181,6 @@ Execute a shell with `!`. If a is specified, the program which is executed using
     cA    |Gcommit| --amend --reuse-message=HEAD
     ca    |Gcommit| --amend
 
-## Method navigation
-
-    ]m  Go to next start of a method definition
-    ]M  Go to next end of a method definition
-    [m  Go to previous start of a method definition
-    [M  Go to previous end of a method definition
 
 ## Ruby blocks
 
