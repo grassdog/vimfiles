@@ -90,6 +90,7 @@ You can return to that position with the _''_ and _``_ command, unless the line 
     ysiw[ add [ around a word with a space
     cst"  change surrounding html tags to quotes
     >>    Indent lines
+    S<p>  add <p> tags around visually selected text
 
 ## Yank
 
