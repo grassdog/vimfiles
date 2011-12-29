@@ -83,7 +83,7 @@ set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 
 " Ignore bundler and sass cache
-set wildignore+=vendor/gems/*,vendor/cache/*,.bundle/*,.sass-cache/*
+set wildignore+=vendor/gems/*,vendor/cache/*,.bundle/*,.sass-cache/*,doc/**
 
 """"""""""""""""""""""""""""
 "" Undo and command history
