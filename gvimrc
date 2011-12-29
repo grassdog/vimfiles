@@ -16,6 +16,10 @@ if has("gui_macvim")
   imap <D-]> <Esc>>>i
   imap <D-[> <Esc><<i
 
+  " Duplicate line
+  nmap <D-d> yyp
+  imap <D-d> <Esc>yypi
+
   if has("autocmd")
     " Automatically resize splits when resizing MacVim window
     autocmd VimResized * wincmd =
