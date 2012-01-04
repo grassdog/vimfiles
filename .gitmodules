@@ -127,3 +127,6 @@
 [submodule "tools/tslime/plugin"]
 	path = tools/tslime/plugin
 	url = https://github.com/kikijump/tslime.vim.git
+[submodule "tools/nerdcommenter"]
+	path = tools/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git

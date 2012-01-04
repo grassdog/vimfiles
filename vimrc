@@ -319,10 +319,9 @@ map <leader>a :Ack<space>
 imap <leader>a <Esc>:Ack<space>
 
 " Comment lines
-nmap <C-\> :TComment<CR>
-vmap <C-\> :TComment<CR>
-imap <C-\> <Esc>:TComment<CR>i
-
+nmap <C-\> <plug>NERDCommenterToggle<CR>
+vmap <C-\> <plug>NERDCommenterToggle<CR>
+imap <C-\> <Esc><plug>NERDCommenterToggle<CR>i
 
 """"""""""""""""""""""""""
 "" Fix common mistypings
