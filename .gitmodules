@@ -34,9 +34,6 @@
 [submodule "colorpacks/sampler-pack"]
 	path = colorpacks/sampler-pack
 	url = https://github.com/vim-scripts/Color-Sampler-Pack.git
-[submodule "tools/zoomwin"]
-	path = tools/zoomwin
-	url = https://github.com/vim-scripts/ZoomWin.git
 [submodule "colorpacks/solarized"]
 	path = colorpacks/solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
@@ -130,3 +127,6 @@
 [submodule "tools/repeat"]
 	path = tools/repeat
 	url = https://github.com/tpope/vim-repeat.git
+[submodule "tools/zoomwin"]
+	path = tools/zoomwin
+	url = https://github.com/vim-scripts/ZoomWin.git
