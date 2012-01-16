@@ -115,9 +115,6 @@
 [submodule "tools/abolish"]
 	path = tools/abolish
 	url = https://github.com/tpope/vim-abolish.git
-[submodule "tools/repeat"]
-	path = tools/repeat
-	url = git://github.com/tpope/vim-repeat.git
 [submodule "tools/ruby-block"]
 	path = tools/ruby-block
 	url = https://github.com/nelstrom/vim-textobj-rubyblock
@@ -130,3 +127,6 @@
 [submodule "tools/nerdcommenter"]
 	path = tools/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "tools/repeat"]
+	path = tools/repeat
+	url = https://github.com/tpope/vim-repeat.git
