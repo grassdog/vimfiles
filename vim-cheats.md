@@ -188,3 +188,11 @@ Execute a shell with `!`. If a is specified, the program which is executed using
 When `textobj-rubyblock` is installed you will gain two new text objects, which are triggered by `ar` and `ir` respectively. These follow Vim convention, so that `ar` selects _all_ of a ruby block, and `ir` selects the _inner_ portion of a rubyblock. 
 
 Note that you can use `ir` and `ar` to expand and contract an existing selection.
+
+## NERDCommenter
+
+    ,ca     Changes the comment style used
+
+## Pathogen
+
+   :call pathogen#helptags()    Regenerate doc tags 
