@@ -67,9 +67,6 @@
 [submodule "tools/buffergator"]
 	path = tools/buffergator
 	url = https://github.com/jeetsukumaran/vim-buffergator.git
-[submodule "tools/css-color"]
-	path = tools/css-color
-	url = https://github.com/skammer/vim-css-color.git
 [submodule "tools/kwbd"]
 	path = tools/kwbd
 	url = https://github.com/rgarver/Kwbd.vim.git
