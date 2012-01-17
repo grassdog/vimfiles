@@ -130,3 +130,6 @@
 [submodule "tools/zoomwin"]
 	path = tools/zoomwin
 	url = https://github.com/vim-scripts/ZoomWin.git
+[submodule "tools/bundler"]
+	path = tools/bundler
+	url = https://github.com/tpope/vim-bundler.git
