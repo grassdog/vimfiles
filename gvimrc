@@ -20,6 +20,11 @@ if has("gui_macvim")
   nmap <D-d> yyp
   imap <D-d> <Esc>yypi
 
+  " Comment lines
+  nmap <D-/> <plug>NERDCommenterToggle<CR>
+  vmap <D-/> <plug>NERDCommenterToggle<CR>
+  imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
+
   if has("autocmd")
     " Automatically resize splits when resizing MacVim window
     autocmd VimResized * wincmd =
