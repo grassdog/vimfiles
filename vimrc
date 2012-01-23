@@ -269,6 +269,9 @@ nmap <leader>rff ggVG=
 " Reformat XML files
 map <leader>rfx <Esc>:1,$!xmllint --format -<CR>
 
+" Reformat HTML files
+map <leader>rfh <Esc>:1,$!tidy -quiet  -indent --indent-spaces 2 --wrap 90<CR>
+
 " upper/lower word
 nmap <leader>u mQviwU`Q
 nmap <leader>l mQviwu`Q
@@ -380,6 +383,10 @@ let g:jasmine_snippets_directory = "~/.vim/mysnippets/jasmine"
 " Gundo
 let g:gundo_right = 1
 
+" Switch default scss comment delimeters for NerdCommenter
+let g:NERDCustomDelimiters = {
+    \ 'scss': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' }
+    \ }
 
 """"""""""""""""""""""
 "" Command T config
