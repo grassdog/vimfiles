@@ -272,6 +272,9 @@ map <leader>rfx <Esc>:1,$!xmllint --format -<CR>
 " Reformat HTML files
 map <leader>rfh <Esc>:1,$!tidy -quiet  -indent --indent-spaces 2 --wrap 90<CR>
 
+" Reformat JSON
+map <leader>rfj <Esc>:1,$!python -mjson.tool<CR>
+
 " upper/lower word
 nmap <leader>u mQviwU`Q
 nmap <leader>l mQviwu`Q
@@ -412,4 +415,7 @@ command! ShowLeaderMappings :normal :! grep -o ' <\<leader\>.*' ~/.vimrc | sort 
 
 " Show cheats
 command! ShowCheats :normal :tabnew ~/.vim/vim-cheats.md<cr>
+
+" Show Work log
+command! ShowWorkLog :normal :edit ~/Dropbox/Notes/Work\ Log.md<cr>
 
