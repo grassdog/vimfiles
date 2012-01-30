@@ -267,13 +267,14 @@ command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:
 nmap <leader>rff ggVG=
 
 " Reformat XML files
-map <leader>rfx <Esc>:1,$!xmllint --format -<CR>
+map <leader>rfx <Esc>:% !xmllint --format -<CR>
 
 " Reformat HTML files
-map <leader>rfh <Esc>:1,$!tidy -quiet  -indent --indent-spaces 2 --wrap 90<CR>
+map <leader>rfh <Esc>:% !tidy -quiet  -indent --indent-spaces 2 --wrap 90<CR>
 
 " Reformat JSON
-map <leader>rfj <Esc>:1,$!python -mjson.tool<CR>
+"map <leader>rfj <Esc>:% !python -mjson.tool<CR>
+map <leader>rfj <Esc>:% !js-beautify -i -s 2 --brace-style=expand<CR>
 
 " upper/lower word
 nmap <leader>u mQviwU`Q
