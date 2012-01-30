@@ -411,9 +411,6 @@ map <leader>d :CommandTFlush<cr>\|:CommandT %%<cr>
 " Switch to last buffer
 nnoremap <leader><leader> <c-^>
 
-" Show leader mappings
-command! ShowLeaderMappings :normal :! grep -o ' <\<leader\>.*' ~/.vimrc | sort | uniq<cr>
-
 " Show cheats
 command! ShowCheats :normal :tabnew ~/.vim/vim-cheats.md<cr>
 

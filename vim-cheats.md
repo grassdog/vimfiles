@@ -196,3 +196,8 @@ Note that you can use `ir` and `ar` to expand and contract an existing selection
 ## Pathogen
 
    :call pathogen#helptags()    Regenerate doc tags 
+
+## Show mappings
+
+    :map    All mapped commands
+    :map ,  All mapped commands starting with ,
