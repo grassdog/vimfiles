@@ -408,6 +408,15 @@ map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>d :CommandTFlush<cr>\|:CommandT %%<cr>
 
+" Ctrlp settings
+let g:ctrlp_dont_split = 'NERD_tree_2'
+let g:ctrlp_jump_to_buffer = 1
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_match_window_reversed = 1
+let g:ctrlp_split_window = 0
+let g:ctrlp_max_height = 20
+let g:ctrlp_extensions = ['tag']
+
 " Switch to last buffer
 nnoremap <leader><leader> <c-^>
 
