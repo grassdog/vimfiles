@@ -417,3 +417,7 @@ command! ShowCheats :normal :tabnew ~/.vim/vim-cheats.md<cr>
 " Show Work log
 command! ShowWorkLog :normal :edit ~/Dropbox/Notes/Work\ Log.md<cr>
 
+" Insert current date
+noremap <F2> <C-R>=strftime("## %Y-%m-%d")<CR>
+inoremap <F2> <C-R>=strftime("## %Y-%m-%d")<CR>
+
