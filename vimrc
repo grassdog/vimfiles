@@ -417,6 +417,16 @@ let g:ctrlp_split_window = 0
 let g:ctrlp_max_height = 20
 let g:ctrlp_extensions = ['tag']
 
+" NerdTree
+
+" Open NerdTree if no other file is open
+autocmd vimenter * if !argc() | NERDTree | endif
+
+" Close vim if NerdTree is the only remaining open window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+map <leader>n :NERDTreeToggle<cr>
+
 " Switch to last buffer
 nnoremap <leader><leader> <c-^>
 
