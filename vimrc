@@ -205,7 +205,7 @@ vnoremap <Down> j
 "nnoremap <up> gk
 
 " Map ZoomWin
-map <leader>zw :ZoomWin<CR>
+map <leader>zz :ZoomWin<CR>
 
 " Use tab instead of % for brace matching
 nmap <tab> %
