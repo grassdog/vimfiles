@@ -377,10 +377,6 @@ let g:rdfa_attributes_complete = 0
 let g:microdata_attributes_complete = 0
 let g:atia_attributes_complete = 0
 
-" Buffergator
-let g:buffergator_viewport_split_policy = 'B'
-let g:buffergator_sort_regime = "mru"
-
 " Jasmine snippets
 let g:jasmine_snippets_directory = "~/.vim/mysnippets/jasmine"
 
@@ -392,30 +388,19 @@ let g:NERDCustomDelimiters = {
     \ 'scss': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' }
     \ }
 
-""""""""""""""""""""""
-"" Command T config
-""""""""""""""""""""""
-
-map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-map <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
-map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
-map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>d :CommandTFlush<cr>\|:CommandT %%<cr>
 
 " Ctrlp settings
 let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_jump_to_buffer = 1
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_match_window_reversed = 1
+let g:ctrlp_mruf_last_entered = 1
+let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_split_window = 0
 let g:ctrlp_max_height = 20
-let g:ctrlp_extensions = ['tag']
+"let g:ctrlp_extensions = ['tag']
+
+map <leader>b :CtrlPBuffer<cr>
+map <leader>f :CtrlP<cr>
 
 " NerdTree
 
@@ -435,8 +420,4 @@ command! ShowCheats :normal :tabnew ~/.vim/vim-cheats.md<cr>
 
 " Show Work log
 command! ShowWorkLog :normal :edit ~/Dropbox/Notes/Work\ Log.md<cr>
-
-" Insert current date
-noremap <F2> <C-R>=strftime("## %Y-%m-%d")<CR>
-inoremap <F2> <C-R>=strftime("## %Y-%m-%d")<CR>
 
