@@ -61,9 +61,6 @@
 [submodule "langs/coffee-script"]
 	path = langs/coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule "tools/buffergator"]
-	path = tools/buffergator
-	url = https://github.com/jeetsukumaran/vim-buffergator.git
 [submodule "tools/kwbd"]
 	path = tools/kwbd
 	url = https://github.com/rgarver/Kwbd.vim.git
@@ -100,9 +97,6 @@
 [submodule "tools/fugitive"]
 	path = tools/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "tools/command-t"]
-	path = tools/command-t
-	url = https://github.com/wycats/Command-T.git
 [submodule "tools/abolish"]
 	path = tools/abolish
 	url = https://github.com/tpope/vim-abolish.git
