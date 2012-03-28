@@ -160,10 +160,6 @@ if has("autocmd")
   " In Makefiles, use real tabs, not tabs expanded to spaces
   au FileType make set noexpandtab
 
-
-  " Markdown and txt files should wrap
-  au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} call s:setupWrapping()
-
   " Setup JSON files
   au BufNewFile,BufRead *.json set ft=json
 
