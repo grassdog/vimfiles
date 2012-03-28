@@ -131,7 +131,7 @@ set visualbell t_vb=  " No Noise or bell
 
 " Color scheme (terminal)
 set background=dark
-colorscheme delek
+colorscheme solarized
 
 """"""""""""""""""
 " Other settings
