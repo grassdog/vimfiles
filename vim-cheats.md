@@ -5,21 +5,21 @@
 ### Search characters
 
     ^    Beginning of the line.
-    .    Matches a single character. 
-    *    Matches zero or more of the previous character. 
+    .    Matches a single character.
+    *    Matches zero or more of the previous character.
     $    End of the line.
-    [    Starts a set of matching (or non-matching) /f[iae]t or /a[^bcd] 
-    <    Escape with the backslash to find the ending or beginning of a word. 
+    [    Starts a set of matching (or non-matching) /f[iae]t or /a[^bcd]
+    <    Escape with the backslash to find the ending or beginning of a word.
     >    As above.
 
 ### Search and replace
 
-    :32,56s/guy/gal/g                     Search and replace from line 32 to 56 
-    :%s/search_string/replace_string/g    Search and replace entire doc 
+    :32,56s/guy/gal/g                     Search and replace from line 32 to 56
+    :%s/search_string/replace_string/g    Search and replace entire doc
 
 #### Global search and replace
 
-Define a list of tasks to do using the command `args`. Then execute a command using `argdo` 
+Define a list of tasks to do using the command `args`. Then execute a command using `argdo`
 
 First I will apply the substitute 's' command and then 'update' which will only save the modified files.
 
@@ -52,7 +52,7 @@ First I will apply the substitute 's' command and then 'update' which will only 
     ctrl-d  half page down
     ctrl-u  half page up
     ctrl-G  show current line
-      ^^    go back to the last file edited. 
+      ^^    go back to the last file edited.
 
 ### Method navigation
 
@@ -64,7 +64,7 @@ First I will apply the substitute 's' command and then 'update' which will only 
 
 ### Jumps
 
-A "jump" is one of the following commands: 
+A "jump" is one of the following commands:
 
     "'", "`", "G", "/", "?", "n", "N", "%", "(", ")", "[[", "]]", "{", "}", ":s", ":tag", "L", "M", "H"
 
@@ -95,7 +95,7 @@ You can return to that position with the _''_ and _``_ command, unless the line 
 ## Yank
 
     P    Paste the specified buffer before the current cursor position or line.
-    Y    Yank the current line into the specified buffer. 
+    Y    Yank the current line into the specified buffer.
     y}   yank until end of paragraph
 
 ### Registers
@@ -107,17 +107,17 @@ You can return to that position with the _''_ and _``_ command, unless the line 
     "_D  delete from cursor until the end of line, but don't copy
 
 
-## Delete 
+## Delete
 
-    D    delete to the end of the line from the current cursor position. 
-    d^   deletes from current cursor position to the beginning of the line. 
-    d$   deletes from current cursor position to the end of the line. 
-    dw   deletes from current cursor position to the end of the word. 
-    3dd  deletes three lines from current cursor position downwards. 
-    X    delete the character before the cursor. 
+    D    delete to the end of the line from the current cursor position.
+    d^   deletes from current cursor position to the beginning of the line.
+    d$   deletes from current cursor position to the end of the line.
+    dw   deletes from current cursor position to the end of the word.
+    3dd  deletes three lines from current cursor position downwards.
+    X    delete the character before the cursor.
     x    delete character under the cursor.
 
-## Windows 
+## Windows
 
     ctrl+w s      horizontal split
     ctrl+w v      vertical split
@@ -125,7 +125,7 @@ You can return to that position with the _''_ and _``_ command, unless the line 
     ctrl+w arrow  switch to window
     ctrl+w +      increase size of window
     ctrl+w x      exchange current window with next one
-    ctrl+w r      rotate windows clockwise 
+    ctrl+w r      rotate windows clockwise
     :copen        open quick fix window
     :ccl          close quick fix window
 
@@ -133,7 +133,7 @@ You can return to that position with the _''_ and _``_ command, unless the line 
 
     :e filename   edit file
 
-## Macros 
+## Macros
 
     q<letter><do actions>q      - record macro
     20@<letter>                 - run macro 20 times
@@ -145,26 +145,26 @@ You can return to that position with the _''_ and _``_ command, unless the line 
 
 ## Undo
 
-    U       Restore the current line to the state before the cursor entered the line. 
-    u       Undo the last change to the file. Typing 'u' again will re-do the change. 
+    U       Restore the current line to the state before the cursor entered the line.
+    u       Undo the last change to the file. Typing 'u' again will re-do the change.
     ctrl-r  Redo last change
 
-## Miscellany 
+## Miscellany
 
-    ^L      Clear and redraw the screen. 
-    ^R      Redraw the screen removing false lines. 
+    ^L      Clear and redraw the screen.
+    ^R      Redraw the screen removing false lines.
     z       Redraw the screen
-    ^[      Escape key. Cancels partially formed command. 
-    &       Repeat the previous ":s" command. 
-    .       Repeat the last command that modified the file. 
-    @       Type the command stored in the specified buffer. 
-    m       Mark the current position with the char specified after the 'm' command. 
+    ^[      Escape key. Cancels partially formed command.
+    &       Repeat the previous ":s" command.
+    .       Repeat the last command that modified the file.
+    @       Type the command stored in the specified buffer.
+    m       Mark the current position with the char specified after the 'm' command.
 
 ## Shell execution
 
 Execute a shell with `!`. If a is specified, the program which is executed using ! uses the specified line(s) as standard input, and will replace those lines with the standard output of the program executed.
 
-`!!` executes a program using the current line as input. For example, `!4jsort` will take five lines from the current cursor position and execute sort. After typing the command, there will be a single exclamation point where you can type the command in. 
+`!!` executes a program using the current line as input. For example, `!4jsort` will take five lines from the current cursor position and execute sort. After typing the command, there will be a single exclamation point where you can type the command in.
 
 ## Fugitive
 
@@ -185,7 +185,7 @@ Execute a shell with `!`. If a is specified, the program which is executed using
 
 ## Ruby blocks
 
-When `textobj-rubyblock` is installed you will gain two new text objects, which are triggered by `ar` and `ir` respectively. These follow Vim convention, so that `ar` selects _all_ of a ruby block, and `ir` selects the _inner_ portion of a rubyblock. 
+When `textobj-rubyblock` is installed you will gain two new text objects, which are triggered by `ar` and `ir` respectively. These follow Vim convention, so that `ar` selects _all_ of a ruby block, and `ir` selects the _inner_ portion of a rubyblock.
 
 Note that you can use `ir` and `ar` to expand and contract an existing selection.
 
@@ -195,9 +195,10 @@ Note that you can use `ir` and `ar` to expand and contract an existing selection
 
 ## Pathogen
 
-   :call pathogen#helptags()    Regenerate doc tags 
+   :call pathogen#helptags()    Regenerate doc tags
 
 ## Show mappings
 
     :map    All mapped commands
     :map ,  All mapped commands starting with ,
+
