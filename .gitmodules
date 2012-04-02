@@ -31,9 +31,6 @@
 [submodule "tools/snipmate"]
 	path = tools/snipmate
 	url = https://github.com/ervandew/snipmate.vim.git
-[submodule "colorpacks/sampler-pack"]
-	path = colorpacks/sampler-pack
-	url = https://github.com/vim-scripts/Color-Sampler-Pack.git
 [submodule "colorpacks/solarized"]
 	path = colorpacks/solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
@@ -115,9 +112,6 @@
 [submodule "tools/zoomwin"]
 	path = tools/zoomwin
 	url = https://github.com/vim-scripts/ZoomWin.git
-[submodule "colorpacks/badwolf"]
-	path = colorpacks/badwolf
-	url = https://github.com/sjl/badwolf.git
 [submodule "tools/ctrlp"]
 	path = tools/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
