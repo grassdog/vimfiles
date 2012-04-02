@@ -37,7 +37,6 @@ endfunction
 
 set nocompatible      " Use vim, no vi defaults
 set number            " Show line numbers
-set ruler             " Show line and column number
 syntax enable         " Turn on syntax highlighting allowing local overrides
 set encoding=utf-8    " Set default encoding to UTF-8
 
@@ -53,10 +52,6 @@ set expandtab                         " use spaces, not tabs
 set list listchars=tab:\ \ ,trail:.   " a tab should display as "  ", trailing whitespace as "."
 set backspace=indent,eol,start        " backspace through everything in insert mode
 set whichwrap+=<,>,h,l,[,]            "allow bs, del to cross lines
-set listchars+=extends:>              " The character to show in the last column when wrap is
-                                      " off and the line continues beyond the right of the screen
-set listchars+=precedes:<             " The character to show in the last column when wrap is
-                                      " off and the line continues beyond the right of the screen
 
 
 """""""""""""""
@@ -95,9 +90,6 @@ set history=1000
 " Undo files
 set undodir=~/.vim/tmp/undo//
 
-" Don't close buffers, hide them
-set hidden
-
 """""""""""""""
 "" Status bar
 """""""""""""""
@@ -133,52 +125,6 @@ set visualbell t_vb=  " No Noise or bell
 set background=dark
 colorscheme solarized
 
-""""""""""""""""""
-" Other settings
-""""""""""""""""""
-set dictionary=/usr/share/dict/words
-
-" Without setting this, ZoomWin restores windows in a way that causes
-" equalalways behavior to be triggered the next time CommandT is used.
-" This is likely a bludgeon to solve some other issue, but it works
-set noequalalways
-
-
-"""""""""""""""""
-"" File Types
-"""""""""""""""""
-
-filetype plugin indent on " Turn on filetype plugins (:help filetype-plugin)
-
-if has("autocmd")
-
-  " Remember last location in file, but not for commit messages.
-  " see :help last-position-jump
-  au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal! g`\"" | endif
-
-  " In Makefiles, use real tabs, not tabs expanded to spaces
-  au FileType make set noexpandtab
-
-  " Setup JSON files
-  au BufNewFile,BufRead *.json set ft=json
-
-  " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-  au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
-
-  " Less and Sass
-  au BufNewFile,BufRead *.less set filetype=less
-
-  " Add indent stuff for scheme files
-  au filetype lisp,scheme,art setlocal equalprg=~/.vim/janus-tools/scheme-indent/scmindent.scm
-
-  " Change tab width for markdown
-  au FileType markdown set softtabstop=4 tabstop=4 shiftwidth=4
-endif
-
-" Highlight VCS conflict markers
-match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" General Mappings (Normal, Visual, Operator-pending)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -186,19 +132,6 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " Map the arrow keys to be based on display lines, not physical lines
 map <Down> gj
 map <Up> gk
-let macvim_hig_shift_movement = 1     " mvim shift-arrow-keys (required in vimrc)
-
-" Make arrow keys work in visual mode
-vnoremap <Left> h
-vnoremap <Right> l
-vnoremap <Up> k
-vnoremap <Down> j
-
-" Make cursor movement cross long lines
-"nnoremap j gj
-"nnoremap k gk
-"nnoremap <down> gj
-"nnoremap <up> gk
 
 " Map ZoomWin
 map <leader>zz :ZoomWin<CR>
@@ -213,17 +146,8 @@ map Y y$
 " Fold html tags
 nnoremap <leader>zfh Vatzf
 
-
-"""""""""""""""""""""""""""
-"" Command-Line Mappings
-"""""""""""""""""""""""""""
-
-" Insert the current directory into a command-line path
-cmap <C-P> <C-R>=expand("%:p:h") . "/"
-
-
 """"""""""""""""""""""""
-"" Disable swap files
+"" Disable swap files and backups
 """"""""""""""""""""""""
 
 set nobackup
@@ -252,8 +176,53 @@ imap <Leader>= <Esc> <C-w>=
 " Open a new vertical split
 map <leader>v <C-w>v<C-w>l
 
+" Switch to last buffer
+nnoremap <leader><leader> <c-^>
+
+" Without setting this, ZoomWin restores windows in a way that causes
+" equalalways behavior to be triggered the next time CommandT is used.
+" This is likely a bludgeon to solve some other issue, but it works
+set noequalalways
+
+
+"""""""""""""""""
+"" File Types
+"""""""""""""""""
+
+" Turn on filetype plugins
+filetype plugin indent on
+
+if has("autocmd")
+
+  " Remember last location in file, but not for commit messages.
+  " see :help last-position-jump
+  au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g`\"" | endif
+
+  " In Makefiles, use real tabs, not tabs expanded to spaces
+  au FileType make set noexpandtab
+
+  " Setup JSON files
+  au BufNewFile,BufRead *.json set ft=json
+
+  " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
+  au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+
+  " Less
+  au BufNewFile,BufRead *.less set filetype=less
+
+  " Add indent stuff for scheme files
+  au filetype lisp,scheme,art setlocal equalprg=~/.vim/janus-tools/scheme-indent/scmindent.scm
+
+  " Change tab width for markdown
+  au FileType markdown set softtabstop=4 tabstop=4 shiftwidth=4
+endif
+
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
 """"""""""""""""""""""""""""
-"" Editing macros
+"" Editing commands
 """"""""""""""""""""""""""""
 
 " Remove trailing white space from file
@@ -269,62 +238,18 @@ map <leader>rfx <Esc>:% !xmllint --format -<CR>
 map <leader>rfh <Esc>:% !tidy -quiet  -indent --indent-spaces 2 --wrap 90<CR>
 
 " Reformat JSON
-"map <leader>rfj <Esc>:% !python -mjson.tool<CR>
 map <leader>rfj <Esc>:% !js-beautify -i -s 2 --brace-style=expand<CR>
-
-" upper/lower word
-nmap <leader>u mQviwU`Q
-nmap <leader>l mQviwu`Q
-
-" upper/lower first char of word
-nmap <leader>U mQgewvU`Q
-nmap <leader>L mQgewvu`Q
 
 " use :w!! to write to a file using sudo if you forgot to 'sudo vim file'
 " (it will prompt for sudo password when writing)
 cmap w!! %!sudo tee > /dev/null %
 
-" cd to the directory containing the file in the buffer
-nmap <silent> <leader>cd :lcd %:h<CR>
-
-" Some helpers to edit mode
-" http://vimcasts.org/e/14
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
-
-" Swap two words
-nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
-
 " Underline the current line with '='
 nmap <silent> <leader>ul :t.\|s/./=/g\|:nohls<cr>
 
-" set text wrapping toggles
-nmap <silent> <leader>ztw :set invwrap<CR>:set wrap?<CR>
-
 " find merge conflict markers
-nmap <silent> <leader>zfc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+nmap <silent> <leader>m <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
-" Unimpaired config
-
-" Normal Mode: Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
-
-" Visual Mode: Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
-
-" Map Ack
-map <leader>a :Ack<space>
-imap <leader>a <Esc>:Ack<space>
-
-" Comment lines
-nmap <C-\> <plug>NERDCommenterToggle<CR>
-vmap <C-\> <plug>NERDCommenterToggle<CR>
-imap <C-\> <Esc><plug>NERDCommenterToggle<CR>i
 
 """"""""""""""""""""""""""
 "" Fix common mistypings
@@ -332,27 +257,17 @@ imap <C-\> <Esc><plug>NERDCommenterToggle<CR>i
 
 abbreviate teh the
 
-""""""""""""""""""""""""""
-"" Ctags config
-""""""""""""""""""""""""""
-
-" Open tag bar
-map <leader>tb <Esc>:TagbarToggle<CR>
+"""""""""
+"" Ctags
+"""""""""
 
 " Set our custom tag file path
 set tags+=.tags
 set tags+=.gems.tags
 
 " Regenerate the tag lib
-map <leader>zrt :!ctags-ruby -f .tags *<cr><cr>
-map <leader>zrgt :!ctags-bundle<cr><cr>
-
-" Reverse tag commands
-nnoremap <c-]> g<c-]>
-vnoremap <c-]> g<c-]>
-
-nnoremap g<c-]> <c-]>
-vnoremap g<c-]> <c-]>
+command! GenRubyTags :normal :!ctags-ruby -f .tags *<cr><cr>
+command! GenBundleTags :normal :!ctags-bundle<cr><cr>
 
 """""""""""""""""
 "" Plugin Config
@@ -384,8 +299,7 @@ let g:NERDCustomDelimiters = {
     \ 'scss': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' }
     \ }
 
-
-" Ctrlp settings
+" Ctrlp
 let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_jump_to_buffer = 1
 let g:ctrlp_working_path_mode = 0
@@ -408,9 +322,6 @@ autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 map <leader>n :NERDTreeToggle<cr>
-
-" Switch to last buffer
-nnoremap <leader><leader> <c-^>
 
 " Show cheats
 command! ShowCheats :normal :tabnew ~/.vim/vim-cheats.md<cr>
