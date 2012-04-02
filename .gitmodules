@@ -76,9 +76,6 @@
 [submodule "langs/git"]
 	path = langs/git
 	url = https://github.com/tpope/vim-git.git
-[submodule "tools/ack"]
-	path = tools/ack
-	url = https://github.com/mileszs/ack.vim.git
 [submodule "tools/easy-grep"]
 	path = tools/easy-grep
 	url = https://github.com/vim-scripts/EasyGrep.git
