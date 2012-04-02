@@ -25,6 +25,14 @@ if has("gui_macvim")
   vmap <D-/> <plug>NERDCommenterToggle<CR>
   imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
 
+  " Normal Mode: Bubble single lines
+  nmap <D-Up> [e
+  nmap <D-Down> ]e
+
+  " Visual Mode: Bubble multiple lines
+  vmap <D-Up> [egv
+  vmap <D-Down> ]egv
+
   if has("autocmd")
     " Automatically resize splits when resizing MacVim window
     autocmd VimResized * wincmd =
