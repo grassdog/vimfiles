@@ -67,9 +67,6 @@
 [submodule "tools/indent-object"]
 	path = tools/indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object.git
-[submodule "tools/tagbar"]
-	path = tools/tagbar
-	url = https://github.com/majutsushi/tagbar.git
 [submodule "tools/gundo"]
 	path = tools/gundo
 	url = https://github.com/sjl/gundo.vim.git
