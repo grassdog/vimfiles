@@ -255,7 +255,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 "" Fix common mistypings
 """"""""""""""""""""""""""
 
-abbreviate teh the
+iabbrev teh the
 
 """""""""
 "" Ctags
