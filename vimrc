@@ -357,26 +357,26 @@ if has("gui_macvim")
 
   " Map command-[ and command-] to indenting or outdenting
   " while keeping the original selection in visual mode
-  vmap <D-]> >gv
-  vmap <D-[> <gv
+  vnoremap <D-]> >gv
+  vnoremap <D-[> <gv
 
-  nmap <D-]> >>
-  nmap <D-[> <<
+  nnoremap <D-]> >>
+  nnoremap <D-[> <<
 
-  omap <D-]> >>
-  omap <D-[> <<
+  onoremap <D-]> >>
+  onoremap <D-[> <<
 
-  imap <D-]> <Esc>>>i
-  imap <D-[> <Esc><<i
+  inoremap <D-]> <Esc>>>i
+  inoremap <D-[> <Esc><<i
 
   " Duplicate line
-  nmap <D-d> yyp
-  imap <D-d> <Esc>yypi
+  nnoremap <D-d> yyp
+  inoremap <D-d> <Esc>yypi
 
   " Comment lines
-  nmap <D-/> <plug>NERDCommenterToggle<CR>
-  vmap <D-/> <plug>NERDCommenterToggle<CR>
-  imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
+  nnoremap <D-/> <plug>NERDCommenterToggle<CR>
+  vnoremap <D-/> <plug>NERDCommenterToggle<CR>
+  inoremap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
 
   " Automatically resize splits when resizing MacVim window
   autocmd VimResized * wincmd =
