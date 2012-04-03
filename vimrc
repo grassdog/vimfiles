@@ -247,6 +247,9 @@ nnoremap <silent> <leader>ul :t.\|s/./=/g\|:nohls<cr>
 " find merge conflict markers
 nnoremap <silent> <leader>m <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
+" Edit and source my vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 """"""""""""""""""""""""""
 "" Fix common mistypings
