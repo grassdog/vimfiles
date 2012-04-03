@@ -49,7 +49,11 @@ set nowrap                            " don't wrap lines
 set tabstop=2                         " a tab is two spaces
 set shiftwidth=2                      " an autoindent (with <<) is two spaces
 set expandtab                         " use spaces, not tabs
-set list listchars=tab:\ \ ,trail:.   " a tab should display as "  ", trailing whitespace as "."
+
+" Display tabs and whitepace
+set list
+set listchars=tab:·\ ,trail:·,extends:»,precedes:«
+
 set backspace=indent,eol,start        " backspace through everything in insert mode
 set whichwrap+=<,>,h,l,[,]            "allow bs, del to cross lines
 
@@ -132,6 +136,7 @@ map Y y$
 
 " Fold html tags
 nnoremap <leader>zfh Vatzf
+
 
 """"""""""""""""""""""""
 "" Disable swap files and backups
