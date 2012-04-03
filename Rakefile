@@ -1,7 +1,7 @@
 
 desc "Link rc files"
 task :link_rc_files do
-  %w[ vimrc gvimrc ].each do |file|
+  %w[ vimrc ].each do |file|
     dest = File.expand_path("~/.#{file}")
     unless File.exist?(dest)
       ln_s(File.expand_path("../#{file}", __FILE__), dest)

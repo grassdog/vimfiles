@@ -217,6 +217,14 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "" Editing commands
 """"""""""""""""""""""""""""
 
+" Normal Mode: Bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+
+" Visual Mode: Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
+
 " Remove trailing white space from file
 command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
@@ -323,4 +331,66 @@ command! ShowCheats :normal :tabnew ~/.vim/cheats.md<cr>
 
 " Show Work log
 command! ShowWorkLog :normal :edit ~/Dropbox/Notes/Work\ Log.md<cr>
+
+"""""""""""""
+" GUI stuff
+"""""""""""""
+
+if has("gui_running")
+  " Show my current line
+  set cursorline
+
+  " No left scrollbar
+  set guioptions-=l
+  set guioptions-=L
+
+  " No toolbar
+  set guioptions-=T
+
+  " Hide mouse after chars typed
+  set mousehide
+
+endif
+
+if has("gui_macvim")
+  set guifont=Menlo\ for\ Powerline:h12
+
+  " Map command-[ and command-] to indenting or outdenting
+  " while keeping the original selection in visual mode
+  vmap <D-]> >gv
+  vmap <D-[> <gv
+
+  nmap <D-]> >>
+  nmap <D-[> <<
+
+  omap <D-]> >>
+  omap <D-[> <<
+
+  imap <D-]> <Esc>>>i
+  imap <D-[> <Esc><<i
+
+  " Duplicate line
+  nmap <D-d> yyp
+  imap <D-d> <Esc>yypi
+
+  " Comment lines
+  nmap <D-/> <plug>NERDCommenterToggle<CR>
+  vmap <D-/> <plug>NERDCommenterToggle<CR>
+  imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
+
+  if has("autocmd")
+    " Automatically resize splits when resizing MacVim window
+    autocmd VimResized * wincmd =
+  endif
+
+  " Command-Return for fullscreen
+  macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-CR>
+
+  " Fullscreen takes up entire screen
+  set fuoptions=maxhorz,maxvert
+
+  " Hide some menus
+  silent! aunmenu T&hemes
+  silent! aunmenu Plugin
+endif
 
