@@ -42,6 +42,7 @@ First I will apply the substitute 's' command and then 'update' which will only 
     ;   ,   repeat the last f, F, t, or T
     w   b   move to start of next word
     W   B   move to start of next "WORD" (sequence of non-blank characters)
+    )   (   move down one sentence
     }   {   move down one paragraph (block of text separated by blank lines)
       gg    jump to first line of document
       G     jump to end of document
@@ -116,6 +117,26 @@ You can return to that position with the _''_ and _``_ command, unless the line 
     3dd  deletes three lines from current cursor position downwards.
     X    delete the character before the cursor.
     x    delete character under the cursor.
+
+## Text objects
+
+    diw  delete in word
+    daw  delete around word
+    cis  change in sentence
+    ci”  change in a double quoted string
+    di)  delete in parenthesised block
+
+    w    word
+    s    sentence
+    p    paragraph
+    "    double quote
+    )    parenthesised
+    ]    bracket
+    }    brace
+    t    tag block
+    r    ruby block
+    a    argument
+    ,w   camel/snake case word
 
 ## Windows
 
