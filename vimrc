@@ -68,7 +68,7 @@ set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
 
 " Toggle search highlighting
-map <leader><space> :set hlsearch! hlsearch?<CR>
+noremap <leader><space> :set hlsearch! hlsearch?<CR>
 
 
 """"""""""""""""""""
@@ -121,18 +121,18 @@ colorscheme solarized
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Map the arrow keys to be based on display lines, not physical lines
-map <Down> gj
-map <Up> gk
+noremap <Down> gj
+noremap <Up> gk
 
 " Map ZoomWin
-map <leader>zz :ZoomWin<CR>
+noremap <leader>zz :ZoomWin<CR>
 
 " Use tab instead of % for brace matching
-nmap <tab> %
-vmap <tab> %
+nnoremap <tab> %
+vnoremap <tab> %
 
 " Yank to the end of the line
-map Y y$
+noremap Y y$
 
 " Fold html tags
 nnoremap <leader>zfh Vatzf
@@ -152,21 +152,21 @@ set noswapfile
 """""""""""""""""""""""
 
 " Command-Option-ArrowKey to switch viewports
-map <D-M-Up> <C-w>k
-imap <D-M-Up> <Esc> <C-w>k
-map <D-M-Down> <C-w>j
-imap <D-M-Down> <Esc> <C-w>j
-map <D-M-Right> <C-w>l
-imap <D-M-Right> <Esc> <C-w>l
-map <D-M-Left> <C-w>h
-imap <D-M-Left> <C-w>h
+noremap <D-M-Up> <C-w>k
+inoremap <D-M-Up> <Esc> <C-w>k
+noremap <D-M-Down> <C-w>j
+inoremap <D-M-Down> <Esc> <C-w>j
+noremap <D-M-Right> <C-w>l
+inoremap <D-M-Right> <Esc> <C-w>l
+noremap <D-M-Left> <C-w>h
+inoremap <D-M-Left> <C-w>h
 
 " Adjust viewports to the same size
-map <Leader>= <C-w>=
-imap <Leader>= <Esc> <C-w>=
+noremap <Leader>= <C-w>=
+inoremap <Leader>= <Esc> <C-w>=
 
 " Open a new vertical split
-map <leader>v <C-w>v<C-w>l
+noremap <leader>v <C-w>v<C-w>l
 
 " Switch to last buffer
 nnoremap <leader><leader> <c-^>
@@ -215,37 +215,37 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 """"""""""""""""""""""""""""
 
 " Normal Mode: Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
+nnoremap <C-Up> [e
+nnoremap <C-Down> ]e
 
 " Visual Mode: Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
+vnoremap <C-Up> [egv
+vnoremap <C-Down> ]egv
 
 " Remove trailing white space from file
 command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " format the entire file
-nmap <leader>rff ggVG=
+nnoremap <leader>rff ggVG=
 
 " Reformat XML files
-map <leader>rfx <Esc>:% !xmllint --format -<CR>
+noremap <leader>rfx <Esc>:% !xmllint --format -<CR>
 
 " Reformat HTML files
-map <leader>rfh <Esc>:% !tidy -quiet  -indent --indent-spaces 2 --wrap 90<CR>
+noremap <leader>rfh <Esc>:% !tidy -quiet  -indent --indent-spaces 2 --wrap 90<CR>
 
 " Reformat JSON
-map <leader>rfj <Esc>:% !js-beautify -i -s 2 --brace-style=expand<CR>
+noremap <leader>rfj <Esc>:% !js-beautify -i -s 2 --brace-style=expand<CR>
 
 " use :w!! to write to a file using sudo if you forgot to 'sudo vim file'
 " (it will prompt for sudo password when writing)
-cmap w!! %!sudo tee > /dev/null %
+cnoremap w!! %!sudo tee > /dev/null %
 
 " Underline the current line with '='
-nmap <silent> <leader>ul :t.\|s/./=/g\|:nohls<cr>
+nnoremap <silent> <leader>ul :t.\|s/./=/g\|:nohls<cr>
 
 " find merge conflict markers
-nmap <silent> <leader>m <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+nnoremap <silent> <leader>m <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 
 """"""""""""""""""""""""""
@@ -310,8 +310,8 @@ let g:ctrlp_max_height = 20
 let g:ctrlp_use_caching = 0
 "let g:ctrlp_extensions = ['tag']
 
-map <leader>p :CtrlPBuffer<cr>
-map <leader>f :CtrlP<cr>
+noremap <leader>p :CtrlPBuffer<cr>
+noremap <leader>f :CtrlP<cr>
 
 " NerdTree
 
@@ -321,7 +321,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 " Close vim if NerdTree is the only remaining open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-map <leader>n :NERDTreeToggle<cr>
+noremap <leader>n :NERDTreeToggle<cr>
 
 " Show cheats
 command! ShowCheats :normal :tabnew ~/.vim/cheats.md<cr>
