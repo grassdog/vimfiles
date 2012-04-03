@@ -305,7 +305,7 @@ let g:ctrlp_max_height = 20
 let g:ctrlp_use_caching = 0
 "let g:ctrlp_extensions = ['tag']
 
-map <leader>b :CtrlPBuffer<cr>
+map <leader>p :CtrlPBuffer<cr>
 map <leader>f :CtrlP<cr>
 
 " NerdTree
