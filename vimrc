@@ -97,21 +97,8 @@ set undodir=~/.vim/tmp/undo//
 set laststatus=2  " always show the status bar
 set showmode
 set shortmess=atI " Shortens messages to avoid 'press a key' prompt
+set showcmd
 
-if has("statusline") && !&cp
-
-  " Start the status line
-  set statusline=%f\ %m\ %r
-
-  " Finish the statusline
-  set statusline+=\ \ Line:%l/%L[%p%%]
-  set statusline+=\ \ Col:%v
-  set statusline+=\ \ Buf:#%n
-  set statusline+=\ \ [%b][0x%B]
-
-  " Add fugitive
-  set statusline+=\ \ %{fugitive#statusline()}
-endif
 
 """""""""""""""""""""""
 "" Visual feedback
@@ -298,6 +285,9 @@ let g:gundo_right = 1
 let g:NERDCustomDelimiters = {
     \ 'scss': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' }
     \ }
+
+" Powerline
+let g:Powerline_symbols = 'fancy'
 
 " Ctrlp
 let g:ctrlp_dont_split = 'NERD_tree_2'

@@ -112,3 +112,6 @@
 [submodule "tools/nerdtree"]
 	path = tools/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "tools/powerline"]
+	path = tools/powerline
+	url = https://github.com/Lokaltog/vim-powerline.git

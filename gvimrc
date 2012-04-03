@@ -1,6 +1,6 @@
 
 if has("gui_macvim")
-  set guifont=Menlo:h12
+  set guifont=Menlo\ for\ Powerline:h12
 
   " Map command-[ and command-] to indenting or outdenting
   " while keeping the original selection in visual mode
