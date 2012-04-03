@@ -184,31 +184,28 @@ set noequalalways
 " Turn on filetype plugins
 filetype plugin indent on
 
-if has("autocmd")
+" Remember last location in file, but not for commit messages.
+" see :help last-position-jump
+au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
+  \| exe "normal! g`\"" | endif
 
-  " Remember last location in file, but not for commit messages.
-  " see :help last-position-jump
-  au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal! g`\"" | endif
+" In Makefiles, use real tabs, not tabs expanded to spaces
+au FileType make set noexpandtab
 
-  " In Makefiles, use real tabs, not tabs expanded to spaces
-  au FileType make set noexpandtab
+" Setup JSON files
+au BufNewFile,BufRead *.json set ft=json
 
-  " Setup JSON files
-  au BufNewFile,BufRead *.json set ft=json
+" make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
+au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
-  " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-  au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+" Less
+au BufNewFile,BufRead *.less set filetype=less
 
-  " Less
-  au BufNewFile,BufRead *.less set filetype=less
+" Add indent stuff for scheme files
+au filetype lisp,scheme,art setlocal equalprg=~/.vim/janus-tools/scheme-indent/scmindent.scm
 
-  " Add indent stuff for scheme files
-  au filetype lisp,scheme,art setlocal equalprg=~/.vim/janus-tools/scheme-indent/scmindent.scm
-
-  " Change tab width for markdown
-  au FileType markdown set softtabstop=4 tabstop=4 shiftwidth=4
-endif
+" Change tab width for markdown
+au FileType markdown set softtabstop=4 tabstop=4 shiftwidth=4
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -378,10 +375,8 @@ if has("gui_macvim")
   vmap <D-/> <plug>NERDCommenterToggle<CR>
   imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
 
-  if has("autocmd")
-    " Automatically resize splits when resizing MacVim window
-    autocmd VimResized * wincmd =
-  endif
+  " Automatically resize splits when resizing MacVim window
+  autocmd VimResized * wincmd =
 
   " Command-Return for fullscreen
   macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-CR>
