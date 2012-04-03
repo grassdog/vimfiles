@@ -319,7 +319,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 map <leader>n :NERDTreeToggle<cr>
 
 " Show cheats
-command! ShowCheats :normal :tabnew ~/.vim/vim-cheats.md<cr>
+command! ShowCheats :normal :tabnew ~/.vim/cheats.md<cr>
 
 " Show Work log
 command! ShowWorkLog :normal :edit ~/Dropbox/Notes/Work\ Log.md<cr>
