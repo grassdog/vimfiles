@@ -115,3 +115,6 @@
 [submodule "tools/powerline"]
 	path = tools/powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule "tools/indent-guides"]
+	path = tools/indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides.git
