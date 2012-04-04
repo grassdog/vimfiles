@@ -247,9 +247,8 @@ nnoremap <silent> <leader>ul :t.\|s/./=/g\|:nohls<cr>
 " find merge conflict markers
 nnoremap <silent> <leader>m <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
-" Edit and source my vimrc
+" Edit my vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
 
 """"""""""""""""""""""""""
 "" Fix common mistypings
@@ -315,6 +314,21 @@ let g:ctrlp_use_caching = 0
 
 noremap <leader>p :CtrlPBuffer<cr>
 noremap <leader>f :CtrlP<cr>
+
+" A standalone function to set the working directory to the project’s root, or
+" to the parent directory of the current file if a root can’t be found:
+function! s:setcwd()
+  let cph = expand('%:p:h', 1)
+  if match(cph, '\v^<.+>://') >= 0 | retu | en
+  for mkr in ['.git/', '.hg/', '.svn/', '.bzr/', '_darcs/', '.vimprojects']
+    let wd = call('find'.(mkr =~ '/$' ? 'dir' : 'file'), [mkr, cph.';'])
+    if wd != '' | let &acd = 0 | brea | en
+  endfo
+  exe 'lc!' fnameescape(wd == '' ? cph : substitute(wd, mkr.'$', '.', ''))
+endfunction
+
+autocmd BufEnter * call s:setcwd()
+
 
 " NerdTree
 
