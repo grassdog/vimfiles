@@ -330,7 +330,7 @@ noremap <leader>n :NERDTreeToggle<cr>
 command! ShowCheats :normal :tabnew ~/.vim/cheats.md<cr>
 
 " Show Work log
-command! ShowWorkLog :normal :edit ~/Dropbox/Notes/Work\ Log.md<cr>
+command! WorkLog :normal :edit ~/Dropbox/Notes/Work\ Log.md<cr>
 
 """""""""""""
 " GUI stuff
