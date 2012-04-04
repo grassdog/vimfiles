@@ -147,6 +147,7 @@ You can return to that position with the _''_ and _``_ command, unless the line 
     ctrl+w +      increase size of window
     ctrl+w x      exchange current window with next one
     ctrl+w r      rotate windows clockwise
+    ctrl+w o      close other windows
     :copen        open quick fix window
     :ccl          close quick fix window
 
