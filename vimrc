@@ -39,6 +39,7 @@ set nocompatible      " Use vim, no vi defaults
 set number            " Show line numbers
 syntax enable         " Turn on syntax highlighting allowing local overrides
 set encoding=utf-8    " Set default encoding to UTF-8
+set hidden            " Hide buffers, don't close them
 
 
 """""""""""""""
@@ -388,9 +389,9 @@ if has("gui_macvim")
   inoremap <D-d> <Esc>yypi
 
   " Comment lines
-  nnoremap <D-/> <plug>NERDCommenterToggle<CR>
-  vnoremap <D-/> <plug>NERDCommenterToggle<CR>
-  inoremap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
+  nmap <D-/> <plug>NERDCommenterToggle<CR>
+  vmap <D-/> <plug>NERDCommenterToggle<CR>
+  imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
 
   " Automatically resize splits when resizing MacVim window
   autocmd VimResized * wincmd =
