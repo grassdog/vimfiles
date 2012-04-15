@@ -77,13 +77,13 @@ noremap <leader><space> :set hlsearch! hlsearch?<CR>
 """"""""""""""""""""
 
 " Disable output and VCS files
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem,.DS_Store
 
 " Disable archive files
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 
 " Ignore bundler and sass cache
-set wildignore+=vendor/gems/*,vendor/cache/*,.bundle/*,.sass-cache/*,doc/**,tmp/**
+set wildignore+=**/vendor/gems/*,**/vendor/bundle/*,**/vendor/cache/*,.bundle/*,.sass-cache/*,doc/**,**/tmp/**
 
 """"""""""""""""""""""""""""
 "" Undo and command history
