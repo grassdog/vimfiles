@@ -315,6 +315,7 @@ let g:ctrlp_use_caching = 0
 
 noremap <leader>p :CtrlPBuffer<cr>
 noremap <leader>f :CtrlP<cr>
+noremap <leader>d :CtrlPCurFile<cr>
 
 " A standalone function to set the working directory to the project’s root, or
 " to the parent directory of the current file if a root can’t be found:
