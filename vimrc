@@ -348,6 +348,9 @@ command! Cheats :normal :tabnew ~/.vim/cheats.md<cr><cr>
 " Show Work log
 command! WorkLog :normal :edit ~/Dropbox/Notes/Work\ Log.md<cr><cr>
 
+" Write all buffers once I lose focus
+au FocusLost * :silent! wall
+
 """""""""""""
 " GUI stuff
 """""""""""""
