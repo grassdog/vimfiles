@@ -334,9 +334,6 @@ autocmd BufEnter * call s:setcwd()
 
 " NerdTree
 
-" Open NerdTree if no other file is open
-autocmd vimenter * if !argc() | NERDTree | endif
-
 " Close vim if NerdTree is the only remaining open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
