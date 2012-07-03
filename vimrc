@@ -338,12 +338,14 @@ autocmd BufEnter * call s:setcwd()
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 noremap <leader>n :NERDTreeToggle<cr>
+noremap <leader>rr :NERDTreeFind<cr>
 
 " Show cheats
 command! Cheats :normal :tabnew ~/.vim/cheats.md<cr><cr>
 
-" Show Work log
+" Show personal log files
 command! WorkLog :normal :edit ~/Dropbox/Notes/Work\ Log.md<cr><cr>
+command! LearnLog :normal :edit ~/Dropbox/Notes/Learning\ Log.md<cr><cr>
 
 " Write all buffers once I lose focus
 au FocusLost * :silent! wall
