@@ -124,3 +124,6 @@
 [submodule "tools/argtextobj"]
 	path = tools/argtextobj
 	url = https://github.com/vim-scripts/argtextobj.vim.git
+[submodule "tools/ack"]
+	path = tools/ack
+	url = https://github.com/mileszs/ack.vim.git
