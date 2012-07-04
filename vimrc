@@ -302,6 +302,9 @@ let g:NERDCustomDelimiters = {
     \ 'scss': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' }
     \ }
 
+" Seach for current word in Ack
+nnoremap <bs> :Ack! '\b<c-r><c-w>\b'<cr>
+
 " Powerline
 let g:Powerline_symbols = 'fancy'
 
