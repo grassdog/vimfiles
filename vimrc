@@ -23,10 +23,11 @@ call s:add_group("colorpacks")
 call pathogen#runtime_append_all_bundles()
 
 " Some file types should wrap their text
+" This currently hard wraps at 85 columns because I can't work out a way to
+" soft wrap to a column width that is smaller than the window
 function s:setupWrapping()
-  set wrap
+  set textwidth=85
   set linebreak
-  set textwidth=72
   set nolist
 endfunction
 
@@ -46,7 +47,7 @@ set hidden            " Hide buffers, don't close them
 "" Whitespace
 """""""""""""""
 
-set nowrap                            " don't wrap lines
+set wrap                              " wrap lines
 set tabstop=2                         " a tab is two spaces
 set shiftwidth=2                      " an autoindent (with <<) is two spaces
 set expandtab                         " use spaces, not tabs
@@ -202,6 +203,9 @@ au BufNewFile,BufRead *.json set ft=json
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
+" Markdown and txt files should wrap
+au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} call s:setupWrapping()
+
 " Less
 au BufNewFile,BufRead *.less set filetype=less
 
@@ -347,11 +351,11 @@ noremap <leader>n :NERDTreeToggle<cr>
 noremap <leader>rr :NERDTreeFind<cr>
 
 " Show cheats
-command! Cheats :normal :tabnew ~/.vim/cheats.md<cr><cr>
+command! Cheats :normal :tabnew ~/.vim/cheats.md<cr><cr><cr>
 
 " Show personal log files
-command! WorkLog :normal :edit ~/Dropbox/Notes/Work\ Log.md<cr><cr>
-command! LearnLog :normal :edit ~/Dropbox/Notes/Learning\ Log.md<cr><cr>
+command! WorkLog :normal :edit ~/Dropbox/Notes/Work\ Log.md<cr><cr><cr>
+command! Journal :normal :edit ~/Dropbox/Notes/Journal.md<cr><cr><cr>
 
 " Write all buffers once I lose focus
 au FocusLost * :silent! wall
