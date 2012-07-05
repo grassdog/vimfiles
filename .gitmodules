@@ -127,3 +127,6 @@
 [submodule "tools/ack"]
 	path = tools/ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "tools/scratch"]
+	path = tools/scratch
+	url = https://github.com/vim-scripts/scratch.vim.git
