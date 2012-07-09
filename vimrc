@@ -237,8 +237,11 @@ vnoremap <C-Down> ]egv
 " Remove trailing white space from file
 command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
-" format the entire file
+" Format the entire file
 nnoremap <leader>rff ggVG=
+
+" Re-wrap the entire file
+nnoremap <leader>rwf ggVGgq
 
 " Reformat XML files
 noremap <leader>rfx <Esc>:% !xmllint --format -<CR>
@@ -256,8 +259,8 @@ cnoremap w!! %!sudo tee > /dev/null %
 " Underline the current line with '='
 nnoremap <silent> <leader>ul :t.\|s/./=/g\|:nohls<cr>
 
-" find merge conflict markers
-nnoremap <silent> <leader>m <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+" Find merge conflict markers
+nnoremap <silent> <leader>mm <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 " Edit my vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
