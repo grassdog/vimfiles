@@ -126,8 +126,9 @@ colorscheme solarized
 noremap <Down> gj
 noremap <Up> gk
 
-" Stop page down on shift arrow
+" Stop page movement on shift arrow
 noremap <S-Down> <Down>
+noremap <S-Up> <Up>
 
 " Map ZoomWin
 noremap <leader>zz :ZoomWin<CR>
