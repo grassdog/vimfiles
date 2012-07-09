@@ -207,6 +207,9 @@ au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 " Markdown and txt files should wrap
 au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} call s:setupWrapping()
 
+" Preview markdown files in Marked app
+nnoremap <leader>mp :silent !open -a Marked.app '%:p'<cr>
+
 " Less
 au BufNewFile,BufRead *.less set filetype=less
 
