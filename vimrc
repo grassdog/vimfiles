@@ -185,6 +185,8 @@ nnoremap <leader><leader> <c-^>
 " This is likely a bludgeon to solve some other issue, but it works
 set noequalalways
 
+" Setup my language
+set spelllang=en_au
 
 """""""""""""""""
 "" File Types
