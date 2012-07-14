@@ -26,9 +26,9 @@ call pathogen#runtime_append_all_bundles()
 " This currently hard wraps at 85 columns because I can't work out a way to
 " soft wrap to a column width that is smaller than the window
 function s:setupWrapping()
-  set textwidth=85
-  set linebreak
-  set nolist
+  setlocal textwidth=85
+  setlocal linebreak
+  setlocal nolist
 endfunction
 
 
@@ -202,7 +202,7 @@ au FileType make set noexpandtab
 au BufNewFile,BufRead *.json set ft=json
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+au FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
 " Markdown and txt files should wrap
 au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} call s:setupWrapping()
@@ -217,7 +217,7 @@ au BufNewFile,BufRead *.less set filetype=less
 au filetype lisp,scheme,art setlocal equalprg=~/.vim/janus-tools/scheme-indent/scmindent.scm
 
 " Change tab width for markdown
-au FileType markdown set softtabstop=4 tabstop=4 shiftwidth=4
+au FileType markdown setlocal softtabstop=4 tabstop=4 shiftwidth=4
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
