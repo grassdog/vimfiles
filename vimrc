@@ -174,6 +174,9 @@ inoremap <Leader>= <Esc> <C-w>=
 " Open a new vertical split
 noremap <leader>v <C-w>v<C-w>l
 
+" Toggle indent guides
+noremap <leader>vi :IndentGuideToggle<cr>
+
 " Switch to last buffer
 nnoremap <leader><leader> <c-^>
 
