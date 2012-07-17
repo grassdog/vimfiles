@@ -363,11 +363,11 @@ noremap <leader>n :NERDTreeToggle<cr>
 noremap <leader>rr :NERDTreeFind<cr>
 
 " Show cheats
-command! Cheats :normal :tabnew ~/.vim/cheats.md<cr><cr><cr>
+command! Cheats :normal :silent! tabnew ~/.vim/cheats.md<cr>
 
 " Show personal log files
-command! WorkLog :normal :edit ~/Dropbox/Notes/Work\ Log.md<cr><cr><cr>
-command! Journal :normal :edit ~/Dropbox/Notes/Journal.md<cr><cr><cr>
+command! WorkLog :normal :silent! edit ~/Dropbox/Notes/Work\ Log.md<cr>
+command! Journal :normal :silent! edit ~/Dropbox/Notes/Journal.md<cr>
 
 " Write all buffers once I lose focus
 au FocusLost * :silent! wall
