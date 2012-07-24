@@ -242,6 +242,9 @@ vnoremap <C-Down> ]egv
 " Remove trailing white space from file
 command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
+" Insert today's date as a markdown header
+nnoremap <leader>id "=strftime("# %Y-%m-%d")<CR>P
+
 " Format the entire file
 nnoremap <leader>rff ggVG=
 
