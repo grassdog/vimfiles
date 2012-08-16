@@ -134,7 +134,7 @@ noremap <S-Up> <Up>
 noremap <leader>zz :ZoomWin<CR>
 
 " Use tab instead of % for brace matching
-nnoremap <tab> %
+nmap <tab> %
 vnoremap <tab> %
 
 " Yank to the end of the line
