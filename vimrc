@@ -114,7 +114,10 @@ set scrolloff=3       " Always show at least three lines below cursor
 set mat=3             " Blink matching brackets for 3 tenths of a second
 set visualbell t_vb=  " No Noise or bell
 
-" Color scheme (terminal)
+" Color scheme
+let g:solarized_menu=0
+let g:solarized_contrast="high"
+
 set background=dark
 colorscheme solarized
 
@@ -294,9 +297,6 @@ command! GenBundleTags :normal :!ctags-bundle<cr><cr>
 """""""""""""""""
 "" Plugin Config
 """""""""""""""""
-
-" No Solarized menu
-let g:solarized_menu=0
 
 " No Netrw menu
 let g:netrw_menu=0
