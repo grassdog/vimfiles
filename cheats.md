@@ -215,6 +215,13 @@ Note that you can use `ir` and `ar` to expand and contract an existing selection
 
     ,ca     Changes the comment style used
 
+## Align
+
+    <leader>t=  : align assignments (don't count logic, like == or !=)
+	<leader>t,  : align on commas
+	<leader>t|  : align on vertical bars (|)
+	<leader>tsp : align on whitespace
+
 ## Pathogen
 
    :call pathogen#helptags()    Regenerate doc tags

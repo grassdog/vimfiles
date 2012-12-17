@@ -127,3 +127,6 @@
 [submodule "tools/scratch"]
 	path = tools/scratch
 	url = https://github.com/vim-scripts/scratch.vim.git
+[submodule "tools/align"]
+	path = tools/align
+	url = https://github.com/vim-scripts/Align
