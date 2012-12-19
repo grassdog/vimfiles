@@ -365,6 +365,14 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 noremap <leader>n :NERDTreeToggle<cr>
 noremap <leader>rr :NERDTreeFind<cr>
 
+" Clojure
+
+let g:vimclojure#ParenRainbow = 1
+let g:vimclojure#HighlightBuiltins = 1
+
+" TODO Get a REPL working with vim
+"let vimclojure#WantNailgun = 1
+
 " Show cheats
 command! Cheats :normal :silent! tabnew ~/.vim/cheats.md<cr>
 
