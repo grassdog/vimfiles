@@ -273,9 +273,6 @@ nnoremap <silent> <leader>ul :t.\|s/./=/g\|:nohls<cr>
 " Find merge conflict markers
 nnoremap <silent> <leader>mm <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
-" Edit my vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-
 """"""""""""""""""""""""""
 "" Fix common mistypings
 """"""""""""""""""""""""""
@@ -377,6 +374,7 @@ let g:vimclojure#HighlightBuiltins = 1
 command! Cheats :normal :silent! tabnew ~/.vim/cheats.md<cr>
 
 " Edit hot files
+command! Myrc :normal :silent! edit $MYVIMRC<cr>
 command! WorkLog :normal :silent! edit ~/Dropbox/Notes/Work\ Log.md<cr>
 command! Journal :normal :silent! edit ~/Dropbox/Notes/Journal.md<cr>
 command! Spad :normal :silent! edit ~/Dropbox/Notes/Scratch.md<cr>
