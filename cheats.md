@@ -73,8 +73,7 @@ The `c` flag will make Vim ask confirmation before each substitution.
 
 A "jump" is a command that starts editing a new file or is one of the following:
 
-    "'", "`", "G", "/", "?", "n", "N", "%", "(", ")", "[[", "]]", "{", "}", ":s", ":tag", "L", "M", "H"
-
+    ' ` G / ? n N % ( ) [[ ]] { } :s :tag L M H
 
 If you make the cursor "jump" with one of these commands, the position of the cursor before the jump is remembered.
 
