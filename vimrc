@@ -371,7 +371,7 @@ let g:vimclojure#HighlightBuiltins = 1
 "let vimclojure#WantNailgun = 1
 
 " Show cheats
-command! Cheats :normal :silent! tabnew ~/.vim/cheats.md<cr>
+command! Cheats :normal :silent! tabnew ~/Dropbox/Notes/Vim.md<cr>
 
 " Edit hot files
 command! Myrc :normal :silent! edit $MYVIMRC<cr>
