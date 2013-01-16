@@ -24,6 +24,7 @@ end
 desc "Create tmp directories"
 task :create_temp do
   sh 'mkdir -p ~/.vim/tmp/undo'
+  sh 'mkdir -p ~/.vim/tmp/backups'
 end
 
 desc "Setup a new installation"

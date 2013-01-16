@@ -93,8 +93,12 @@ set undofile
 set undoreload=10000
 set history=1000
 
-" Undo files
+" Undo, swap, and backup files
 set undodir=~/.vim/tmp/undo//
+set backup
+set backupdir=~/.vim/tmp/backups
+set writebackup
+set noswapfile
 
 """""""""""""""
 "" Status bar
@@ -146,14 +150,6 @@ noremap Y y$
 " Fold html tags
 nnoremap <leader>zfh Vatzf
 
-
-""""""""""""""""""""""""
-"" Disable swap files and backups
-""""""""""""""""""""""""
-
-set nobackup
-set nowritebackup
-set noswapfile
 
 
 """""""""""""""""""""""
@@ -248,11 +244,15 @@ command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:
 " Insert today's date as a markdown header
 nnoremap <leader>id "=strftime("# %Y-%m-%d")<CR>P
 
-" Format the entire file
-nnoremap <leader>rff ggVG=
+""""""""""""
+" Formatting
+""""""""""""
 
 " Re-wrap the entire file
 nnoremap <leader>rwf ggVGgq
+
+" Format the entire file
+nnoremap <leader>rff ggVG=
 
 " Reformat XML files
 noremap <leader>rfx <Esc>:% !xmllint --format -<CR>
