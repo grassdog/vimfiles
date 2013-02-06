@@ -2,46 +2,87 @@
 " Map Leader
 let mapleader = ","
 
-"""""""""""""""""""
-"" Pathogen Setup
-"""""""""""""""""""
+set nocompatible      " Use vim, no vi defaults
+filetype off
 
-let s:current_file = expand("<sfile>:p")
+" Setup Vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-function s:add_group(name)
-  let resolved = resolve(s:current_file)
-  let dir = fnamemodify(resolved, ":h")
-  let file = dir . "/" . a:name
-  call pathogen#runtime_prepend_subdirectories(file)
-endfunction
+Bundle 'gmarik/vundle'
 
+" Tools
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-repeat'
+Bundle 'edsono/vim-matchit'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'sjl/gundo.vim'
+Bundle 'ervandew/supertab'
+Bundle 'EasyGrep'
+Bundle 'ZoomWin'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'kien/ctrlp.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'bkad/CamelCaseMotion'
+Bundle 'Align'
+Bundle 'argtextobj.vim'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'kana/vim-textobj-user'
 
-call s:add_group("langs")
-call s:add_group("tools")
-call s:add_group("colorpacks")
+" Snipmate
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "honza/snipmate-snippets"
+Bundle "garbas/vim-snipmate"
 
-call pathogen#runtime_append_all_bundles()
+" Tools
+Bundle 'mileszs/ack.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-git'
 
-" Some file types should wrap their text
-" This currently hard wraps at 85 columns because I can't work out a way to
-" soft wrap to a column width that is smaller than the window
-function s:setupWrapping()
-  setlocal textwidth=85
-  setlocal linebreak
-  setlocal nolist
-endfunction
+" Web
+Bundle 'tpope/vim-haml'
+Bundle 'pangloss/vim-javascript'
+Bundle 'tpope/vim-markdown'
+Bundle 'nono/vim-handlebars'
+Bundle 'othree/html5.vim'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'tpope/vim-liquid'
+Bundle 'JSON.vim'
+Bundle 'groenewege/vim-less'
 
+" Ruby / rails
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-endwise'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'tpope/vim-cucumber'
+Bundle 'taq/vim-rspec'
+Bundle 'claco/jasmine.vim'
+
+" Other
+Bundle 'VimClojure'
+Bundle 'wlangstroth/vim-racket'
+Bundle 'kikijump/tslime.vim'
+Bundle 'ajf/puppet-vim'
+Bundle 'lukerandall/haskellmode-vim'
 
 """"""""""""""""
 "" Basic Setup
 """"""""""""""""
 
-set nocompatible      " Use vim, no vi defaults
+" Turn on filetype plugins
+filetype plugin indent on
+
 set number            " Show line numbers
 syntax enable         " Turn on syntax highlighting allowing local overrides
 set encoding=utf-8    " Set default encoding to UTF-8
 set hidden            " Hide buffers, don't close them
-
 
 """""""""""""""
 "" Whitespace
@@ -58,6 +99,7 @@ set listchars=tab:·\ ,trail:·,extends:»,precedes:«
 
 set backspace=indent,eol,start        " backspace through everything in insert mode
 set whichwrap+=<,>,h,l,[,]            "allow bs, del to cross lines
+
 
 
 """""""""""""""
@@ -191,8 +233,15 @@ set spelllang=en_au
 "" File Types
 """""""""""""""""
 
-" Turn on filetype plugins
-filetype plugin indent on
+" Some file types should wrap their text
+" This currently hard wraps at 85 columns because I can't work out a way to
+" soft wrap to a column width that is smaller than the window
+function s:setupWrapping()
+  setlocal textwidth=85
+  setlocal linebreak
+  setlocal nolist
+endfunction
+
 
 " Remember last location in file, but not for commit messages.
 " see :help last-position-jump
@@ -218,7 +267,7 @@ nnoremap <leader>mp :silent !open -a Marked.app '%:p'<cr>
 au BufNewFile,BufRead *.less set filetype=less
 
 " Add indent stuff for scheme files
-au filetype lisp,scheme,art setlocal equalprg=~/.vim/janus-tools/scheme-indent/scmindent.scm
+au filetype lisp,scheme,art setlocal equalprg=~/.vim/tools/scheme-indent/scmindent.scm
 
 " Change tab width for markdown
 au FileType markdown setlocal softtabstop=4 tabstop=4 shiftwidth=4
