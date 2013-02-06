@@ -319,6 +319,7 @@ let g:NERDCustomDelimiters = {
     \ }
 
 " Seach for current word in Ack
+"let g:ackprg = 'ag --nogroup --nocolor --column'
 nnoremap <bs> :Ack! '\b<c-r><c-w>\b'<cr>
 
 " Powerline
