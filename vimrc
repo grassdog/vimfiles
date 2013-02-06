@@ -367,8 +367,9 @@ noremap <leader>rr :NERDTreeFind<cr>
 let g:vimclojure#ParenRainbow = 1
 let g:vimclojure#HighlightBuiltins = 1
 
-" TODO Get a REPL working with vim
+" Add these for Nailgun (clunky as it is)
 "let vimclojure#WantNailgun = 1
+"let vimclojure#NailgunClient = "/Users/rgrasso/.bin/ng"
 
 " Show cheats
 command! Cheats :normal :silent! tabnew ~/Dropbox/Notes/Vim.md<cr>
