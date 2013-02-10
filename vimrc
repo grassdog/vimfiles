@@ -19,7 +19,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'edsono/vim-matchit'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'sjl/gundo.vim'
-Bundle 'ervandew/supertab'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'EasyGrep'
 Bundle 'ZoomWin'
 Bundle 'scrooloose/nerdtree'
@@ -389,6 +389,12 @@ let g:ctrlp_use_caching = 0
 noremap <leader>p :CtrlPBuffer<cr>
 noremap <leader>f :CtrlP<cr>
 noremap <leader>d :CtrlPCurFile<cr>
+
+" You complete me
+let g:ycm_key_detailed_diagnostics = '<leader>q'
+
+" Temporarily assign snipmate to this. Remove once ycm integrates with it
+let g:snips_trigger_key = '<C-\>'
 
 " A standalone function to set the working directory to the project’s root, or
 " to the parent directory of the current file if a root can’t be found:
