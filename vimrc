@@ -71,6 +71,7 @@ Bundle 'wlangstroth/vim-racket'
 Bundle 'kikijump/tslime.vim'
 Bundle 'ajf/puppet-vim'
 Bundle 'lukerandall/haskellmode-vim'
+Bundle 'jceb/vim-orgmode'
 
 """"""""""""""""
 "" Basic Setup
