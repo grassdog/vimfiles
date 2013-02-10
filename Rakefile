@@ -15,10 +15,11 @@ task :install do
 end
 
 desc 'Create tmp directories'
-task :create_temp do
-  sh 'mkdir -p ~/.vim/tmp/undo'
-  sh 'mkdir -p ~/.vim/tmp/backups'
+task :create_temp_dirs do
+  %w{undo backups sessions}.each do |dir|
+    sh "mkdir -p ~/.vim/tmp/#{dir}"
+  end
 end
 
 desc 'Setup a new installation'
-task :setup => [:create_temp, :link_rc_files, :install]
+task :setup => [:create_temp_dirs, :link_rc_files, :install]
