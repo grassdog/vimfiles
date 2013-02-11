@@ -249,6 +249,9 @@ au FileType make set noexpandtab
 " Setup JSON files
 au BufNewFile,BufRead *.json set ft=json
 
+" Expand org files by default
+au BufNewFile,BufRead *.org :normal zR
+
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
