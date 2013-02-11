@@ -12,7 +12,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Tools
-Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-repeat'
@@ -280,13 +279,16 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "" Editing commands
 """"""""""""""""""""""""""""
 
-" Normal Mode: Bubble single lines
-nnoremap <C-Up> [e
-nnoremap <C-Down> ]e
+" Bubble lines up and down
+" http://vim.wikia.com/wiki/Moving_lines_up_or_down
+nnoremap <silent> <C-S-Up> :m .-2<CR>==
+nnoremap <silent> <C-S-Down> :m .+1<CR>==
 
-" Visual Mode: Bubble multiple lines
-vnoremap <C-Up> [egv
-vnoremap <C-Down> ]egv
+inoremap <silent><C-S-Up> <Esc>:m .-2<CR>==gi
+inoremap <silent><C-S-Down> <Esc>:m .+1<CR>==gi
+
+vnoremap <silent><C-S-Up> :m '<-2<CR>gv=gv
+vnoremap <silent><C-S-Down> :m '>+1<CR>gv=gv
 
 " Remove trailing white space from file
 command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
