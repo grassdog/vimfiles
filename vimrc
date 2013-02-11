@@ -1,6 +1,7 @@
 
 " Map Leader
 let mapleader = ","
+let maplocalleader = "\\"
 
 set nocompatible      " Use vim, no vi defaults
 filetype off
