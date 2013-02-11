@@ -229,7 +229,7 @@ set spelllang=en_au
 " Some file types should wrap their text
 " This currently hard wraps at 85 columns because I can't work out a way to
 " soft wrap to a column width that is smaller than the window
-function s:setupWrapping()
+function! s:setupWrapping()
   setlocal textwidth=85
   setlocal linebreak
   setlocal nolist
