@@ -34,11 +34,8 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'kana/vim-textobj-user'
 Bundle 'Raimondi/delimitMate'
 
-" Snipmate
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "honza/snipmate-snippets"
-Bundle "garbas/vim-snipmate"
+" Snippets
+Bundle 'SirVer/ultisnips'
 
 " Tools
 Bundle 'mileszs/ack.vim'
@@ -387,8 +384,10 @@ noremap <leader>d :CtrlPCurFile<cr>
 " You complete me
 let g:ycm_key_detailed_diagnostics = '<leader>q'
 
-" Temporarily assign snipmate to this. Remove once ycm integrates with it
-let g:snips_trigger_key = '<C-\>'
+" UltiSnips
+let g:UltiSnipsExpandTrigger = '<C-\>'
+let g:UltiSnipsJumpForwardTrigger = '<C-\>'
+let g:UltiSnipsJumpBackwardTrigger ='<C-/>'
 
 " A standalone function to set the working directory to the project’s root, or
 " to the parent directory of the current file if a root can’t be found:
