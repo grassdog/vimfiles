@@ -270,9 +270,15 @@ au FileType markdown setlocal softtabstop=4 tabstop=4 shiftwidth=4
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
+" Find merge conflict markers
+nnoremap <silent> <leader>mm <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+
 """"""""""""""""""""""""""""
 "" Editing commands
 """"""""""""""""""""""""""""
+
+" Write all buffers once I lose focus
+au FocusLost * :silent! wall
 
 " Bubble lines up and down
 " http://vim.wikia.com/wiki/Moving_lines_up_or_down
@@ -288,6 +294,12 @@ vnoremap <silent><C-S-Down> :m '>+1<CR>gv=gv
 " Remove trailing white space and retab file
 command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<Bar>:retab<CR>
 
+" use :w!! to write to a file using sudo if you forgot to 'sudo vim file'
+" (it will prompt for sudo password when writing)
+cnoremap w!! %!sudo tee > /dev/null %
+
+" Underline the current line with '='
+nnoremap <silent> <leader>ul :t.\|s/./=/g\|:nohls<cr>
 
 """"""""""""
 " Formatting
@@ -307,16 +319,6 @@ noremap <leader>rfh <Esc>:% !tidy -quiet  -indent --indent-spaces 2 --wrap 90<CR
 
 " Reformat JSON
 noremap <leader>rfj <Esc>:% !js-beautify -i -s 2 --brace-style=expand<CR>
-
-" use :w!! to write to a file using sudo if you forgot to 'sudo vim file'
-" (it will prompt for sudo password when writing)
-cnoremap w!! %!sudo tee > /dev/null %
-
-" Underline the current line with '='
-nnoremap <silent> <leader>ul :t.\|s/./=/g\|:nohls<cr>
-
-" Find merge conflict markers
-nnoremap <silent> <leader>mm <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 """"""""""""""""""""""""""
 "" Fix common mistypings
@@ -365,7 +367,7 @@ let g:NERDCustomDelimiters = {
 
 " Seach for current word in Ack
 "let g:ackprg = 'ag --nogroup --nocolor --column'
-nnoremap <bs> :Ack! '\b<c-r><c-w>\b'<cr>
+nnoremap <leader>a :Ack! '\b<c-r><c-w>\b'<cr>
 
 " Powerline
 let g:Powerline_symbols = 'fancy'
@@ -429,9 +431,6 @@ command! Cheats :normal :silent! tabnew ~/Dropbox/Notes/Vim.md<cr>
 " Edit hot files
 command! Myrc :normal :silent! edit $MYVIMRC<cr>
 command! WorkLog :normal :silent! edit ~/Dropbox/Notes/Work\ Log.md<cr>
-
-" Write all buffers once I lose focus
-au FocusLost * :silent! wall
 command! Scratch :normal :silent! edit ~/Dropbox/Notes/Scratch.md<cr>
 
 """""""""""""
@@ -451,7 +450,6 @@ if has("gui_running")
 
   " Hide mouse after chars typed
   set mousehide
-
 endif
 
 if has("gui_macvim")
