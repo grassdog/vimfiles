@@ -207,9 +207,6 @@ inoremap <S-Left> <C-w>h
 noremap <Leader>= <C-w>=
 inoremap <Leader>= <Esc> <C-w>=
 
-" Open a new vertical split
-noremap <leader>v <C-w>v<C-w>l
-
 " Toggle indent guides
 noremap <leader>vi :IndentGuideToggle<cr>
 
@@ -291,8 +288,6 @@ vnoremap <silent><C-S-Down> :m '>+1<CR>gv=gv
 " Remove trailing white space and retab file
 command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<Bar>:retab<CR>
 
-" Insert today's date as a markdown header
-nnoremap <leader>id "=strftime("# %Y-%m-%d")<CR>P
 
 """"""""""""
 " Formatting
@@ -434,11 +429,10 @@ command! Cheats :normal :silent! tabnew ~/Dropbox/Notes/Vim.md<cr>
 " Edit hot files
 command! Myrc :normal :silent! edit $MYVIMRC<cr>
 command! WorkLog :normal :silent! edit ~/Dropbox/Notes/Work\ Log.md<cr>
-command! Journal :normal :silent! edit ~/Dropbox/Notes/Journal.md<cr>
-command! Spad :normal :silent! edit ~/Dropbox/Notes/Scratch.md<cr>
 
 " Write all buffers once I lose focus
 au FocusLost * :silent! wall
+command! Scratch :normal :silent! edit ~/Dropbox/Notes/Scratch.md<cr>
 
 """""""""""""
 " GUI stuff
