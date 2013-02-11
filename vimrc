@@ -32,6 +32,7 @@ Bundle 'Align'
 Bundle 'argtextobj.vim'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'kana/vim-textobj-user'
+Bundle 'Raimondi/delimitMate'
 
 " Snipmate
 Bundle "MarcWeber/vim-addon-mw-utils"
