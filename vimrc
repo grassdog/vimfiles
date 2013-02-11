@@ -235,38 +235,36 @@ function s:setupWrapping()
   setlocal nolist
 endfunction
 
+augroup grass_filehooks
+  autocmd!
 
-" Remember last location in file, but not for commit messages.
-" see :help last-position-jump
-au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
-  \| exe "normal! g`\"" | endif
+  " In Makefiles, use real tabs, not tabs expanded to spaces
+  autocmd FileType make set noexpandtab
 
-" In Makefiles, use real tabs, not tabs expanded to spaces
-au FileType make set noexpandtab
+  " Setup JSON files
+  autocmd BufNewFile,BufRead *.json set ft=json
 
-" Setup JSON files
-au BufNewFile,BufRead *.json set ft=json
+  " Expand Org files by default
+  autocmd BufNewFile,BufRead *.org :normal zR
 
-" Expand org files by default
-au BufNewFile,BufRead *.org :normal zR
+  " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
+  autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
-" make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-au FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+  " Markdown and txt files should wrap
+  autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} call s:setupWrapping()
 
-" Markdown and txt files should wrap
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} call s:setupWrapping()
+  " Change tab width for markdown
+  autocmd FileType markdown setlocal softtabstop=4 tabstop=4 shiftwidth=4
+
+  " Less
+  autocmd BufNewFile,BufRead *.less set filetype=less
+
+  " Add indent stuff for scheme files
+  autocmd filetype lisp,scheme,art setlocal equalprg=~/.vim/tools/scheme-indent/scmindent.scm
+augroup END
 
 " Preview markdown files in Marked app
 nnoremap <leader>mp :silent !open -a Marked.app '%:p'<cr>
-
-" Less
-au BufNewFile,BufRead *.less set filetype=less
-
-" Add indent stuff for scheme files
-au filetype lisp,scheme,art setlocal equalprg=~/.vim/tools/scheme-indent/scmindent.scm
-
-" Change tab width for markdown
-au FileType markdown setlocal softtabstop=4 tabstop=4 shiftwidth=4
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -277,9 +275,6 @@ nnoremap <silent> <leader>mm <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 """"""""""""""""""""""""""""
 "" Editing commands
 """"""""""""""""""""""""""""
-
-" Write all buffers once I lose focus
-au FocusLost * :silent! wall
 
 " Bubble lines up and down
 " http://vim.wikia.com/wiki/Moving_lines_up_or_down
@@ -406,13 +401,26 @@ function! s:setcwd()
   exe 'lc!' fnameescape(wd == '' ? cph : substitute(wd, mkr.'$', '.', ''))
 endfunction
 
-autocmd BufEnter * call s:setcwd()
+augroup grass_allfiles
+  autocmd!
 
+  " Remember last location in file, but not for commit messages.
+  " see :help last-position-jump
+  autocmd BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g`\"" | endif
+
+  " Write all buffers once I lose focus
+  autocmd FocusLost * :silent! wall
+
+  " Keep track of our current project directory
+  autocmd BufEnter * call s:setcwd()
+
+  " Close vim if NerdTree is the only remaining open window
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+augroup END
 
 " NerdTree
 
-" Close vim if NerdTree is the only remaining open window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 noremap <leader>n :NERDTreeToggle<cr>
 noremap <leader>rr :NERDTreeFind<cr>
@@ -480,7 +488,10 @@ if has("gui_macvim")
   imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
 
   " Automatically resize splits when resizing MacVim window
-  autocmd VimResized * wincmd =
+  augroup grass_gui
+    autocmd!
+    autocmd VimResized * wincmd =
+  augroup END
 
   " Command-Return for fullscreen
   macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-CR>
