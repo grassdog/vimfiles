@@ -175,10 +175,6 @@ colorscheme solarized
 noremap <Down> gj
 noremap <Up> gk
 
-" Stop page movement on shift arrow
-noremap <S-Down> <Down>
-noremap <S-Up> <Up>
-
 " Map ZoomWin
 noremap <leader>zz :ZoomWin<CR>
 
@@ -193,20 +189,19 @@ noremap Y y$
 nnoremap <leader>zfh Vatzf
 
 
-
 """""""""""""""""""""""
 "" Viewport Mappings
 """""""""""""""""""""""
 
-" Command-Option-ArrowKey to switch viewports
-noremap <D-M-Up> <C-w>k
-inoremap <D-M-Up> <Esc> <C-w>k
-noremap <D-M-Down> <C-w>j
-inoremap <D-M-Down> <Esc> <C-w>j
-noremap <D-M-Right> <C-w>l
-inoremap <D-M-Right> <Esc> <C-w>l
-noremap <D-M-Left> <C-w>h
-inoremap <D-M-Left> <C-w>h
+" Shift-ArrowKey to switch viewports
+noremap <S-Up> <C-w>k
+inoremap <S-Up> <Esc> <C-w>k
+noremap <S-Down> <C-w>j
+inoremap <S-Down> <Esc> <C-w>j
+noremap <S-Right> <C-w>l
+inoremap <S-Right> <Esc> <C-w>l
+noremap <S-Left> <C-w>h
+inoremap <S-Left> <C-w>h
 
 " Adjust viewports to the same size
 noremap <Leader>= <C-w>=
