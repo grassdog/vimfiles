@@ -285,8 +285,8 @@ inoremap <silent><C-S-Down> <Esc>:m .+1<CR>==gi
 vnoremap <silent><C-S-Up> :m '<-2<CR>gv=gv
 vnoremap <silent><C-S-Down> :m '>+1<CR>gv=gv
 
-" Remove trailing white space from file
-command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+" Remove trailing white space and retab file
+command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<Bar>:retab<CR>
 
 " Insert today's date as a markdown header
 nnoremap <leader>id "=strftime("# %Y-%m-%d")<CR>P
