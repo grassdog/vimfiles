@@ -438,7 +438,7 @@ let g:vimclojure#HighlightBuiltins = 1
 command! Cheats :normal :silent! tabnew ~/Dropbox/Notes/Vim.md<cr>
 
 " Edit hot files
-command! Myrc :normal :silent! edit $MYVIMRC<cr>
+command! Myrc :normal :vsplit $MYVIMRC<cr>
 command! WorkLog :normal :silent! edit ~/Dropbox/Notes/Work\ Log.md<cr>
 command! Scratch :normal :silent! edit ~/Dropbox/Notes/Scratch.md<cr>
 
