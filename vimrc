@@ -370,16 +370,15 @@ let g:Powerline_symbols = 'fancy'
 " Ctrlp
 let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_jump_to_buffer = 1
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_mruf_last_entered = 1
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_split_window = 0
 let g:ctrlp_max_height = 20
 let g:ctrlp_use_caching = 0
-"let g:ctrlp_extensions = ['tag']
 
-noremap <leader>p :CtrlPBuffer<cr>
-noremap <leader>f :CtrlP<cr>
+noremap <leader>p :CtrlP<cr>
+noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>d :CtrlPCurFile<cr>
 
 " Blockle
