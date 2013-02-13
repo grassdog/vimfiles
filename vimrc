@@ -377,9 +377,9 @@ let g:ctrlp_split_window = 0
 let g:ctrlp_max_height = 20
 let g:ctrlp_use_caching = 0
 
-noremap <leader>p :CtrlP<cr>
-noremap <leader>b :CtrlPBuffer<cr>
-noremap <leader>d :CtrlPCurFile<cr>
+nnoremap <leader>p :CtrlP<cr>
+nnoremap <leader>d :CtrlPCurFile<cr>
+nnoremap <leader>o :CtrlPBuffer<cr>
 
 " Blockle
 let g:blockle_mapping = '<Leader>rb'
