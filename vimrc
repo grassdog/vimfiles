@@ -62,6 +62,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'tpope/vim-cucumber'
 Bundle 'taq/vim-rspec'
 Bundle 'claco/jasmine.vim'
+Bundle 'blockle.vim'
 
 " Other
 Bundle 'VimClojure'
@@ -380,6 +381,9 @@ let g:ctrlp_use_caching = 0
 noremap <leader>p :CtrlPBuffer<cr>
 noremap <leader>f :CtrlP<cr>
 noremap <leader>d :CtrlPCurFile<cr>
+
+" Blockle
+let g:blockle_mapping = '<Leader>rb'
 
 " You complete me
 let g:ycm_key_detailed_diagnostics = '<leader>q'
