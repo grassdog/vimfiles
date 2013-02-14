@@ -176,6 +176,9 @@ colorscheme solarized
 " Map the arrow keys to be based on display lines, not physical lines
 noremap <Down> gj
 noremap <Up> gk
+" Copy into system clipboard
+map <leader>y "*y
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -286,10 +289,29 @@ vnoremap <silent> <C-S-Down> :m '>+1<CR>gv=gv
 " Remove trailing white space and retab file
 command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<Bar>:retab<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Insert Time and date commands
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
+command! InsertDate :normal a<c-r>=strftime('%F')<cr>
+
 " use :w!! to write to a file using sudo if you forgot to 'sudo vim file'
 " (it will prompt for sudo password when writing)
 cnoremap w!! %!sudo tee > /dev/null %
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Rename Current File
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+command! RenameFile :call RenameFile()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Formatting
@@ -414,7 +436,7 @@ let g:vimclojure#HighlightBuiltins = 1
 
 " Add these for Nailgun (clunky as it is)
 "let vimclojure#WantNailgun = 1
-"let vimclojure#NailgunClient = "/Users/rgrasso/.bin/ng"
+"let vimclojure#NailgunClient = "$HOME/.bin/ng"
 
 " Show cheats
 command! Cheats :normal :silent! tabnew ~/Dropbox/Notes/Vim.md<cr>
