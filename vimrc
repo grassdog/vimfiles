@@ -226,7 +226,7 @@ set spelllang=en_au
 " This currently hard wraps at 85 columns because I can't work out a way to
 " soft wrap to a column width that is smaller than the window
 function! s:setupWrapping()
-  setlocal textwidth=85
+  setlocal textwidth=80
   setlocal linebreak
   setlocal nolist
 endfunction
