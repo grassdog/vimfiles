@@ -120,6 +120,12 @@ noremap <leader><space> :set hlsearch! hlsearch?<CR>
 " Command history
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" use emacs-style tab completion when selecting files, etc
+set wildmode=longest,list
+
+" make tab completion for files/buffers act like bash
+set wildmenu
+
 " Disable output and VCS files
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem,.DS_Store
 
