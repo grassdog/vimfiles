@@ -1,12 +1,15 @@
 
-" Map Leader
+" Map Leaders
 let mapleader = ","
 let maplocalleader = "\\"
 
 set nocompatible      " Use vim, no vi defaults
 filetype off
 
-" Setup Vundle
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins via Vundle
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -72,11 +75,7 @@ Bundle 'ajf/puppet-vim'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'jceb/vim-orgmode'
 
-""""""""""""""""
-"" Basic Setup
-""""""""""""""""
-
-" Turn on filetype plugins
+" Turn on filetype plugins and indent files for per-type indenting
 filetype plugin indent on
 
 set number            " Show line numbers
@@ -84,9 +83,9 @@ syntax enable         " Turn on syntax highlighting allowing local overrides
 set encoding=utf-8    " Set default encoding to UTF-8
 set hidden            " Hide buffers, don't close them
 
-"""""""""""""""
-"" Whitespace
-"""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Whitespace
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set wrap                              " wrap lines
 set tabstop=2                         " a tab is two spaces
@@ -98,13 +97,11 @@ set list
 set listchars=tab:·\ ,trail:·,extends:»,precedes:«
 
 set backspace=indent,eol,start        " backspace through everything in insert mode
-set whichwrap+=<,>,h,l,[,]            "allow bs, del to cross lines
+set whichwrap+=<,>,h,l,[,]            " Allow left, right, bs, del to cross lines
 
-
-
-"""""""""""""""
-"" Searching
-"""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Search
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nohlsearch  " Don't highlight matches
 set incsearch   " incremental searching
@@ -115,9 +112,9 @@ set smartcase   " ... unless they contain at least one capital letter
 noremap <leader><space> :set hlsearch! hlsearch?<CR>
 
 
-""""""""""""""""""""
-"" Tab Completion
-""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Command history
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Disable output and VCS files
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem,.DS_Store
@@ -128,9 +125,9 @@ set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 " Ignore bundler and sass cache
 set wildignore+=**/vendor/gems/*,**/vendor/bundle/*,**/vendor/cache/*,**/.bundle/*,**/b/*,.sass-cache/*,doc/**,**/tmp/**
 
-""""""""""""""""""""""""""""
-"" Undo and command history
-""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Undo and command history
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set undofile
 set undoreload=10000
 set history=1000
@@ -142,19 +139,14 @@ set backupdir=~/.vim/tmp/backups
 set writebackup
 set noswapfile
 
-"""""""""""""""
-"" Status bar
-"""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Visuals
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set laststatus=2  " always show the status bar
 set showmode
 set shortmess=atI " Shortens messages to avoid 'press a key' prompt
 set showcmd
-
-
-"""""""""""""""""""""""
-"" Visual feedback
-"""""""""""""""""""""""
 
 set scrolloff=3       " Always show at least three lines below cursor
 set mat=3             " Blink matching brackets for 3 tenths of a second
@@ -167,13 +159,17 @@ let g:solarized_contrast="high"
 set background=dark
 colorscheme solarized
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" General Mappings (Normal, Visual, Operator-pending)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Movement
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Map the arrow keys to be based on display lines, not physical lines
 noremap <Down> gj
 noremap <Up> gk
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Map ZoomWin
 noremap <leader>zz :ZoomWin<CR>
@@ -188,10 +184,6 @@ noremap Y y$
 " Fold html tags
 nnoremap <leader>zfh Vatzf
 
-
-"""""""""""""""""""""""
-"" Viewport Mappings
-"""""""""""""""""""""""
 
 " Shift-ArrowKey to switch viewports
 noremap <S-Up> <C-w>k
@@ -221,9 +213,9 @@ set noequalalways
 " Setup my language
 set spelllang=en_au
 
-"""""""""""""""""
-"" File Types
-"""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" File types
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Some file types should wrap their text
 " This currently hard wraps at 85 columns because I can't work out a way to
@@ -262,7 +254,7 @@ augroup grass_filehooks
   autocmd filetype lisp,scheme,art setlocal equalprg=~/.vim/tools/scheme-indent/scmindent.scm
 augroup END
 
-" Preview markdown files in Marked app
+" Preview markdown files in Marked.app
 nnoremap <leader>mp :silent !open -a Marked.app '%:p'<cr>
 
 " Highlight VCS conflict markers
@@ -271,20 +263,20 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " Find merge conflict markers
 nnoremap <silent> <leader>mm <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
-""""""""""""""""""""""""""""
-"" Editing commands
-""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Editing commands
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Bubble lines up and down
 " http://vim.wikia.com/wiki/Moving_lines_up_or_down
 nnoremap <silent> <C-S-Up> :m .-2<CR>==
 nnoremap <silent> <C-S-Down> :m .+1<CR>==
 
-inoremap <silent><C-S-Up> <Esc>:m .-2<CR>==gi
-inoremap <silent><C-S-Down> <Esc>:m .+1<CR>==gi
+inoremap <silent> <C-S-Up> <Esc>:m .-2<CR>==gi
+inoremap <silent> <C-S-Down> <Esc>:m .+1<CR>==gi
 
-vnoremap <silent><C-S-Up> :m '<-2<CR>gv=gv
-vnoremap <silent><C-S-Down> :m '>+1<CR>gv=gv
+vnoremap <silent> <C-S-Up> :m '<-2<CR>gv=gv
+vnoremap <silent> <C-S-Down> :m '>+1<CR>gv=gv
 
 " Remove trailing white space and retab file
 command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<Bar>:retab<CR>
@@ -296,9 +288,9 @@ cnoremap w!! %!sudo tee > /dev/null %
 " Underline the current line with '='
 nnoremap <silent> <leader>ul :t.\|s/./=/g\|:nohls<cr>
 
-""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Formatting
-""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Re-wrap the entire file
 nnoremap <leader>rwf ggVGgq
@@ -315,15 +307,15 @@ noremap <leader>rfh <Esc>:% !tidy -quiet  -indent --indent-spaces 2 --wrap 90<CR
 " Reformat JSON
 noremap <leader>rfj <Esc>:% !js-beautify -i -s 2 --brace-style=expand<CR>
 
-""""""""""""""""""""""""""
-"" Fix common mistypings
-""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Abbreviations
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 iabbrev teh the
 
-"""""""""
-"" Ctags
-"""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctags
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set our custom tag file path
 set tags+=.tags
@@ -333,9 +325,9 @@ set tags+=.gems.tags
 command! GenRubyTags :normal :!ctags-ruby -f .tags *<cr><cr>
 command! GenBundleTags :normal :!ctags-bundle<cr><cr>
 
-"""""""""""""""""
-"" Plugin Config
-"""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " No Netrw menu
 let g:netrw_menu=0
@@ -424,7 +416,6 @@ augroup END
 
 " NerdTree
 
-
 noremap <leader>n :NERDTreeToggle<cr>
 noremap <leader>rr :NERDTreeFind<cr>
 
@@ -445,9 +436,9 @@ command! Myrc :normal :edit $MYVIMRC<cr>
 command! WorkLog :normal :silent! edit ~/Dropbox/Notes/Work\ Log.md<cr>
 command! Scratch :normal :silent! edit ~/Dropbox/Notes/Scratch.md<cr>
 
-"""""""""""""
-" GUI stuff
-"""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" GUI
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if has("gui_running")
   " Show my current line
