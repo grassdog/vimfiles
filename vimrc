@@ -215,11 +215,6 @@ noremap <leader>vi :IndentGuideToggle<cr>
 " Switch to last buffer
 nnoremap <leader><leader> <c-^>
 
-" Without setting this, ZoomWin restores windows in a way that causes
-" equalalways behavior to be triggered the next time CommandT is used.
-" This is likely a bludgeon to solve some other issue, but it works
-set noequalalways
-
 " Setup my language
 set spelllang=en_au
 
@@ -295,8 +290,6 @@ command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:
 " (it will prompt for sudo password when writing)
 cnoremap w!! %!sudo tee > /dev/null %
 
-" Underline the current line with '='
-nnoremap <silent> <leader>ul :t.\|s/./=/g\|:nohls<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Formatting
@@ -394,18 +387,6 @@ let g:UltiSnipsExpandTrigger = '<C-\>'
 let g:UltiSnipsJumpForwardTrigger = '<C-\>'
 let g:UltiSnipsJumpBackwardTrigger ='<C-/>'
 
-" A standalone function to set the working directory to the project’s root, or
-" to the parent directory of the current file if a root can’t be found:
-function! s:setcwd()
-  let cph = expand('%:p:h', 1)
-  if match(cph, '\v^<.+>://') >= 0 | retu | en
-  for mkr in ['.git/', '.hg/', '.svn/', '.bzr/', '_darcs/', '.vimprojects']
-    let wd = call('find'.(mkr =~ '/$' ? 'dir' : 'file'), [mkr, cph.';'])
-    if wd != '' | let &acd = 0 | brea | en
-  endfo
-  exe 'lc!' fnameescape(wd == '' ? cph : substitute(wd, mkr.'$', '.', ''))
-endfunction
-
 augroup grass_allfiles
   autocmd!
 
@@ -416,9 +397,6 @@ augroup grass_allfiles
 
   " Write all buffers once I lose focus
   autocmd FocusLost * :silent! wall
-
-  " Keep track of our current project directory
-  autocmd BufEnter * call s:setcwd()
 
   " Close vim if NerdTree is the only remaining open window
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
