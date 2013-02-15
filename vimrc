@@ -173,10 +173,6 @@ colorscheme solarized
 " Movement
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Map the arrow keys to be based on display lines, not physical lines
-"noremap <Down> gj
-"noremap <Up> gk
-
 " Move across display lines, not physical lines
 noremap j gj
 noremap k gk
@@ -185,15 +181,15 @@ noremap k gk
 inoremap jj <ESC>
 
 " Hard mode
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
 
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+inoremap <Up> <nop>
+inoremap <Down> <nop>
+inoremap <Left> <nop>
+inoremap <Right> <nop>
 
 " Copy into system clipboard
 map <leader>y "*y
@@ -203,16 +199,6 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-
-" Shift-ArrowKey to switch viewports
-"noremap <S-Up> <C-w>k
-"inoremap <S-Up> <Esc> <C-w>k
-"noremap <S-Down> <C-w>j
-"inoremap <S-Down> <Esc> <C-w>j
-"noremap <S-Right> <C-w>l
-"inoremap <S-Right> <Esc> <C-w>l
-"noremap <S-Left> <C-w>h
-"inoremap <S-Left> <C-w>h
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
