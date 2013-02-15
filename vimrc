@@ -427,6 +427,10 @@ let g:blockle_mapping = '<Leader>rb'
 " You complete me
 let g:ycm_key_detailed_diagnostics = '<leader>q'
 
+" Don't bind <up> for hard mode
+let g:ycm_key_list_previous_completion = ['<S-TAB>']
+let g:ycm_key_list_select_completion = ['<TAB>']
+
 " UltiSnips
 let g:UltiSnipsExpandTrigger = '<C-\>'
 let g:UltiSnipsJumpForwardTrigger = '<C-\>'
