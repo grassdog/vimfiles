@@ -85,7 +85,7 @@ set hidden            " Hide buffers, don't close them
 
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
-set t_ti= t_te=
+"set t_ti= t_te=
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Whitespace
