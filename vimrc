@@ -177,29 +177,33 @@ colorscheme solarized
 " Move across display lines, not physical lines
 noremap j gj
 noremap k gk
+noremap <down> gj
+noremap <up> gk
 
 " Quicker escape
 inoremap jj <ESC>
 
 " Hard mode
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
-nnoremap <Up> <Nop>
-nnoremap <Down> <Nop>
+"nnoremap <Left> <Nop>
+"nnoremap <Right> <Nop>
+"nnoremap <Up> <Nop>
+"nnoremap <Down> <Nop>
 
-inoremap <Up> <nop>
-inoremap <Down> <nop>
-inoremap <Left> <nop>
-inoremap <Right> <nop>
-
-" Copy into system clipboard
-map <leader>y "*y
+"inoremap <Up> <nop>
+"inoremap <Down> <nop>
+"inoremap <Left> <nop>
+"inoremap <Right> <nop>
 
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
+nnoremap <s-down> <c-w>j
+nnoremap <s-up> <c-w>k
+nnoremap <s-left> <c-w>h
+nnoremap <s-right> <c-w>l
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -418,8 +422,8 @@ let g:blockle_mapping = '<Leader>rb'
 let g:ycm_key_detailed_diagnostics = '<leader>q'
 
 " Don't bind <up> for hard mode
-let g:ycm_key_list_previous_completion = ['<S-TAB>']
-let g:ycm_key_list_select_completion = ['<TAB>']
+"let g:ycm_key_list_previous_completion = ['<S-TAB>']
+"let g:ycm_key_list_select_completion = ['<TAB>']
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger = '<C-\>'
