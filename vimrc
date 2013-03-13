@@ -49,6 +49,7 @@ Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-haml'
 Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-markdown'
+Bundle 'nelstrom/vim-markdown-folding'
 Bundle 'nono/vim-handlebars'
 Bundle 'othree/html5.vim'
 Bundle 'kchmck/vim-coffee-script'
@@ -260,6 +261,9 @@ augroup grass_filehooks
 
   " Markdown and txt files should wrap
   autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} call s:setupWrapping()
+
+  " Open all folds when opening
+  autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} setl foldlevel=9
 
   " Change tab width for markdown
   autocmd FileType markdown setlocal softtabstop=4 tabstop=4 shiftwidth=4
