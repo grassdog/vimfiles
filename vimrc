@@ -36,6 +36,7 @@ Bundle 'argtextobj.vim'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'kana/vim-textobj-user'
 Bundle 'Raimondi/delimitMate'
+Bundle 'henrik/vim-open-url'
 
 " Snippets
 Bundle 'SirVer/ultisnips'
