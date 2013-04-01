@@ -152,6 +152,9 @@ set backupdir=~/.vim/tmp/backups
 set writebackup
 set noswapfile
 
+" Just load the changed file
+set autoread
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visuals
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
