@@ -46,6 +46,8 @@ Bundle 'SirVer/ultisnips'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 
 " Web
 Bundle 'tpope/vim-haml'
