@@ -214,6 +214,10 @@ nnoremap <s-up> <c-w>k
 nnoremap <s-left> <c-w>h
 nnoremap <s-right> <c-w>l
 
+" Indent or outdent and maintain selection in visual mode
+vnoremap >> >gv
+vnoremap << <gv
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -539,29 +543,6 @@ endif
 
 if has("gui_macvim")
   set guifont=Menlo\ for\ Powerline:h12
-
-  " Map command-[ and command-] to indenting or outdenting
-  " while keeping the original selection in visual mode
-  vnoremap <D-]> >gv
-  vnoremap <D-[> <gv
-
-  nnoremap <D-]> >>
-  nnoremap <D-[> <<
-
-  onoremap <D-]> >>
-  onoremap <D-[> <<
-
-  inoremap <D-]> <Esc>>>i
-  inoremap <D-[> <Esc><<i
-
-  " Duplicate line
-  nnoremap <D-d> yyp
-  inoremap <D-d> <Esc>yypi
-
-  " Comment lines
-  nmap <D-/> <plug>NERDCommenterToggle<CR>
-  vmap <D-/> <plug>NERDCommenterToggle<CR>
-  imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
 
   " Automatically resize splits when resizing MacVim window
   augroup grass_gui
