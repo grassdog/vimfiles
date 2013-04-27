@@ -31,7 +31,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'bkad/CamelCaseMotion'
-Bundle 'Align'
+Bundle 'godlygeek/tabular'
 Bundle 'grassdog/RemoveFile.vim'
 Bundle 'argtextobj.vim'
 Bundle 'michaeljsmith/vim-indent-object'
@@ -255,6 +255,20 @@ function! s:setupWrapping()
   setlocal nolist
 endfunction
 
+" Auto align when inserting `|`
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
 augroup grass_filehooks
   autocmd!
 
@@ -403,7 +417,7 @@ let g:NERDCustomDelimiters = {
 
 " Seach for current word in Ack
 "let g:ackprg = 'ag --nogroup --nocolor --column'
-nnoremap <leader>a :Ack! '\b<c-r><c-w>\b'<cr>
+nnoremap <leader>aa :Ack! '\b<c-r><c-w>\b'<cr>
 
 " Powerline
 let g:Powerline_symbols = 'fancy'
@@ -456,6 +470,14 @@ augroup END
 
 noremap <leader>n :NERDTreeToggle<cr>
 noremap <leader>rr :NERDTreeFind<cr>
+
+" Some alignment shortcuts
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
 
 " Clojure
 
