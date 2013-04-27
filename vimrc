@@ -68,7 +68,7 @@ Bundle 'tpope/vim-endwise'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'tpope/vim-cucumber'
-Bundle 'taq/vim-rspec'
+Bundle 'thoughtbot/vim-rspec'
 Bundle 'claco/jasmine.vim'
 Bundle 'blockle.vim'
 
@@ -465,6 +465,11 @@ augroup grass_allfiles
   " Close vim if NerdTree is the only remaining open window
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 augroup END
+
+" Specs
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
 
 " NerdTree
 
