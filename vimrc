@@ -48,6 +48,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
+Bundle 'tpope/vim-dispatch'
 
 " Web
 Bundle 'tpope/vim-haml'
