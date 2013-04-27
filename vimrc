@@ -255,6 +255,18 @@ function! s:setupWrapping()
   setlocal nolist
 endfunction
 
+" A standalone function to set the working directory to the project’s root, or
+" to the parent directory of the current file if a root can’t be found:
+function! s:setcwd()
+  let cph = expand('%:p:h', 1)
+  if match(cph, '\v^<.+>://') >= 0 | retu | en
+  for mkr in ['.git/', '.hg/', '.svn/', '.bzr/', '_darcs/', '.vimprojects']
+    let wd = call('find'.(mkr =~ '/$' ? 'dir' : 'file'), [mkr, cph.';'])
+    if wd != '' | let &acd = 0 | brea | en
+  endfo
+  exe 'lc!' fnameescape(wd == '' ? cph : substitute(wd, mkr.'$', '.', ''))
+endfunction
+
 " Auto align when inserting `|`
 function! s:align()
   let p = '^\s*|\s.*\s|\s*$'
@@ -271,6 +283,9 @@ inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
 augroup grass_filehooks
   autocmd!
+
+  " Set my current working directory based upon project
+  autocmd BufEnter * call s:setcwd()
 
   " In Makefiles, use real tabs, not tabs expanded to spaces
   autocmd FileType make set noexpandtab
