@@ -49,6 +49,7 @@ Bundle 'tpope/vim-git'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'tpope/vim-dispatch'
+Bundle 'mattn/gist-vim'
 
 " Web
 Bundle 'tpope/vim-haml'
