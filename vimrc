@@ -292,6 +292,8 @@ inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 augroup grass_filehooks
   autocmd!
 
+  " match (:),[:],{:} in html
+  au FileType html,eruby let b:match_words = '(:),[:],{:},' . b:match_words
 
   " In Makefiles, use real tabs, not tabs expanded to spaces
   autocmd FileType make set noexpandtab
