@@ -292,8 +292,6 @@ inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 augroup grass_filehooks
   autocmd!
 
-  " Set my current working directory based upon project
-  autocmd BufEnter * call s:setcwd()
 
   " In Makefiles, use real tabs, not tabs expanded to spaces
   autocmd FileType make set noexpandtab
@@ -476,6 +474,9 @@ let g:UltiSnipsJumpBackwardTrigger ='<C-/>'
 
 augroup grass_allfiles
   autocmd!
+
+  " Set my current working directory based upon project
+  autocmd BufEnter * call s:setcwd()
 
   " Remember last location in file, but not for commit messages.
   " see :help last-position-jump
