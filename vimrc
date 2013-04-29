@@ -19,7 +19,6 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-repeat'
-Bundle 'edsono/vim-matchit'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'sjl/gundo.vim'
 Bundle 'Valloric/YouCompleteMe'
@@ -81,6 +80,9 @@ Bundle 'kikijump/tslime.vim'
 Bundle 'ajf/puppet-vim'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'jceb/vim-orgmode'
+
+" Enable matchit
+runtime macros/matchit.vim
 
 " Turn on filetype plugins and indent files for per-type indenting
 filetype plugin indent on
