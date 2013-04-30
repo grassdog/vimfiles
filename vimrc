@@ -427,9 +427,6 @@ let g:rdfa_attributes_complete = 0
 let g:microdata_attributes_complete = 0
 let g:atia_attributes_complete = 0
 
-" Jasmine snippets
-let g:jasmine_snippets_directory = "~/.vim/mysnippets/jasmine"
-
 " Gundo
 let g:gundo_right = 1
 
@@ -470,9 +467,9 @@ let g:ycm_key_detailed_diagnostics = '<leader>q'
 "let g:ycm_key_list_select_completion = ['<TAB>']
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger = '<C-\>'
+let g:UltiSnipsExpandTrigger      = '<C-\>'
 let g:UltiSnipsJumpForwardTrigger = '<C-\>'
-let g:UltiSnipsJumpBackwardTrigger ='<C-/>'
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", "mysnippets"]
 
 augroup grass_allfiles
   autocmd!
