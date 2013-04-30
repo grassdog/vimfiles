@@ -435,8 +435,10 @@ let g:NERDCustomDelimiters = {
     \ 'scss': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' }
     \ }
 
-" Seach for current word in Ack
+" Ack
 "let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" Search for current word in Ack
 nnoremap <leader>aa :Ack! '\b<c-r><c-w>\b'<cr>
 
 " Powerline
