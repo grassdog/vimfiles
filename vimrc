@@ -216,6 +216,10 @@ nnoremap <s-up> <c-w>k
 nnoremap <s-left> <c-w>h
 nnoremap <s-right> <c-w>l
 
+" Stop page movement on shift arrow
+vnoremap <S-Down> <Down>
+vnoremap <S-Up> <Up>
+
 " Indent or outdent and maintain selection in visual mode
 vnoremap >> >gv
 vnoremap << <gv
