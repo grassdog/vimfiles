@@ -459,7 +459,6 @@ let g:ctrlp_split_window = 0
 let g:ctrlp_max_height = 20
 let g:ctrlp_use_caching = 0
 
-nnoremap <leader>p :CtrlP<cr>
 nnoremap <leader>d :CtrlPCurFile<cr>
 nnoremap <leader>o :CtrlPBuffer<cr>
 
@@ -469,14 +468,12 @@ let g:blockle_mapping = '<Leader>rb'
 " You complete me
 let g:ycm_key_detailed_diagnostics = '<leader>q'
 
-" Don't bind <up> for hard mode
-"let g:ycm_key_list_previous_completion = ['<S-TAB>']
-"let g:ycm_key_list_select_completion = ['<TAB>']
-
 " UltiSnips
-let g:UltiSnipsExpandTrigger      = '<C-\>'
-let g:UltiSnipsJumpForwardTrigger = '<C-\>'
-let g:UltiSnipsSnippetDirectories = ["UltiSnips", "mysnippets"]
+let g:UltiSnipsExpandTrigger         = '<C-\>'
+let g:UltiSnipsJumpForwardTrigger    = '<C-\>'
+let g:UltiSnipsSnippetDirectories    = ["UltiSnips", "mysnippets"]
+" Overcome Vundle runtime path so snippet overrides work
+let g:UltiSnipsDontReverseSearchPath = "1"
 
 augroup grass_allfiles
   autocmd!
