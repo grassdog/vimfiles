@@ -104,6 +104,7 @@ set wrap                              " wrap lines
 set tabstop=2                         " a tab is two spaces
 set shiftwidth=2                      " an autoindent (with <<) is two spaces
 set expandtab                         " use spaces, not tabs
+set autoindent
 
 " Display tabs and whitepace
 set list
