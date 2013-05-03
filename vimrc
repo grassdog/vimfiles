@@ -15,12 +15,11 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-" Tools
+" Essentials
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-repeat'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'sjl/gundo.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'EasyGrep'
 Bundle 'ZoomWin'
@@ -28,7 +27,6 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'godlygeek/tabular'
 Bundle 'grassdog/RemoveFile.vim'
@@ -42,6 +40,8 @@ Bundle 'henrik/vim-open-url'
 Bundle 'SirVer/ultisnips'
 
 " Tools
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'sjl/gundo.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
@@ -228,9 +228,6 @@ vnoremap << <gv
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Map ZoomWin
-noremap <leader>zz :ZoomWin<CR>
 
 " Use tab instead of % for brace matching
 nmap <tab> %
