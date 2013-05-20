@@ -78,6 +78,7 @@ Bundle 'kikijump/tslime.vim'
 Bundle 'ajf/puppet-vim'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'jceb/vim-orgmode'
+Bundle 'PProvost/vim-ps1'
 
 " Enable matchit
 runtime macros/matchit.vim
