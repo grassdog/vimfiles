@@ -24,7 +24,6 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'EasyGrep'
 Bundle 'godlygeek/tabular'
 Bundle 'grassdog/RemoveFile.vim'
@@ -96,6 +95,19 @@ set hidden            " Hide buffers, don't close them
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
 "set t_ti= t_te=
+
+if has("statusline")
+  set statusline=
+  "set statusline+=%2*                                 " set to colour one
+  set statusline+=[%n]                                " buffer no
+  set statusline+=\ %<%.99f                           " Filename
+  set statusline+=\ %h%m%r%w                          " Flags
+  set statusline+=%=                                  " right align
+  set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}]   " Encoding
+  set statusline+=\ %y                                " Filetype
+  set statusline+=\ %P\                               " Percentage
+  "set statusline+=%*                                  " Switch back to normal highlight
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Whitespace
@@ -443,9 +455,6 @@ let g:NERDCustomDelimiters = {
 " Search for current word in Ack
 nnoremap <leader>aa :Ack! '\b<c-r><c-w>\b'<cr>
 
-" Powerline
-let g:Powerline_symbols = 'fancy'
-
 " Ctrlp
 let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_jump_to_buffer = 1
@@ -547,7 +556,7 @@ if has("gui_running")
 endif
 
 if has("gui_macvim")
-  set guifont=Menlo\ for\ Powerline:h12
+  set guifont=Menlo:h12
 
   " Automatically resize splits when resizing MacVim window
   augroup grass_gui
