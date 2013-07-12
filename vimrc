@@ -514,6 +514,10 @@ let g:vimclojure#HighlightBuiltins = 1
 "let vimclojure#WantNailgun = 1
 "let vimclojure#NailgunClient = "$HOME/.bin/ng"
 
+" Configure browser for haskell_doc.vim
+let g:haddock_browser = "open"
+let g:haddock_browser_callformat = "%s %s"
+
 " Show cheats
 command! Cheats :normal :silent! tabnew ~/Dropbox/Notes/Vim.md<cr>
 
