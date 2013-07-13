@@ -71,6 +71,7 @@ Bundle 'tpope/vim-cucumber'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'claco/jasmine.vim'
 Bundle 'blockle.vim'
+Bundle 'rking/vim-ruby-refactoring'
 
 " Other
 Bundle 'VimClojure'
