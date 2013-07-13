@@ -43,6 +43,7 @@ Bundle 'SirVer/ultisnips'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'sjl/gundo.vim'
 Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-dispatch'
@@ -435,9 +436,6 @@ let g:gundo_right = 1
 let g:NERDCustomDelimiters = {
     \ 'scss': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' }
     \ }
-
-" Ack
-"let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " Search for current word in Ack
 nnoremap <leader>aa :Ack! '\b<c-r><c-w>\b'<cr>
