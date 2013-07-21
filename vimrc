@@ -20,13 +20,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-repeat'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'kien/ctrlp.vim'
-Bundle 'EasyGrep'
-Bundle 'godlygeek/tabular'
-Bundle 'grassdog/RemoveFile.vim'
 
 " Text objects and motions
 Bundle 'bkad/CamelCaseMotion'
@@ -38,22 +31,28 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 " Snippets
 Bundle 'SirVer/ultisnips'
 
+" Sizzle
+Bundle 'ervandew/supertab'
+Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/nerdtree'
+
 " Tools
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'EasyGrep'
+Bundle 'godlygeek/tabular'
+Bundle 'grassdog/RemoveFile.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'sjl/gundo.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-dispatch'
-Bundle 'mattn/gist-vim'
 Bundle 'henrik/vim-open-url'
 
 " Web
 Bundle 'tpope/vim-haml'
 Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-markdown'
-Bundle 'nelstrom/vim-markdown-folding'
 Bundle 'nono/vim-handlebars'
 Bundle 'othree/html5.vim'
 Bundle 'kchmck/vim-coffee-script'
@@ -75,11 +74,11 @@ Bundle 'rking/vim-ruby-refactoring'
 " Other
 Bundle 'VimClojure'
 Bundle 'wlangstroth/vim-racket'
-Bundle 'kikijump/tslime.vim'
 Bundle 'ajf/puppet-vim'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'jceb/vim-orgmode'
 Bundle 'PProvost/vim-ps1'
+Bundle 'kikijump/tslime.vim'
 
 " Enable matchit
 runtime macros/matchit.vim
@@ -333,9 +332,6 @@ augroup grass_filehooks
   " Markdown and txt files should wrap
   autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} call s:setupWrapping()
 
-  " Open all folds when opening
-  autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} setl foldlevel=9
-
   " Change tab width for markdown
   autocmd FileType markdown setlocal softtabstop=4 tabstop=4 shiftwidth=4
 
@@ -450,9 +446,6 @@ let g:rdfa_attributes_complete = 0
 let g:microdata_attributes_complete = 0
 let g:atia_attributes_complete = 0
 
-" Gundo
-let g:gundo_right = 1
-
 " Switch default scss comment delimeters for NerdCommenter
 let g:NERDCustomDelimiters = {
     \ 'scss': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' }
@@ -473,9 +466,6 @@ let g:ctrlp_use_caching = 0
 
 nnoremap <leader>d :CtrlPCurFile<cr>
 nnoremap <leader>o :CtrlPBuffer<cr>
-
-" Blockle
-let g:blockle_mapping = '<Leader>rb'
 
 " You complete me
 let g:ycm_key_detailed_diagnostics = '<leader>q'
