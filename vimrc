@@ -126,6 +126,8 @@ set smartcase   " ... unless they contain at least one capital letter
 " Toggle search highlighting
 noremap <leader><space> :set hlsearch! hlsearch?<CR>
 
+" Treat all numbers as decimal
+set nrformats=
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Command history
