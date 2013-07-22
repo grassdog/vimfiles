@@ -96,22 +96,14 @@ set hidden            " Hide buffers, don't close them
 "set t_ti= t_te=
 
 if has("statusline")
-
-  hi default link User1 Identifier
-  hi default link User2 Statement
-  hi default link User3 Error
-  hi default link User4 Special
-
-  set statusline=
-  set statusline+=%1*
-  set statusline+=[%n]                                " buffer no
-  set statusline+=%1*\ %<%.99f%*                      " Filename
-  set statusline+=%2*\ %h%m%r%w                       " Flags
+  set statusline=[%n]                                 " buffer no
+  set statusline+=\ %<%.99f                           " Filename
+  set statusline+=\ %h%m%r%w                          " Flags
   set statusline+=%=                                  " right align
   set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}]   " Encoding
   set statusline+=\ %y                                " Filetype
+  set statusline+=\ [%{&ff}]                          " Fileformat
   set statusline+=\ %-3.c\ %P\                        " Column and Percentage
-  set statusline+=%*
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
