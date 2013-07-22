@@ -463,8 +463,6 @@ nnoremap <leader>o :CtrlPBuffer<cr>
 let g:ycm_key_detailed_diagnostics = '<leader>q'
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger         = '<C-\>'
-let g:UltiSnipsJumpForwardTrigger    = '<C-\>'
 let g:UltiSnipsSnippetDirectories    = ["UltiSnips", "mysnippets"]
 " Overcome Vundle runtime path so snippet overrides work
 let g:UltiSnipsDontReverseSearchPath = "1"
