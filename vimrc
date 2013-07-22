@@ -105,12 +105,12 @@ if has("statusline")
   set statusline=
   set statusline+=%1*
   set statusline+=[%n]                                " buffer no
-  set statusline+=%1*\ %<%.99f%*                       " Filename
-  set statusline+=%2*\ %h%m%r%w                          " Flags
+  set statusline+=%1*\ %<%.99f%*                      " Filename
+  set statusline+=%2*\ %h%m%r%w                       " Flags
   set statusline+=%=                                  " right align
   set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}]   " Encoding
   set statusline+=\ %y                                " Filetype
-  set statusline+=\ %P\                               " Percentage
+  set statusline+=\ %l,%c\ %P\                        " Position
   set statusline+=%*
 endif
 
