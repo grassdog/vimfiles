@@ -110,7 +110,7 @@ if has("statusline")
   set statusline+=%=                                  " right align
   set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}]   " Encoding
   set statusline+=\ %y                                " Filetype
-  set statusline+=\ %l,%c\ %P\                        " Position
+  set statusline+=\ %-3.c\ %P\                        " Column and Percentage
   set statusline+=%*
 endif
 
