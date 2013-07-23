@@ -89,7 +89,7 @@ filetype plugin indent on
 set number            " Show line numbers
 syntax enable         " Turn on syntax highlighting allowing local overrides
 set encoding=utf-8    " Set default encoding to UTF-8
-set hidden            " Hide buffers, don't close them
+set hidden            " Hide buffers, don't nag about them
 
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
@@ -250,10 +250,6 @@ noremap Y y$
 
 " Fold html tags
 nnoremap <leader>zfh Vatzf
-
-" Adjust viewports to the same size
-noremap <Leader>= <C-w>=
-inoremap <Leader>= <Esc> <C-w>=
 
 " Toggle indent guides
 noremap <leader>vi :IndentGuideToggle<cr>
