@@ -257,6 +257,9 @@ noremap <leader>vi :IndentGuideToggle<cr>
 " Switch to last buffer
 nnoremap <leader><leader> <c-^>
 
+" Easier current directory in command mode
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
 " Setup my language
 set spelllang=en_au
 
