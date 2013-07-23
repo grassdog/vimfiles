@@ -142,8 +142,8 @@ set nrformats=
 " Command history
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" use emacs-style tab completion when selecting files, etc
-set wildmode=longest,list
+" use zsh-style tab completion when selecting files, etc
+set wildmode=full
 
 " make tab completion for files/buffers act like bash
 set wildmenu
