@@ -456,9 +456,6 @@ let g:ctrlp_use_caching = 0
 nnoremap <leader>d :CtrlPCurFile<cr>
 nnoremap <leader>o :CtrlPBuffer<cr>
 
-" You complete me
-let g:ycm_key_detailed_diagnostics = '<leader>q'
-
 " UltiSnips
 let g:UltiSnipsSnippetDirectories    = ["UltiSnips", "mysnippets"]
 " Overcome Vundle runtime path so snippet overrides work
