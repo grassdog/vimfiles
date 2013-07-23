@@ -199,7 +199,9 @@ colorscheme solarized
 
 " Move across display lines, not physical lines
 noremap j gj
+noremap gj j
 noremap k gk
+noremap gk k
 noremap <down> gj
 noremap <up> gk
 
