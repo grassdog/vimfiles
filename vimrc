@@ -148,7 +148,7 @@ set wildmode=full
 set wildmenu
 
 " Disable output and VCS files
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem,.DS_Store
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,.hg,*.class,.svn,*.gem,.DS_Store
 
 " Disable archive files
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
