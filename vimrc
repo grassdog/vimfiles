@@ -34,7 +34,6 @@ Bundle 'SirVer/ultisnips'
 " Sizzle
 Bundle 'ervandew/supertab'
 Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdtree'
 
 " Tools
 Bundle 'scrooloose/nerdcommenter'
@@ -446,7 +445,6 @@ let g:NERDCustomDelimiters = {
 nnoremap <leader>aa :Ack! '\b<c-r><c-w>\b'<cr>
 
 " Ctrlp
-let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_jump_to_buffer = 1
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_mruf_last_entered = 1
@@ -479,20 +477,12 @@ augroup grass_allfiles
 
   " Write all buffers once I lose focus
   autocmd FocusLost * :silent! wall
-
-  " Close vim if NerdTree is the only remaining open window
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 augroup END
 
 " Specs
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
-
-" NerdTree
-
-noremap <leader>n :NERDTreeToggle<cr>
-noremap <leader>rr :NERDTreeFind<cr>
 
 " Tabularise shortcuts
 nmap <Leader>a= :Tabularize /=<CR>
