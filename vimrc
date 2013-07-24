@@ -1,89 +1,103 @@
 
 " Map Leaders
 let mapleader = ","
-let maplocalleader = "\\"
 
-set nocompatible      " Use vim, no vi defaults
+" Keep reverse char search
+noremap \ ,
+
+" Use vim, no vi defaults
+set nocompatible
 filetype off
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins via Vundle
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vundle setup
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-" Essentials
+" Core
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-commentary.git'
+Bundle 'tpope/vim-eunuch.git'
+Bundle 'tpope/vim-sleuth.git'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-dispatch'
+Bundle 'tpope/vim-characterize'
+Bundle 'nelstrom/vim-visual-star-search'
+Bundle 'godlygeek/tabular'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'nathanaelkane/vim-indent-guides'
 
 " Text objects and motions
+Bundle 'kana/vim-textobj-user'
+Bundle 'kana/vim-textobj-entire'
+Bundle 'kana/vim-textobj-indent'
+Bundle 'kana/vim-textobj-syntax'
+Bundle 'kana/vim-textobj-line'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'argtextobj.vim'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
-" Snippets
+" Completions and Snippets
 Bundle 'SirVer/ultisnips'
-
-" Sizzle
 Bundle 'ervandew/supertab'
 Bundle 'kien/ctrlp.vim'
 
 " Tools
-Bundle 'scrooloose/nerdcommenter'
 Bundle 'EasyGrep'
-Bundle 'godlygeek/tabular'
-Bundle 'grassdog/RemoveFile.vim'
-Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'mileszs/ack.vim'
 Bundle 'rking/ag.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-dispatch'
 Bundle 'henrik/vim-open-url'
+
+" Ruby
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-bundler'
+Bundle 'vim-ruby/vim-ruby'
+
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-cucumber'
+"Bundle 'rking/vim-ruby-refactoring'
 
 " Web
 Bundle 'tpope/vim-haml'
-Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-markdown'
-Bundle 'nono/vim-handlebars'
 Bundle 'othree/html5.vim'
-Bundle 'kchmck/vim-coffee-script'
 Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'tpope/vim-liquid'
-Bundle 'JSON.vim'
-Bundle 'groenewege/vim-less'
 
-" Ruby / rails
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-endwise'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-cucumber'
-Bundle 'thoughtbot/vim-rspec'
+" Javascript
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
 Bundle 'claco/jasmine.vim'
-Bundle 'blockle.vim'
-Bundle 'rking/vim-ruby-refactoring'
+Bundle 'JSON.vim'
 
 " Other
 Bundle 'VimClojure'
+Bundle 'lukerandall/haskellmode-vim'
+Bundle 'PProvost/vim-ps1'
+"Bundle 'tpope/vim-fireplace'
+"Bundle 'kikijump/tslime.vim'
+
+" Fringe
 Bundle 'wlangstroth/vim-racket'
 Bundle 'ajf/puppet-vim'
-Bundle 'lukerandall/haskellmode-vim'
-Bundle 'jceb/vim-orgmode'
-Bundle 'PProvost/vim-ps1'
-Bundle 'kikijump/tslime.vim'
+Bundle 'nono/vim-handlebars'
+Bundle 'tpope/vim-liquid'
+Bundle 'groenewege/vim-less'
 
 " Enable matchit
 runtime macros/matchit.vim
 
 " Turn on filetype plugins and indent files for per-type indenting
 filetype plugin indent on
+
+""""""""
+" Base
+""""""""
 
 set number            " Show line numbers
 syntax enable         " Turn on syntax highlighting allowing local overrides
@@ -105,9 +119,7 @@ if has("statusline")
   set statusline+=\ %-3.c\ %P\                        " Column and Percentage
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Whitespace
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set foldlevelstart=99
 
 set wrap                              " wrap lines
 set tabstop=2                         " a tab is two spaces
@@ -117,14 +129,10 @@ set autoindent
 
 " Display tabs and whitepace
 set list
-set listchars=tab:·\ ,trail:·,extends:»,precedes:«
+set listchars=tab:▸\ ,trail:·,extends:»,precedes:«
 
 set backspace=indent,eol,start        " backspace through everything in insert mode
 set whichwrap+=<,>,h,l,[,]            " Allow left, right, bs, del to cross lines
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Search
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nohlsearch  " Don't highlight matches
 set incsearch   " incremental searching
@@ -136,10 +144,6 @@ noremap <leader><space> :set hlsearch! hlsearch?<CR>
 
 " Treat all numbers as decimal
 set nrformats=
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Command history
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " use zsh-style tab completion when selecting files, etc
 set wildmode=full
@@ -156,9 +160,6 @@ set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 " Ignore bundler and sass cache
 set wildignore+=**/vendor/gems/*,**/vendor/bundle/*,**/vendor/cache/*,**/.bundle/*,**/b/*,.sass-cache/*,doc/**,**/tmp/**
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Undo and command history
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set undofile
 set undoreload=10000
 set history=1000
@@ -172,10 +173,6 @@ set noswapfile
 
 " Just load the changed file
 set autoread
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Visuals
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set laststatus=2  " always show the status bar
 set showmode
@@ -193,9 +190,28 @@ let g:solarized_contrast="high"
 set background=dark
 colorscheme solarized
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Indent or outdent and maintain selection in visual mode
+vnoremap >> >gv
+vnoremap << <gv
+
+" Yank to the end of the line
+noremap Y y$
+
+" Fold html tags
+nnoremap <leader>zfh Vatzf
+
+" Switch to last buffer
+nnoremap <leader><leader> <c-^>
+
+" Easier current directory in command mode
+cnoremap <expr> %%  getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
+
+" Setup my language
+set spelllang=en_au
+
+"""""""""""
 " Movement
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""
 
 " Move across display lines, not physical lines
 noremap j gj
@@ -234,39 +250,10 @@ nnoremap <s-right> <c-w>l
 vnoremap <S-Down> <Down>
 vnoremap <S-Up> <Up>
 
-" Indent or outdent and maintain selection in visual mode
-vnoremap >> >gv
-vnoremap << <gv
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Use tab instead of % for brace matching
-nmap <tab> %
-vnoremap <tab> %
-
-" Yank to the end of the line
-noremap Y y$
-
-" Fold html tags
-nnoremap <leader>zfh Vatzf
-
-" Toggle indent guides
-noremap <leader>vi :IndentGuideToggle<cr>
-
-" Switch to last buffer
-nnoremap <leader><leader> <c-^>
-
-" Easier current directory in command mode
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
-" Setup my language
-set spelllang=en_au
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" File types
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""
+" File Hooks
+"""""""""""""
 
 " Some file types should wrap their text
 " This currently hard wraps at 85 columns because I can't work out a way to
@@ -315,9 +302,6 @@ augroup grass_filehooks
   " Setup JSON files
   autocmd BufNewFile,BufRead *.json set ft=json
 
-  " Expand Org files by default
-  autocmd BufNewFile,BufRead *.org :normal zR
-
   " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
   autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
@@ -334,18 +318,11 @@ augroup grass_filehooks
   autocmd filetype lisp,scheme,art setlocal equalprg=~/.vim/tools/scheme-indent/scmindent.scm
 augroup END
 
-" Preview markdown files in Marked.app
-nnoremap <leader>mp :silent !open -a Marked.app '%:p'<cr>
-
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " Find merge conflict markers
 nnoremap <silent> <leader>mm <ESC>/\v^[<=>]{7}( .*\|$)<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Editing commands
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Bubble lines up and down
 " http://vim.wikia.com/wiki/Moving_lines_up_or_down
@@ -358,36 +335,15 @@ inoremap <silent> <C-S-Down> <Esc>:m .+1<CR>==gi
 vnoremap <silent> <C-S-Up> :m '<-2<CR>gv=gv
 vnoremap <silent> <C-S-Down> :m '>+1<CR>gv=gv
 
-" Remove trailing white space and retab file
-command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<Bar>:retab<CR>
+""""""""""""""
+" Formatting
+""""""""""""""
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Insert Time and date commands
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
 command! InsertDate :normal a<c-r>=strftime('%F')<cr>
 
-" use :w!! to write to a file using sudo if you forgot to 'sudo vim file'
-" (it will prompt for sudo password when writing)
-cnoremap w!! %!sudo tee > /dev/null %
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Rename Current File
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
-endfunction
-command! RenameFile :call RenameFile()
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Formatting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remove trailing white space and retab file
+command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<Bar>:retab<CR>
 
 " Re-wrap the entire file
 nnoremap <leader>rwf ggVGgq
@@ -404,27 +360,37 @@ noremap <leader>rfh <Esc>:% !tidy -quiet  -indent --indent-spaces 2 --wrap 90<CR
 " Reformat JSON
 noremap <leader>rfj <Esc>:% !js-beautify -i -s 2 --brace-style=expand<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""
 " Abbreviations
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""
 
 iabbrev teh the
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""
 " Ctags
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""
 
-" Set our custom tag file path
-set tags+=.tags
-set tags+=.gems.tags
+command! TagFiles :call EchoTags()
+function! EchoTags()
+  echo join(split(&tags, ","), "\n")
+endfunction
 
 " Regenerate the tag lib
-command! GenRubyTags :normal :!ctags-ruby -f .tags *<cr><cr>
-command! GenBundleTags :normal :!ctags-bundle<cr><cr>
+" command! GenRubyTags :normal :!ctags-ruby -f .tags *<cr><cr>
+" command! GenBundleTags :normal :!ctags-bundle<cr><cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""
 " Plugins
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""
+
+" Toggle indent guides
+noremap <leader>vi :IndentGuideToggle<cr>
+
+" Preview markdown files in Marked.app
+nnoremap <leader>mp :silent !open -a Marked.app '%:p'<cr>
+
+" Highlight fenced code
+let g:markdown_fenced_languages = ['ruby', 'javascript']
 
 " No Netrw menu
 let g:netrw_menu=0
@@ -437,11 +403,6 @@ let g:event_handler_attributes_complete = 0
 let g:rdfa_attributes_complete = 0
 let g:microdata_attributes_complete = 0
 let g:atia_attributes_complete = 0
-
-" Switch default scss comment delimeters for NerdCommenter
-let g:NERDCustomDelimiters = {
-    \ 'scss': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' }
-    \ }
 
 " Search for current word in Ack
 nnoremap <leader>aa :Ack! '\b<c-r><c-w>\b'<cr>
@@ -510,9 +471,9 @@ command! Myrc :normal :edit $MYVIMRC<cr>
 command! WorkLog :normal :silent! edit ~/Dropbox/Notes/Work\ Log.md<cr>
 command! Scratch :normal :silent! edit ~/Dropbox/Notes/Scratch.md<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""
 " GUI
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""
 
 if has("gui_running")
   " Show my current line
