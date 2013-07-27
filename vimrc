@@ -370,14 +370,12 @@ iabbrev teh the
 " Ctags
 """""""""
 
+set tags+=.tags
+
 command! TagFiles :call EchoTags()
 function! EchoTags()
   echo join(split(&tags, ","), "\n")
 endfunction
-
-" Regenerate the tag lib
-" command! GenRubyTags :normal :!ctags-ruby -f .tags *<cr><cr>
-" command! GenBundleTags :normal :!ctags-bundle<cr><cr>
 
 """"""""""
 " Plugins
