@@ -127,6 +127,9 @@ set shiftwidth=2                      " an autoindent (with <<) is two spaces
 set expandtab                         " use spaces, not tabs
 set autoindent
 
+" Fast terminal please
+set ttyfast
+
 " Display tabs and whitepace
 set list
 set listchars=tab:▸\ ,trail:·,extends:»,precedes:«
