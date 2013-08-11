@@ -451,6 +451,9 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 
+" Easy grep
+let g:EasyGrepReplaceWindowMode=2
+
 " Clojure
 
 let g:vimclojure#ParenRainbow = 1
