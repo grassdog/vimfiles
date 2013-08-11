@@ -405,8 +405,8 @@ let g:rdfa_attributes_complete = 0
 let g:microdata_attributes_complete = 0
 let g:atia_attributes_complete = 0
 
-" Search for current word in Ack
-nnoremap <leader>aa :Ack! '\b<c-r><c-w>\b'<cr>
+" Search for current word in Ag
+nnoremap <leader>ag :Ag! '\b<c-r><c-w>\b'<cr>
 
 " Ctrlp
 let g:ctrlp_jump_to_buffer = 1
