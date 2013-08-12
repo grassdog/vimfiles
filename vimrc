@@ -394,7 +394,11 @@ nnoremap <leader>mp :silent !open -a Marked.app '%:p'<cr>
 let g:markdown_fenced_languages = ['ruby', 'javascript']
 
 " No Netrw menu
-let g:netrw_menu=0
+let g:netrw_menu      = 0
+
+" Preview in a vertical split
+let g:netrw_preview   = 1
+let g:netrw_winsize   = 30
 
 " Remove netrw history files
 let g:netrw_dirhistmax = 0
