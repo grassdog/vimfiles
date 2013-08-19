@@ -361,7 +361,7 @@ noremap <leader>rfx <Esc>:% !xmllint --format -<CR>
 noremap <leader>rfh <Esc>:% !tidy -quiet  -indent --indent-spaces 2 --wrap 90<CR>
 
 " Reformat JSON
-noremap <leader>rfj <Esc>:% !js-beautify -i -s 2 --brace-style=expand<CR>
+noremap <leader>rfj <Esc>:% !js-beautify -f - -s 2 --brace-style=expand<CR>
 
 """"""""""""""""
 " Abbreviations
