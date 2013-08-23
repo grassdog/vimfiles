@@ -200,6 +200,9 @@ vnoremap << <gv
 " Yank to the end of the line
 noremap Y y$
 
+" Easier match
+noremap <S-tab> %
+
 " Fold html tags
 nnoremap <leader>zfh Vatzf
 
@@ -393,8 +396,8 @@ iabbrev teh the
 
 set tags+=.tags
 
-command! ListTagFiles :call EchoTags()
-function! EchoTags()
+command! ListTagFiles :call ListTagFiles()
+function! ListTagFiles()
   echo join(split(&tags, ","), "\n")
 endfunction
 
