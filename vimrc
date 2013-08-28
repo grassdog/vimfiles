@@ -30,6 +30,7 @@ Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'godlygeek/tabular'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'scrooloose/nerdtree'
 Bundle 'grassdog/RemoveFile.vim'
 
 " Text objects and motions
@@ -473,6 +474,10 @@ nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
+
+" Show the current file in NerdTree
+nnoremap <leader>n :NERDTreeToggle<CR>
+let NERDTreeAutoDeleteBuffer=1
 
 " Easy grep
 let g:EasyGrepReplaceWindowMode=2
