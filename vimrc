@@ -200,9 +200,6 @@ vnoremap << <gv
 " Yank to the end of the line
 noremap Y y$
 
-" Easier match
-noremap <S-tab> %
-
 " Fold html tags
 nnoremap <leader>zfh Vatzf
 
