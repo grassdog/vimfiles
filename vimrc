@@ -468,6 +468,7 @@ augroup END
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
+let g:rspec_command = "!rspec --format documentation --no-color {spec}"
 
 " Tabularise shortcuts
 nmap <Leader>a= :Tabularize /=<CR>
