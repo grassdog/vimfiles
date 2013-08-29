@@ -468,7 +468,7 @@ augroup END
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
-let g:rspec_command = "!rspec --format documentation --no-color {spec}"
+let g:rspec_command = "!rspec --format doc --no-color {spec}"
 
 " Tabularise shortcuts
 nmap <Leader>a= :Tabularize /=<CR>
@@ -476,7 +476,7 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 
-" Show the current file in NerdTree
+" NerdTree
 nnoremap <leader>n :NERDTreeToggle<CR>
 let NERDTreeAutoDeleteBuffer=1
 
