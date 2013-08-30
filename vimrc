@@ -62,7 +62,6 @@ Bundle 'vim-ruby/vim-ruby'
 
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-cucumber'
-"Bundle 'rking/vim-ruby-refactoring'
 
 " Web
 Bundle 'tpope/vim-haml'
