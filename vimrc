@@ -477,6 +477,7 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 
 " NerdTree
 nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
 let NERDTreeAutoDeleteBuffer=1
 
 " Easy grep
