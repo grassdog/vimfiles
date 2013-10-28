@@ -513,6 +513,9 @@ let g:UltiSnipsDontReverseSearchPath = "1"
 augroup grass_allfiles
   autocmd!
 
+  " Don't show trailing space in insert mode
+  au InsertEnter * :set listchars-=trail:·
+  au InsertLeave * :set listchars+=trail:·
 
   " Remember last location in file, but not for commit messages.
   " see :help last-position-jump
