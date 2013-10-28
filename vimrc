@@ -330,6 +330,7 @@ function! s:setcwd()
   endfo
   exe 'lc!' fnameescape(wd == '' ? cph : substitute(wd, mkr.'$', '.', ''))
 endfunction
+command! SetProjectDir :call s:setcwd()
 
 " Auto align when inserting `|`
 function! s:align()
@@ -512,8 +513,6 @@ let g:UltiSnipsDontReverseSearchPath = "1"
 augroup grass_allfiles
   autocmd!
 
-  " Set my current working directory based upon project
-  autocmd BufEnter * call s:setcwd()
 
   " Remember last location in file, but not for commit messages.
   " see :help last-position-jump
