@@ -311,11 +311,10 @@ vnoremap <S-Up> <Up>
 """""""""""""
 
 " Some file types should wrap their text
-" This currently hard wraps at 85 columns because I can't work out a way to
-" soft wrap to a column width that is smaller than the window
 function! s:setupWrapping()
-  setlocal textwidth=80
+  setlocal wrap
   setlocal linebreak
+  " No need to show hidden chars
   setlocal nolist
 endfunction
 
