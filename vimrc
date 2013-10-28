@@ -133,8 +133,6 @@ if has("statusline")
   set statusline+=\ %-3.c\ %P\                        " Column and Percentage
 endif
 
-set foldlevelstart=99
-
 set nowrap                            " don't wrap lines
 set tabstop=2                         " a tab is two spaces
 set shiftwidth=2                      " an autoindent (with <<) is two spaces
@@ -219,6 +217,30 @@ set scrolloff=3       " Always show at least three lines below cursor
 set mat=3             " Blink matching brackets for 3 tenths of a second
 set visualbell t_vb=  " No Noise or bell
 
+" Folding
+set nofoldenable
+set foldlevelstart=99
+
+function! MyFoldText()
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction " }}}
+set foldtext=MyFoldText()
+
+" Fold current html tag
+nnoremap <leader>z Vatzf
+
 " Color scheme
 let g:solarized_menu=0
 let g:solarized_contrast="high"
@@ -232,9 +254,6 @@ vnoremap << <gv
 
 " Yank to the end of the line
 noremap Y y$
-
-" Fold html tags
-nnoremap <leader>zfh Vatzf
 
 " Switch to last buffer
 nnoremap <leader><leader> <c-^>
@@ -361,6 +380,12 @@ augroup grass_filehooks
 
   " Markdown and txt files should wrap
   autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} call s:setupWrapping()
+
+  " Syntax folding for ruby (off by default)
+  autocmd Filetype ruby setlocal foldmethod=syntax nofoldenable
+
+  " Indent folding for coffee (off by default)
+  autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 
   " Change tab width for markdown
   autocmd FileType markdown setlocal softtabstop=4 tabstop=4 shiftwidth=4
