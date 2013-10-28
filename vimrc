@@ -59,17 +59,15 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-bundler'
 Bundle 'vim-ruby/vim-ruby'
-
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-cucumber'
 
 " Web
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
+Bundle 'nelstrom/vim-markdown-folding'
 Bundle 'othree/html5.vim'
 Bundle 'cakebaker/scss-syntax.vim'
-
-" Javascript
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'claco/jasmine.vim'
@@ -79,15 +77,13 @@ Bundle 'JSON.vim'
 Bundle 'VimClojure'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'PProvost/vim-ps1'
-"Bundle 'tpope/vim-fireplace'
-"Bundle 'kikijump/tslime.vim'
-
-" Fringe
 Bundle 'wlangstroth/vim-racket'
 Bundle 'ajf/puppet-vim'
 Bundle 'nono/vim-handlebars'
 Bundle 'tpope/vim-liquid'
 Bundle 'groenewege/vim-less'
+"Bundle 'tpope/vim-fireplace'
+"Bundle 'kikijump/tslime.vim'
 
 " Enable matchit
 runtime macros/matchit.vim
