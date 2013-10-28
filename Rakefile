@@ -16,7 +16,7 @@ end
 
 desc 'Create tmp directories'
 task :create_temp_dirs do
-  %w{undo backups sessions}.each do |dir|
+  %w{undo backups sessions swaps}.each do |dir|
     sh "mkdir -p ~/.vim/tmp/#{dir}"
   end
 end

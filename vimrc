@@ -114,6 +114,11 @@ set ttimeoutlen=10
 set complete=.,w,b,u,t
 set completeopt=longest,menuone,preview
 
+" Normally, Vim messes with iskeyword when you open a shell file. This can
+" leak out, polluting other file types even after a 'set ft=' change. This
+" variable prevents the iskeyword change so it can't hurt anyone.
+let g:sh_noisk=1
+
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
 "set t_ti= t_te=
@@ -198,8 +203,8 @@ set history=1000
 set undodir=~/.vim/tmp/undo//
 set backup
 set backupdir=~/.vim/tmp/backups
+set directory=~/.vim/tmp/swaps
 set writebackup
-set noswapfile
 
 " Just load the changed file
 set autoread
