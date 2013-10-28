@@ -103,6 +103,8 @@ set number            " Show line numbers
 syntax enable         " Turn on syntax highlighting allowing local overrides
 set encoding=utf-8    " Set default encoding to UTF-8
 set hidden            " Hide buffers, don't nag about them
+set modelines=0
+
 " Don't try to highlight lines longer than 800 characters.
 set synmaxcol=800
 
@@ -112,6 +114,9 @@ set notimeout
 set ttimeout
 set ttimeoutlen=10
 
+" Better Completion (no i)
+set complete=.,w,b,u,t
+set completeopt=longest,menuone,preview
 
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
