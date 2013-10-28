@@ -381,6 +381,9 @@ noremap <leader>rfh <Esc>:% !tidy -quiet  -indent --indent-spaces 2 --wrap 90<CR
 " Reformat JSON
 noremap <leader>rfj <Esc>:% !js-beautify -f - -s 2 --brace-style=expand<CR>
 
+" Create a new dayone post from the buffer
+command! NewDayonePost :w !dayone new
+
 """"""""""""""""
 " Abbreviations
 """"""""""""""""
