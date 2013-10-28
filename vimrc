@@ -141,6 +141,9 @@ set shiftwidth=2                      " an autoindent (with <<) is two spaces
 set expandtab                         " use spaces, not tabs
 set autoindent
 
+set textwidth=80
+set formatoptions=tcqrn1j
+
 " Fast terminal please
 set ttyfast
 
