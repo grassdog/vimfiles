@@ -309,14 +309,6 @@ vnoremap <S-Up> <Up>
 " File Hooks
 """""""""""""
 
-" Some file types should wrap their text
-function! s:setupWrapping()
-  setlocal wrap
-  setlocal linebreak
-  " No need to show hidden chars
-  setlocal nolist
-endfunction
-
 " A standalone function to set the working directory to the project’s root, or
 " to the parent directory of the current file if a root can’t be found:
 function! s:setcwd()
@@ -378,7 +370,7 @@ augroup grass_filehooks
   autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
   " Markdown and txt files should wrap
-  autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} call s:setupWrapping()
+  autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setlocal wrap expandtab
 
   " Syntax folding for ruby (off by default)
   autocmd Filetype ruby setlocal foldmethod=syntax nofoldenable
