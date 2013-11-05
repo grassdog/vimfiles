@@ -99,7 +99,6 @@ set number            " Show line numbers
 syntax enable         " Turn on syntax highlighting allowing local overrides
 set encoding=utf-8    " Set default encoding to UTF-8
 set hidden            " Hide buffers, don't nag about them
-set modelines=0
 
 " Don't try to highlight lines longer than 800 characters.
 set synmaxcol=800
@@ -109,10 +108,6 @@ set synmaxcol=800
 set notimeout
 set ttimeout
 set ttimeoutlen=10
-
-" Better Completion (no i)
-set complete=.,w,b,u,t
-set completeopt=longest,menuone,preview
 
 " Normally, Vim messes with iskeyword when you open a shell file. This can
 " leak out, polluting other file types even after a 'set ft=' change. This
@@ -141,7 +136,7 @@ set expandtab                         " use spaces, not tabs
 set autoindent
 
 set textwidth=80
-set formatoptions=tcqrn1j
+set formatoptions=crql1j
 
 " Fast terminal please
 set ttyfast
@@ -206,12 +201,11 @@ set backupdir=~/.vim/tmp/backups
 set directory=~/.vim/tmp/swaps
 set writebackup
 
-" Just load the changed file
-set autoread
+set autoread " Just load the changed file
 
 set laststatus=2  " always show the status bar
 set showmode
-set shortmess=atI " Shortens messages to avoid 'press a key' prompt
+set shortmess=atIOT   " Abbrev. of messages (avoids 'hit enter')
 set showcmd
 
 set scrolloff=3       " Always show at least three lines below cursor
