@@ -32,6 +32,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'scrooloose/nerdtree'
 Bundle 'grassdog/RemoveFile.vim'
+Bundle 'mbbill/undotree'
 
 " Text objects and motions
 Bundle 'kana/vim-textobj-user'
@@ -189,13 +190,16 @@ set wildignore+=*.orig                           " Merge resolution files
 set wildignore+=classes
 set wildignore+=lib
 
-
-set undofile
-set undoreload=10000
 set history=1000
 
 " Undo, swap, and backup files
-set undodir=~/.vim/tmp/undo//
+if has('persistent_undo')
+    set undofile                " So is persistent undo ...
+    set undolevels=1000         " Maximum number of changes that can be undone
+    set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
+endif
+
+set undodir=~/.vim/tmp/undo/
 set backup
 set backupdir=~/.vim/tmp/backups
 set directory=~/.vim/tmp/swaps
