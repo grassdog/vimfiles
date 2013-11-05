@@ -372,9 +372,6 @@ augroup grass_filehooks
   " Markdown and txt files should wrap
   autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setlocal wrap expandtab
 
-  " Syntax folding for ruby (off by default)
-  autocmd Filetype ruby setlocal foldmethod=syntax nofoldenable
-
   " Indent folding for coffee (off by default)
   autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 
@@ -387,6 +384,8 @@ augroup grass_filehooks
   " Add indent stuff for scheme files
   autocmd filetype lisp,scheme,art setlocal equalprg=~/.vim/tools/scheme-indent/scmindent.scm
 augroup END
+
+let ruby_fold = 1
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
