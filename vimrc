@@ -188,7 +188,7 @@ set wildignore+=*.orig                           " Merge resolution files
 
 " Clojure/Leiningen
 set wildignore+=classes
-set wildignore+=lib
+" set wildignore+=lib
 
 set history=1000
 
