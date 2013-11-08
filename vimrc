@@ -372,8 +372,9 @@ augroup grass_filehooks
   " Markdown and txt files should wrap
   autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setlocal wrap expandtab
 
-  " Indent folding for coffee (off by default)
-  autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+  " Indent folding for coffee (off by default) and undo vim-coffeescript
+  " screwing with my formatoptions
+  autocmd BufNewFile,BufReadPost *.coffee setlocal foldmethod=indent nofoldenable formatoptions-=o
 
   " Change tab width for markdown
   autocmd FileType markdown setlocal softtabstop=4 tabstop=4 shiftwidth=4
