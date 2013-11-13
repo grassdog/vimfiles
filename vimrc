@@ -392,7 +392,7 @@ let ruby_fold = 1
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " Find merge conflict markers
-nnoremap <silent> <leader>mm <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+nnoremap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 " Bubble lines up and down
 " http://vim.wikia.com/wiki/Moving_lines_up_or_down
@@ -530,7 +530,7 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 
 " NerdTree
 nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>ff :NERDTreeFind<CR>
 let NERDTreeAutoDeleteBuffer=1
 
 " Easy grep
