@@ -451,6 +451,10 @@ function! ListTagFiles()
   echo join(split(&tags, ","), "\n")
 endfunction
 
+" Let me select my tags
+nnoremap <c-]> g<c-]>
+nnoremap g<c-]> <c-]>
+
 """"""""""
 " Plugins
 """"""""""
