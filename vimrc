@@ -202,6 +202,7 @@ endif
 set undodir=~/.vim/tmp/undo/
 set backup
 set backupdir=~/.vim/tmp/backups
+set noswapfile
 set directory=~/.vim/tmp/swaps
 set writebackup
 
