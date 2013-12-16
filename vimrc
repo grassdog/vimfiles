@@ -84,6 +84,7 @@ Bundle 'ajf/puppet-vim'
 Bundle 'mustache/vim-mode'
 Bundle 'tpope/vim-liquid'
 Bundle 'groenewege/vim-less'
+Bundle 'b4winckler/vim-objc'
 "Bundle 'tpope/vim-fireplace'
 "Bundle 'kikijump/tslime.vim'
 
@@ -110,6 +111,8 @@ set synmaxcol=800
 set notimeout
 set ttimeout
 set ttimeoutlen=10
+
+set nopaste
 
 " Normally, Vim messes with iskeyword when you open a shell file. This can
 " leak out, polluting other file types even after a 'set ft=' change. This
