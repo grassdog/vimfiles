@@ -476,7 +476,8 @@ let g:microdata_attributes_complete = 0
 let g:atia_attributes_complete = 0
 
 " Search for current word in Ag
-nnoremap <leader>ag :Ag! '\b<c-r><c-w>\b'<cr>
+nnoremap <leader>sw :Ag! '\b<c-r><c-w>\b'<cr>
+nnoremap <leader>s :Ag! 
 
 " Ctrlp
 let g:ctrlp_jump_to_buffer = 1
@@ -513,7 +514,7 @@ augroup END
 
 " Specs
 map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>p :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 let g:rspec_command = "!rspec --format doc --no-color {spec}"
 
