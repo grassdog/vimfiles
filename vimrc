@@ -466,7 +466,7 @@ nnoremap g<c-]> <c-]>
 noremap <leader>vi :IndentGuideToggle<cr>
 
 " Preview markdown files in Marked.app
-nnoremap <leader>mp :silent !open -a Marked.app '%:p'<cr>
+nnoremap <leader>pm :silent !open -a Marked.app '%:p'<cr>
 
 " Highlight fenced code
 let g:markdown_fenced_languages = ['ruby', 'javascript']
@@ -526,8 +526,8 @@ augroup grass_allfiles
 augroup END
 
 " Specs
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>p :call RunNearestSpec()<CR>
+map <Leader>tc :call RunCurrentSpecFile()<CR>
+map <Leader>tn :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 let g:rspec_command = "!rspec --format doc --no-color {spec}"
 
