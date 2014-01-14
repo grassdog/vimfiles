@@ -26,6 +26,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-characterize'
+Bundle 'tpope/vim-eunuch'
 Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'godlygeek/tabular'
 Bundle 'altercation/vim-colors-solarized'
@@ -341,22 +342,6 @@ endfunction
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
 " Some file helpers
-
-command! -bar SudoWrite :
-      \ setlocal nomodified |
-      \  exe (has('gui_running') ? '' : 'silent') 'write !sudo tee % >/dev/null' |
-      \ let &modified = v:shell_error
-
-function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
-endfunction
-command! RenameFile :call RenameFile()
 
 augroup grass_filehooks
   autocmd!
