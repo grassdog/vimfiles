@@ -284,15 +284,24 @@ noremap <up> gk
 inoremap jj <ESC>
 
 " Hard mode
-"nnoremap <Left> <Nop>
-"nnoremap <Right> <Nop>
-"nnoremap <Up> <Nop>
-"nnoremap <Down> <Nop>
+let g:HardMode_on = 0
 
-"inoremap <Up> <nop>
-"inoremap <Down> <nop>
-"inoremap <Left> <nop>
-"inoremap <Right> <nop>
+if g:HardMode_on
+  nnoremap <Left> <Nop>
+  nnoremap <Right> <Nop>
+  nnoremap <Up> <Nop>
+  nnoremap <Down> <Nop>
+
+  inoremap <Up> <nop>
+  inoremap <Down> <nop>
+  inoremap <Left> <nop>
+  inoremap <Right> <nop>
+
+  vnoremap <Up> <nop>
+  vnoremap <Down> <nop>
+  vnoremap <Left> <nop>
+  vnoremap <Right> <nop>
+end
 
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
@@ -308,6 +317,21 @@ nnoremap <s-right> <c-w>l
 " Stop page movement on shift arrow
 vnoremap <S-Down> <Down>
 vnoremap <S-Up> <Up>
+
+" Bubble lines up and down
+" http://vim.wikia.com/wiki/Moving_lines_up_or_down
+nnoremap <silent> <C-S-k> :m .-2<CR>==
+nnoremap <silent> <C-S-j> :m .+1<CR>==
+nnoremap <silent> <C-S-Up> :m .-2<CR>==
+nnoremap <silent> <C-S-Down> :m .+1<CR>==
+
+inoremap <silent> <C-S-Up> <Esc>:m .-2<CR>==gi
+inoremap <silent> <C-S-Down> <Esc>:m .+1<CR>==gi
+
+vnoremap <silent> <C-S-k> :m '<-2<CR>gv=gv
+vnoremap <silent> <C-S-j> :m '>+1<CR>gv=gv
+vnoremap <silent> <C-S-Up> :m '<-2<CR>gv=gv
+vnoremap <silent> <C-S-Down> :m '>+1<CR>gv=gv
 
 
 """""""""""""
@@ -383,17 +407,6 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " Find merge conflict markers
 nnoremap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
-" Bubble lines up and down
-" http://vim.wikia.com/wiki/Moving_lines_up_or_down
-nnoremap <silent> <C-S-Up> :m .-2<CR>==
-nnoremap <silent> <C-S-Down> :m .+1<CR>==
-
-inoremap <silent> <C-S-Up> <Esc>:m .-2<CR>==gi
-inoremap <silent> <C-S-Down> <Esc>:m .+1<CR>==gi
-
-vnoremap <silent> <C-S-Up> :m '<-2<CR>gv=gv
-vnoremap <silent> <C-S-Down> :m '>+1<CR>gv=gv
-
 """"""""""""""
 " Formatting
 """"""""""""""
@@ -402,7 +415,7 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
 command! InsertDate :normal a<c-r>=strftime('%F')<cr>
 
 " Remove trailing white space and retab file
-command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<Bar>:retab<CR>
+command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>nohl<Bar>retab<CR>
 
 " Re-wrap the entire file
 nnoremap <leader>rwf ggVGgq
