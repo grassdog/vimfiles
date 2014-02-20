@@ -85,6 +85,7 @@ Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'tpope/vim-liquid'
 Bundle 'groenewege/vim-less'
 Bundle 'b4winckler/vim-objc'
+"Bundle 'davidoc/taskpaper.vim'
 "Bundle 'tpope/vim-fireplace'
 "Bundle 'kikijump/tslime.vim'
 
@@ -320,16 +321,16 @@ vnoremap <S-Up> <Up>
 
 " Bubble lines up and down
 " http://vim.wikia.com/wiki/Moving_lines_up_or_down
-nnoremap <silent> <C-S-k> :m .-2<CR>==
-nnoremap <silent> <C-S-j> :m .+1<CR>==
+nnoremap <silent> <C-K> :m .-2<CR>==
+nnoremap <silent> <C-J> :m .+1<CR>==
 nnoremap <silent> <C-S-Up> :m .-2<CR>==
 nnoremap <silent> <C-S-Down> :m .+1<CR>==
 
 inoremap <silent> <C-S-Up> <Esc>:m .-2<CR>==gi
 inoremap <silent> <C-S-Down> <Esc>:m .+1<CR>==gi
 
-vnoremap <silent> <C-S-k> :m '<-2<CR>gv=gv
-vnoremap <silent> <C-S-j> :m '>+1<CR>gv=gv
+vnoremap <silent> <C-K> :m '<-2<CR>gv=gv
+vnoremap <silent> <C-J> :m '>+1<CR>gv=gv
 vnoremap <silent> <C-S-Up> :m '<-2<CR>gv=gv
 vnoremap <silent> <C-S-Down> :m '>+1<CR>gv=gv
 
