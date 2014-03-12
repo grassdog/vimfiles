@@ -396,6 +396,9 @@ augroup grass_filehooks
   " Less
   autocmd BufNewFile,BufRead *.less set filetype=less
 
+  " Arb
+  autocmd BufNewFile,BufRead *.arb set filetype=ruby
+
   " Add indent stuff for scheme files
   autocmd filetype lisp,scheme,art setlocal equalprg=~/.vim/tools/scheme-indent/scmindent.scm
 augroup END
