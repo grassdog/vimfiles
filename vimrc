@@ -21,7 +21,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-commentary.git'
-Bundle 'tpope/vim-sleuth.git'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-dispatch'
@@ -384,7 +383,7 @@ augroup grass_filehooks
   autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
   " Markdown and txt files should wrap
-  autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setlocal wrap expandtab
+  autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setlocal wrap expandtab tabstop=4 softtabstop=4 shiftwidth=4
 
   " Indent folding for coffee (off by default) and undo vim-coffeescript
   " screwing with my formatoptions
