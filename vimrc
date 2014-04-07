@@ -74,8 +74,13 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'claco/jasmine.vim'
 Bundle 'JSON.vim'
 
+" Clojure
+Bundle 'guns/vim-clojure-static'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'tpope/vim-fireplace'
+Bundle 'tpope/vim-sexp-mappings-for-regular-people'
+
 " Other
-Bundle 'VimClojure'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'PProvost/vim-ps1'
 Bundle 'wlangstroth/vim-racket'
@@ -85,7 +90,6 @@ Bundle 'tpope/vim-liquid'
 Bundle 'groenewege/vim-less'
 Bundle 'b4winckler/vim-objc'
 "Bundle 'davidoc/taskpaper.vim'
-"Bundle 'tpope/vim-fireplace'
 "Bundle 'kikijump/tslime.vim'
 
 " Enable matchit
@@ -400,6 +404,14 @@ augroup grass_filehooks
 
   " Add indent stuff for scheme files
   autocmd filetype lisp,scheme,art setlocal equalprg=~/.vim/tools/scheme-indent/scmindent.scm
+
+  " Clojure
+  autocmd Syntax * RainbowParenthesesLoadRound
+  autocmd Syntax * RainbowParenthesesLoadSquare
+  autocmd Syntax * RainbowParenthesesLoadBraces
+
+  autocmd filetype clojure RainbowParenthesesActivate
+  " autocmd FileType clojure call TurnOnClojureFolding()
 augroup END
 
 let ruby_fold = 1
@@ -545,15 +557,6 @@ let NERDTreeAutoDeleteBuffer=1
 
 " Easy grep
 let g:EasyGrepReplaceWindowMode=2
-
-" Clojure
-
-let g:vimclojure#ParenRainbow = 1
-let g:vimclojure#HighlightBuiltins = 1
-
-" Add these for Nailgun (clunky as it is)
-"let vimclojure#WantNailgun = 1
-"let vimclojure#NailgunClient = "$HOME/.bin/ng"
 
 " Configure browser for haskell_doc.vim
 let g:haddock_browser = "open"
