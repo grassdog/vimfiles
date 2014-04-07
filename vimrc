@@ -78,6 +78,7 @@ Bundle 'JSON.vim'
 Bundle 'guns/vim-clojure-static'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'tpope/vim-fireplace'
+Bundle 'guns/vim-sexp'
 Bundle 'tpope/vim-sexp-mappings-for-regular-people'
 
 " Other
@@ -411,7 +412,6 @@ augroup grass_filehooks
   autocmd Syntax * RainbowParenthesesLoadBraces
 
   autocmd filetype clojure RainbowParenthesesActivate
-  " autocmd FileType clojure call TurnOnClojureFolding()
 augroup END
 
 let ruby_fold = 1
