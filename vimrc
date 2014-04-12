@@ -771,9 +771,9 @@ command! Cheats :normal :silent! tabnew ~/Dropbox/Notes/Vim.md<cr>
 
 " Edit hot files
 command! Myrc :normal :edit $MYVIMRC<cr>
+command! Notes :normal :silent! vsplit ~/Dropbox/Notes<cr>4j
 command! WorkLog :normal :silent! edit ~/Dropbox/Notes/Work\ Log.md<cr>
 command! Scratch :normal :silent! edit ~/Dropbox/Notes/Scratch.md<cr>
-
 
 """"""""""""""""""""""" }}}
 " Snippets              {{{
