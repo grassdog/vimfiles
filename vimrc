@@ -1,3 +1,6 @@
+""""""""""""""""""""""" }}}
+"  First ups            {{{
+"""""""""""""""""""""""
 
 " Map Leaders
 let mapleader = ","
@@ -9,7 +12,10 @@ noremap \ ,
 set nocompatible
 filetype off
 
-" Vundle setup
+
+""""""""""""""""""""""" }}}
+" Vundle setup          {{{
+"""""""""""""""""""""""
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -90,7 +96,6 @@ Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'tpope/vim-liquid'
 Bundle 'groenewege/vim-less'
 Bundle 'b4winckler/vim-objc'
-"Bundle 'davidoc/taskpaper.vim'
 
 " Enable matchit
 runtime macros/matchit.vim
@@ -98,9 +103,10 @@ runtime macros/matchit.vim
 " Turn on filetype plugins and indent files for per-type indenting
 filetype plugin indent on
 
-""""""""
-" Base
-""""""""
+
+""""""""""""""""""""""" }}}
+" Base setup            {{{
+"""""""""""""""""""""""
 
 set number            " Show line numbers
 syntax enable         " Turn on syntax highlighting allowing local overrides
@@ -108,7 +114,7 @@ set encoding=utf-8    " Set default encoding to UTF-8
 set hidden            " Hide buffers, don't nag about them
 
 " Don't try to highlight lines longer than 800 characters.
-set synmaxcol=800
+set synmaxcol=300
 
 " Time out on key codes but not mappings.
 " Basically this makes terminal Vim work sanely.
@@ -118,6 +124,9 @@ set ttimeoutlen=10
 
 set nopaste
 
+" Setup my language
+set spelllang=en_au
+
 " Normally, Vim messes with iskeyword when you open a shell file. This can
 " leak out, polluting other file types even after a 'set ft=' change. This
 " variable prevents the iskeyword change so it can't hurt anyone.
@@ -126,17 +135,6 @@ let g:sh_noisk=1
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
 "set t_ti= t_te=
-
-if has("statusline")
-  set statusline=[%n]                                 " buffer no
-  set statusline+=\ %<%.99f                           " Filename
-  set statusline+=\ %h%m%r%w                          " Flags
-  set statusline+=%=                                  " right align
-  set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}]   " Encoding
-  set statusline+=\ %y                                " Filetype
-  set statusline+=\ [%{&ff}]                          " Fileformat
-  set statusline+=\ %-3.c\ %P\                        " Column and Percentage
-endif
 
 set nowrap                            " don't wrap lines
 set tabstop=2                         " a tab is two spaces
@@ -157,6 +155,39 @@ set listchars=tab:▸\ ,trail:·,extends:»,precedes:«
 set backspace=indent,eol,start        " backspace through everything in insert mode
 set whichwrap+=<,>,h,l,[,]            " Allow left, right, bs, del to cross lines
 
+" Treat all numbers as decimal
+set nrformats=
+
+set scrolloff=3       " Always show at least three lines below cursor
+set mat=3             " Blink matching brackets for 3 tenths of a second
+set visualbell t_vb=  " No Noise or bell
+
+
+""""""""""""""""""""""" }}}
+" Statusline            {{{
+"""""""""""""""""""""""
+
+if has("statusline")
+  set statusline=[%n]                                 " buffer no
+  set statusline+=\ %<%.99f                           " Filename
+  set statusline+=\ %h%m%r%w                          " Flags
+  set statusline+=%=                                  " right align
+  set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}]   " Encoding
+  set statusline+=\ %y                                " Filetype
+  set statusline+=\ [%{&ff}]                          " Fileformat
+  set statusline+=\ %-3.c\ %P\                        " Column and Percentage
+endif
+
+set laststatus=2  " always show the status bar
+set showmode
+set shortmess=atIOT   " Abbrev. of messages (avoids 'hit enter')
+set showcmd
+
+
+""""""""""""""""""""""" }}}
+" Search                {{{
+"""""""""""""""""""""""
+
 set nohlsearch  " Don't highlight matches
 set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
@@ -165,10 +196,17 @@ set smartcase   " ... unless they contain at least one capital letter
 " Toggle search highlighting
 noremap <leader><space> :set hlsearch! hlsearch?<CR>
 
-" Treat all numbers as decimal
-set nrformats=
+" Search for current word in Ag
+nnoremap <leader>sw :Ag! '\b<c-r><c-w>\b'<cr>
+nnoremap <leader>s :Ag! 
 
-" Wildmenu completion
+" Easy grep
+let g:EasyGrepReplaceWindowMode=2
+
+
+""""""""""""""""""""""" }}}
+" Wildmenu completion   {{{
+"""""""""""""""""""""""
 
 " use zsh-style tab completion when selecting files, etc
 set wildmode=full
@@ -194,17 +232,18 @@ set wildignore+=*.luac                           " Lua byte code
 set wildignore+=*.pyc                            " Python byte code
 set wildignore+=*.orig                           " Merge resolution files
 
-" Clojure/Leiningen
-set wildignore+=classes
-" set wildignore+=lib
+
+""""""""""""""""""""""" }}}
+" History and undo      {{{
+"""""""""""""""""""""""
 
 set history=1000
 
 " Undo, swap, and backup files
 if has('persistent_undo')
-    set undofile                " So is persistent undo ...
-    set undolevels=1000         " Maximum number of changes that can be undone
-    set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
+  set undofile                " So is persistent undo ...
+  set undolevels=1000         " Maximum number of changes that can be undone
+  set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
 endif
 
 set undodir=~/.vim/tmp/undo/
@@ -214,67 +253,48 @@ set noswapfile
 set directory=~/.vim/tmp/swaps
 set writebackup
 
-set autoread " Just load the changed file
+set autoread                  " Just load a changed file
 
-set laststatus=2  " always show the status bar
-set showmode
-set shortmess=atIOT   " Abbrev. of messages (avoids 'hit enter')
-set showcmd
 
-set scrolloff=3       " Always show at least three lines below cursor
-set mat=3             " Blink matching brackets for 3 tenths of a second
-set visualbell t_vb=  " No Noise or bell
+""""""""""""""""""""""" }}}
+" Folding               {{{
+"""""""""""""""""""""""
 
-" Folding
 set nofoldenable
 set foldlevelstart=99
 
 function! MyFoldText()
-    let line = getline(v:foldstart)
+  let line = getline(v:foldstart)
 
-    let nucolwidth = &fdc + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - 3
-    let foldedlinecount = v:foldend - v:foldstart
+  let nucolwidth = &fdc + &number * &numberwidth
+  let windowwidth = winwidth(0) - nucolwidth - 3
+  let foldedlinecount = v:foldend - v:foldstart
 
-    " expand tabs into spaces
-    let onetab = strpart('          ', 0, &tabstop)
-    let line = substitute(line, '\t', onetab, 'g')
+  " expand tabs into spaces
+  let onetab = strpart('          ', 0, &tabstop)
+  let line = substitute(line, '\t', onetab, 'g')
 
-    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
-endfunction " }}}
+  let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+  let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+  return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction
 set foldtext=MyFoldText()
 
-" Fold current html tag
-nnoremap <leader>z Vatzf
 
-" Color scheme
+""""""""""""""""""""""" }}}
+" Colours               {{{
+"""""""""""""""""""""""
+
 let g:solarized_menu=0
 let g:solarized_contrast="high"
 
 set background=dark
 colorscheme solarized
 
-" Indent or outdent and maintain selection in visual mode
-vnoremap >> >gv
-vnoremap << <gv
 
-" Yank to the end of the line
-noremap Y y$
-
-" Switch to last buffer
-nnoremap <leader><leader> <c-^>
-
-" Easier current directory in command mode
-cnoremap <expr> %%  getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
-
-" Setup my language
-set spelllang=en_au
-
-"""""""""""
-" Movement
-"""""""""""
+""""""""""""""""""""""" }}}
+" Movement              {{{
+"""""""""""""""""""""""
 
 " Move across display lines, not physical lines
 noremap j gj
@@ -322,6 +342,21 @@ nnoremap <s-right> <c-w>l
 vnoremap <S-Down> <Down>
 vnoremap <S-Up> <Up>
 
+" Switch to last buffer
+nnoremap <leader><leader> <c-^>
+
+
+""""""""""""""""""""""" }}}
+" Text manipulation     {{{
+"""""""""""""""""""""""
+
+" Indent or outdent and maintain selection in visual mode
+vnoremap >> >gv
+vnoremap << <gv
+
+" Yank to the end of the line
+noremap Y y$
+
 " Bubble lines up and down
 " http://vim.wikia.com/wiki/Moving_lines_up_or_down
 nnoremap <silent> <C-K> :m .-2<CR>==
@@ -337,23 +372,11 @@ vnoremap <silent> <C-J> :m '>+1<CR>gv=gv
 vnoremap <silent> <C-S-Up> :m '<-2<CR>gv=gv
 vnoremap <silent> <C-S-Down> :m '>+1<CR>gv=gv
 
-
-"""""""""""""
-" File Hooks
-"""""""""""""
-
-" A standalone function to set the working directory to the project’s root, or
-" to the parent directory of the current file if a root can’t be found:
-function! s:setcwd()
-  let cph = expand('%:p:h', 1)
-  if match(cph, '\v^<.+>://') >= 0 | retu | en
-  for mkr in ['.git/', '.hg/', '.svn/', '.bzr/', '_darcs/', '.vimprojects']
-    let wd = call('find'.(mkr =~ '/$' ? 'dir' : 'file'), [mkr, cph.';'])
-    if wd != '' | let &acd = 0 | brea | en
-  endfo
-  exe 'lc!' fnameescape(wd == '' ? cph : substitute(wd, mkr.'$', '.', ''))
-endfunction
-command! SetProjectDir :call s:setcwd()
+" Tabularise shortcuts
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
 
 " Auto align when inserting `|`
 function! s:align()
@@ -366,70 +389,27 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
-
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-
-" Some file helpers
-
-augroup grass_filehooks
-  autocmd!
-
-  " match (:),[:],{:} in html
-  au FileType html,eruby let b:match_words = '(:),[:],{:},' . b:match_words
-
-  " In Makefiles, use real tabs, not tabs expanded to spaces
-  autocmd FileType make set noexpandtab
-
-  " Setup JSON files
-  autocmd BufNewFile,BufRead *.json set ft=json
-
-  " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-  autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
-
-  " Markdown and txt files should wrap
-  autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setlocal wrap expandtab tabstop=4 softtabstop=4 shiftwidth=4
-
-  " Indent folding for coffee (off by default) and undo vim-coffeescript
-  " screwing with my formatoptions
-  autocmd BufNewFile,BufReadPost *.coffee setlocal foldmethod=indent nofoldenable formatoptions-=o
-
-  " Change tab width for markdown
-  autocmd FileType markdown setlocal softtabstop=4 tabstop=4 shiftwidth=4
-
-  " Less
-  autocmd BufNewFile,BufRead *.less set filetype=less
-
-  " Arb
-  autocmd BufNewFile,BufRead *.arb set filetype=ruby
-
-  " Add indent stuff for scheme files
-  autocmd filetype lisp,scheme,art setlocal equalprg=~/.vim/tools/scheme-indent/scmindent.scm
-
-  " Clojure
-  autocmd Syntax * RainbowParenthesesLoadRound
-  autocmd Syntax * RainbowParenthesesLoadSquare
-  autocmd Syntax * RainbowParenthesesLoadBraces
-
-  autocmd filetype clojure RainbowParenthesesActivate
-augroup END
-
-let ruby_fold = 1
-
-" Highlight VCS conflict markers
-match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
-
-" Find merge conflict markers
-nnoremap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
-
-""""""""""""""
-" Formatting
-""""""""""""""
-
-command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
-command! InsertDate :normal a<c-r>=strftime('%F')<cr>
 
 " Remove trailing white space and retab file
 command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>nohl<Bar>retab<CR>
+
+"
+" RemoveFancyCharacters COMMAND
+" Remove smart quotes, etc.
+"
+function! RemoveFancyCharacters()
+    let typo = {}
+    let typo["“"] = '"'
+    let typo["”"] = '"'
+    let typo["‘"] = "'"
+    let typo["’"] = "'"
+    let typo["–"] = '--'
+    let typo["—"] = '---'
+    let typo["…"] = '...'
+    :exe ":%s/".join(keys(typo), '\|').'/\=typo[submatch(0)]/ge'
+endfunction
+command! RemoveFancyCharacters :call RemoveFancyCharacters()
 
 " Re-wrap the entire file
 nnoremap <leader>rwf ggVGgq
@@ -446,42 +426,44 @@ noremap <leader>rfh <Esc>:% !tidy -quiet  -indent --indent-spaces 2 --wrap 90<CR
 " Reformat JSON
 noremap <leader>rfj <Esc>:% !js-beautify -f - -s 2 --brace-style=expand<CR>
 
-" Create a new dayone post from the buffer
-command! NewDayonePost :w !dayone new
 
-""""""""""""""""
-" Abbreviations
-""""""""""""""""
+""""""""""""""""""""""" }}}
+" Working directory     {{{
+"""""""""""""""""""""""
+
+" Easier current directory in command mode
+cnoremap <expr> %%  getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
+
+" A standalone function to set the working directory to the project’s root, or
+" to the parent directory of the current file if a root can’t be found:
+function! s:setcwd()
+  let cph = expand('%:p:h', 1)
+  if match(cph, '\v^<.+>://') >= 0 | retu | en
+  for mkr in ['.git/', '.hg/', '.svn/', '.bzr/', '_darcs/', '.vimprojects']
+    let wd = call('find'.(mkr =~ '/$' ? 'dir' : 'file'), [mkr, cph.';'])
+    if wd != '' | let &acd = 0 | brea | en
+  endfo
+  exe 'lc!' fnameescape(wd == '' ? cph : substitute(wd, mkr.'$', '.', ''))
+endfunction
+command! SetProjectDir :call s:setcwd()
+
+
+""""""""""""""""""""""" }}}
+" Abbreviations         {{{
+"""""""""""""""""""""""
 
 iabbrev teh the
 
-"""""""""
-" Ctags
-"""""""""
+command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
+command! InsertDate :normal a<c-r>=strftime('%F')<cr>
 
-set tags+=.tags
+" Create a new dayone post from the buffer
+command! NewDayonePost :w !dayone new
 
-command! ListTagFiles :call ListTagFiles()
-function! ListTagFiles()
-  echo join(split(&tags, ","), "\n")
-endfunction
 
-" Let me select my tags
-nnoremap <c-]> g<c-]>
-nnoremap g<c-]> <c-]>
-
-""""""""""
-" Plugins
-""""""""""
-
-" Toggle indent guides
-noremap <leader>vi :IndentGuideToggle<cr>
-
-" Preview markdown files in Marked.app
-nnoremap <leader>pm :silent !open -a Marked.app '%:p'<cr>
-
-" Highlight fenced code
-let g:markdown_fenced_languages = ['ruby', 'javascript', 'clojure']
+""""""""""""""""""""""" }}}
+" Netrw                 {{{
+"""""""""""""""""""""""
 
 " No Netrw menu
 let g:netrw_menu      = 0
@@ -494,18 +476,11 @@ let g:netrw_winsize   = 30
 " Remove netrw history files
 let g:netrw_dirhistmax = 0
 
-" Disable useless HTML5 stuff
-let g:event_handler_attributes_complete = 0
-let g:rdfa_attributes_complete = 0
-let g:microdata_attributes_complete = 0
-let g:atia_attributes_complete = 0
 
-" Search for current word in Ag
-nnoremap <leader>sw :Ag! '\b<c-r><c-w>\b'<cr>
-nnoremap <leader>s :Ag! 
+""""""""""""""""""""""" }}}
+" Ctrl-P                {{{
+"""""""""""""""""""""""
 
-" Ctrlp
-let g:ctrlp_jump_to_buffer = 1
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_mruf_last_entered = 1
 let g:ctrlp_match_window_reversed = 0
@@ -516,21 +491,37 @@ let g:ctrlp_use_caching = 0
 nnoremap <leader>d :CtrlPCurFile<cr>
 nnoremap <leader>o :CtrlPBuffer<cr>
 
-" Clojure Fireplace
 
-" Eval and print top level form and return cursor to where it was
-nnoremap <leader>co :normal cpaF``<cr>
+""""""""""""""""""""""" }}}
+" Git                   {{{
+"""""""""""""""""""""""
 
-" Eval and print current form and return cursor to where it was
-nnoremap <leader>ci :normal cpaf``<cr>
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-" Eval and print current element and return cursor to where it was
-nnoremap <leader>ce :normal cpie``<cr>
+" Find merge conflict markers
+nnoremap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
-" UltiSnips
-let g:UltiSnipsSnippetDirectories    = ["UltiSnips", "mysnippets"]
-" Overcome Vundle runtime path so snippet overrides work
-let g:UltiSnipsDontReverseSearchPath = "1"
+
+""""""""""""""""""""""" }}}
+" Ctags                 {{{
+"""""""""""""""""""""""
+
+set tags+=.tags
+
+command! ListTagFiles :call ListTagFiles()
+function! ListTagFiles()
+  echo join(split(&tags, ","), "\n")
+endfunction
+
+" Let me select my tags
+nnoremap <c-]> g<c-]>
+nnoremap g<c-]> <c-]>
+
+
+""""""""""""""""""""""" }}}
+" All files             {{{
+"""""""""""""""""""""""
 
 augroup grass_allfiles
   autocmd!
@@ -548,29 +539,147 @@ augroup grass_allfiles
   autocmd FocusLost * :silent! wall
 augroup END
 
-" Specs
+
+""""""""""""""""""""""" }}}
+" HTML and Markdown     {{{
+"""""""""""""""""""""""
+
+augroup grass_html
+  autocmd!
+
+  " Fold current html tag
+  autocmd FileType html nnoremap <buffer> <leader>z Vatzf
+
+  " Change tab width and wrap for markdown
+  autocmd FileType markdown setlocal wrap softtabstop=4 tabstop=4 shiftwidth=4
+
+  " Preview markdown files in Marked.app
+  autocmd FileType markdown nnoremap <buffer> <leader>pm :silent !open -a Marked.app '%:p'<cr>
+augroup END
+
+" Highlight fenced code
+let g:markdown_fenced_languages = ['ruby', 'javascript', 'clojure']
+
+" Disable useless HTML5 stuff
+let g:event_handler_attributes_complete = 0
+let g:rdfa_attributes_complete = 0
+let g:microdata_attributes_complete = 0
+let g:atia_attributes_complete = 0
+
+
+""""""""""""""""""""""" }}}
+" Clojure               {{{
+"""""""""""""""""""""""
+
+augroup grass_clojure
+  autocmd!
+
+  autocmd filetype clojure setlocal wildignore+=classes
+  autocmd filetype clojure setlocal wildignore+=lib
+
+  " Rainbows
+  autocmd filetype clojure RainbowParenthesesLoadRound
+  autocmd filetype clojure RainbowParenthesesLoadSquare
+  autocmd filetype clojure RainbowParenthesesLoadBraces
+  autocmd filetype clojure RainbowParenthesesActivate
+
+  " Eval and print top level form and return cursor to where it was
+  autocmd filetype clojure nnoremap <buffer> <leader>co :normal cpaF``<cr>
+
+  " Eval and print current form and return cursor to where it was
+  autocmd filetype clojure nnoremap <buffer> <leader>ci :normal cpaf``<cr>
+
+  " Eval and print current element and return cursor to where it was
+  autocmd filetype clojure nnoremap <buffer> <leader>ce :normal cpie``<cr>
+augroup END
+
+
+""""""""""""""""""""""" }}}
+" Ruby                  {{{
+"""""""""""""""""""""""
+
+augroup grass_ruby
+  autocmd!
+
+  " match (:),[:],{:} in html
+  au FileType html,eruby let b:match_words = '(:),[:],{:},' . b:match_words
+
+  " Arb
+  autocmd BufNewFile,BufRead *.arb set filetype=ruby
+augroup END
+
+let ruby_fold = 1
+
+" Rspec
 map <Leader>tc :call RunCurrentSpecFile()<CR>
 map <Leader>tn :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 let g:rspec_command = "!rspec --format doc --no-color {spec}"
 
-" Tabularise shortcuts
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
+""""""""""""""""""""""" }}}
+" Javascript and Coffee {{{
+"""""""""""""""""""""""
 
-" NerdTree
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>ff :NERDTreeFind<CR>
-let NERDTreeAutoDeleteBuffer=1
+augroup grass_js
+  autocmd!
 
-" Easy grep
-let g:EasyGrepReplaceWindowMode=2
+  " Setup JSON files
+  autocmd BufNewFile,BufRead *.json set ft=json
+
+  " Indent folding for coffee (off by default) and undo vim-coffeescript
+  " screwing with my formatoptions
+  autocmd BufNewFile,BufReadPost *.coffee setlocal foldmethod=indent nofoldenable formatoptions-=o
+
+augroup END
+
+
+""""""""""""""""""""""" }}}
+" Vimscript             {{{
+"""""""""""""""""""""""
+
+augroup ft_vim
+    au!
+
+    au FileType help setlocal textwidth=78
+    au FileType vim setlocal foldmethod=marker
+
+    " Help windows big on the right
+    au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
+augroup END
+
+
+""""""""""""""""""""""" }}}
+" Misc file types       {{{
+"""""""""""""""""""""""
+
+augroup grass_miscfiles
+  autocmd!
+
+  " Set wrap and shift size for text files
+  autocmd BufRead,BufNewFile *.txt setlocal wrap tabstop=4 softtabstop=4 shiftwidth=4
+
+  " In Makefiles, use real tabs, not tabs expanded to spaces
+  autocmd FileType make set noexpandtab
+
+  " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
+  autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+
+  " Less
+  autocmd BufNewFile,BufRead *.less set filetype=less
+
+  " Add indent stuff for scheme files
+  autocmd filetype lisp,scheme,art setlocal equalprg=~/.vim/tools/scheme-indent/scmindent.scm
+
+augroup END
 
 " Configure browser for haskell_doc.vim
 let g:haddock_browser = "open"
 let g:haddock_browser_callformat = "%s %s"
+
+
+""""""""""""""""""""""" }}}
+" Shortcut commands     {{{
+"""""""""""""""""""""""
 
 " Show cheats
 command! Cheats :normal :silent! tabnew ~/Dropbox/Notes/Vim.md<cr>
@@ -580,9 +689,27 @@ command! Myrc :normal :edit $MYVIMRC<cr>
 command! WorkLog :normal :silent! edit ~/Dropbox/Notes/Work\ Log.md<cr>
 command! Scratch :normal :silent! edit ~/Dropbox/Notes/Scratch.md<cr>
 
-""""""
-" GUI
-""""""
+
+""""""""""""""""""""""" }}}
+" Snippets              {{{
+"""""""""""""""""""""""
+
+let g:UltiSnipsSnippetDirectories    = ["UltiSnips", "mysnippets"]
+" Overcome Vundle runtime path so snippet overrides work
+let g:UltiSnipsDontReverseSearchPath = "1"
+
+
+""""""""""""""""""""""" }}}
+" GUI                   {{{
+"""""""""""""""""""""""
+
+" Toggle indent guides
+noremap <leader>vi :IndentGuideToggle<cr>
+
+" NerdTree
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>ff :NERDTreeFind<CR>
+let NERDTreeAutoDeleteBuffer=1
 
 if has("gui_running")
   " Show my current line
@@ -605,6 +732,7 @@ if has("gui_macvim")
   " Automatically resize splits when resizing MacVim window
   augroup grass_gui
     autocmd!
+
     autocmd VimResized * wincmd =
   augroup END
 
