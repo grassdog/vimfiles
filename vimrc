@@ -591,11 +591,13 @@ augroup grass_clojure
   autocmd filetype clojure setlocal wildignore+=classes
   autocmd filetype clojure setlocal wildignore+=lib
 
+  autocmd filetype clojure silent! call TurnOnClojureFolding()
+
   " Rainbows
-  autocmd filetype clojure RainbowParenthesesLoadRound
-  autocmd filetype clojure RainbowParenthesesLoadSquare
-  autocmd filetype clojure RainbowParenthesesLoadBraces
   autocmd filetype clojure RainbowParenthesesActivate
+  autocmd syntax clojure RainbowParenthesesLoadRound
+  autocmd syntax clojure RainbowParenthesesLoadSquare
+  autocmd syntax clojure RainbowParenthesesLoadBraces
 
   " Eval and print top level form and return cursor to where it was
   autocmd filetype clojure nnoremap <buffer> <leader>co :normal cpaF``<cr>
@@ -606,6 +608,61 @@ augroup grass_clojure
   " Eval and print current element and return cursor to where it was
   autocmd filetype clojure nnoremap <buffer> <leader>ce :normal cpie``<cr>
 augroup END
+
+let g:clojure_fold_extra = [
+            \ 'defgauge',
+            \ 'defmeter',
+            \ 'defhistogram',
+            \ 'defcounter',
+            \ 'deftimer',
+            \
+            \ 'defdb',
+            \ 'defentity',
+            \ 'defaspect',
+            \ 'add-aspect',
+            \ 'defmigration',
+            \
+            \ 'defsynth',
+            \ 'definst',
+            \ 'defproject',
+            \
+            \ 'defroutes',
+            \
+            \ 'defrec',
+            \
+            \ 'defparser',
+            \
+            \ 'defform',
+            \ 'defform-',
+            \
+            \ 'defpage',
+            \ 'defsketch'
+            \
+            \ ]
+
+let g:clojure_highlight_extra_defs = [
+            \ 'defparser',
+            \ 'deftest',
+            \ 'match',
+            \
+            \ 'defproject',
+            \
+            \ 'defquery',
+            \ 'defqueries',
+            \
+            \ 'defform',
+            \
+            \ 'deferror',
+            \ 'when-found',
+            \ 'when-valid',
+            \
+            \ 'defroutes'
+            \ ]
+
+let g:clojure_highlight_extra_exceptions = [
+            \ 'try+',
+            \ 'throw+',
+            \ ]
 
 
 """"""""""""""""""""""" }}}
