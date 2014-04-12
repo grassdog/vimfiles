@@ -495,6 +495,19 @@ nnoremap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 
 """"""""""""""""""""""" }}}
+" NerdTree              {{{
+"""""""""""""""""""""""
+
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>ff :NERDTreeFind<CR>
+
+let NERDTreeAutoDeleteBuffer=1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDChristmasTree = 1
+
+
+""""""""""""""""""""""" }}}
 " Ctags                 {{{
 """""""""""""""""""""""
 
@@ -538,11 +551,19 @@ augroup END
 augroup grass_html
   autocmd!
 
+  au FileType html setlocal foldmethod=manual
+
+  " match (:),[:],{:} in html
+  au FileType html,eruby let b:match_words = '(:),[:],{:},' . b:match_words
+
   " Fold current html tag
   autocmd FileType html nnoremap <buffer> <leader>z Vatzf
 
   " Reformat HTML files
   autocmd FileType html nnoremap <buffer> <leader>rff <Esc>:% !tidy -quiet  -indent --indent-spaces 2 --wrap 80<CR>
+
+  " Indent current tag
+  au FileType html,eruby nnoremap <buffer> <leader>= Vat=
 
   " Change tab width and wrap for markdown
   autocmd FileType markdown setlocal wrap softtabstop=4 tabstop=4 shiftwidth=4
@@ -576,8 +597,8 @@ augroup grass_xml
   " Use <localleader>f to fold the current tag.
   au FileType xml nnoremap <buffer> <leader>z Vatzf
 
-  " Indent tag
-  au FileType xml nnoremap <buffer> <localleader>= Vat=
+  " Indent current tag
+  au FileType xml nnoremap <buffer> <leader>= Vat=
 augroup END
 
 
@@ -671,9 +692,6 @@ let g:clojure_highlight_extra_exceptions = [
 
 augroup grass_ruby
   autocmd!
-
-  " match (:),[:],{:} in html
-  au FileType html,eruby let b:match_words = '(:),[:],{:},' . b:match_words
 
   " Arb
   autocmd BufNewFile,BufRead *.arb set filetype=ruby
@@ -790,11 +808,6 @@ let g:UltiSnipsDontReverseSearchPath = "1"
 
 " Toggle indent guides
 noremap <leader>vi :IndentGuideToggle<cr>
-
-" NerdTree
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>ff :NERDTreeFind<CR>
-let NERDTreeAutoDeleteBuffer=1
 
 if has("gui_running")
   " Show my current line
