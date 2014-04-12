@@ -355,6 +355,9 @@ nnoremap <s-up> <c-w>k
 nnoremap <s-left> <c-w>h
 nnoremap <s-right> <c-w>l
 
+set splitright
+set splitbelow
+
 " Stop page movement on shift arrow
 vnoremap <S-Down> <Down>
 vnoremap <S-Up> <Up>
@@ -373,6 +376,9 @@ vnoremap << <gv
 
 " Yank to the end of the line
 noremap Y y$
+
+" Yank to system clipboard
+map <leader>y "*y
 
 " Bubble lines up and down
 " http://vim.wikia.com/wiki/Moving_lines_up_or_down
