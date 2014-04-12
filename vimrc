@@ -91,7 +91,6 @@ Bundle 'tpope/vim-liquid'
 Bundle 'groenewege/vim-less'
 Bundle 'b4winckler/vim-objc'
 "Bundle 'davidoc/taskpaper.vim'
-"Bundle 'kikijump/tslime.vim'
 
 " Enable matchit
 runtime macros/matchit.vim
@@ -482,7 +481,7 @@ noremap <leader>vi :IndentGuideToggle<cr>
 nnoremap <leader>pm :silent !open -a Marked.app '%:p'<cr>
 
 " Highlight fenced code
-let g:markdown_fenced_languages = ['ruby', 'javascript']
+let g:markdown_fenced_languages = ['ruby', 'javascript', 'clojure']
 
 " No Netrw menu
 let g:netrw_menu      = 0
@@ -516,6 +515,17 @@ let g:ctrlp_use_caching = 0
 
 nnoremap <leader>d :CtrlPCurFile<cr>
 nnoremap <leader>o :CtrlPBuffer<cr>
+
+" Clojure Fireplace
+
+" Eval and print top level form and return cursor to where it was
+nnoremap <leader>co :normal cpaF``<cr>
+
+" Eval and print current form and return cursor to where it was
+nnoremap <leader>ci :normal cpaf``<cr>
+
+" Eval and print current element and return cursor to where it was
+nnoremap <leader>ce :normal cpie``<cr>
 
 " UltiSnips
 let g:UltiSnipsSnippetDirectories    = ["UltiSnips", "mysnippets"]
