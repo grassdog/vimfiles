@@ -1,5 +1,5 @@
 """"""""""""""""""""""" }}}
-"  First ups            {{{
+"  Preamble             {{{
 """""""""""""""""""""""
 
 " Map Leaders
@@ -417,15 +417,6 @@ nnoremap <leader>rwf ggVGgq
 " Format the entire file
 nnoremap <leader>rff ggVG=
 
-" Reformat XML files
-noremap <leader>rfx <Esc>:% !xmllint --format -<CR>
-
-" Reformat HTML files
-noremap <leader>rfh <Esc>:% !tidy -quiet  -indent --indent-spaces 2 --wrap 90<CR>
-
-" Reformat JSON
-noremap <leader>rfj <Esc>:% !js-beautify -f - -s 2 --brace-style=expand<CR>
-
 
 """"""""""""""""""""""" }}}
 " Working directory     {{{
@@ -550,6 +541,9 @@ augroup grass_html
   " Fold current html tag
   autocmd FileType html nnoremap <buffer> <leader>z Vatzf
 
+  " Reformat HTML files
+  autocmd FileType html nnoremap <buffer> <leader>rff <Esc>:% !tidy -quiet  -indent --indent-spaces 2 --wrap 80<CR>
+
   " Change tab width and wrap for markdown
   autocmd FileType markdown setlocal wrap softtabstop=4 tabstop=4 shiftwidth=4
 
@@ -565,6 +559,26 @@ let g:event_handler_attributes_complete = 0
 let g:rdfa_attributes_complete = 0
 let g:microdata_attributes_complete = 0
 let g:atia_attributes_complete = 0
+
+
+""""""""""""""""""""""" }}}
+" XML                   {{{
+"""""""""""""""""""""""
+
+augroup grass_xml
+  au!
+
+  au FileType xml setlocal foldmethod=manual
+
+  " Reformat XML files
+  au FileType xml noremap <buffer> <leader>rff <Esc>:% !xmllint --format -<CR>
+
+  " Use <localleader>f to fold the current tag.
+  au FileType xml nnoremap <buffer> <leader>z Vatzf
+
+  " Indent tag
+  au FileType xml nnoremap <buffer> <localleader>= Vat=
+augroup END
 
 
 """"""""""""""""""""""" }}}
@@ -616,6 +630,17 @@ map <Leader>tn :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 let g:rspec_command = "!rspec --format doc --no-color {spec}"
 
+
+""""""""""""""""""""""" }}}
+" Vagrant               {{{
+"""""""""""""""""""""""
+
+augroup grass_vagrant
+  au!
+  au BufRead,BufNewFile Vagrantfile set ft=ruby
+augroup END
+
+
 """"""""""""""""""""""" }}}
 " Javascript and Coffee {{{
 """""""""""""""""""""""
@@ -625,6 +650,9 @@ augroup grass_js
 
   " Setup JSON files
   autocmd BufNewFile,BufRead *.json set ft=json
+
+  " Reformat JSON
+  autocmd FileType json noremap <buffer> <leader>rff <Esc>:% !js-beautify -f - -s 2 --brace-style=expand<CR>
 
   " Indent folding for coffee (off by default) and undo vim-coffeescript
   " screwing with my formatoptions
