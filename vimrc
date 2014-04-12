@@ -124,9 +124,6 @@ set ttimeoutlen=10
 
 set nopaste
 
-" Setup my language
-set spelllang=en_au
-
 " Normally, Vim messes with iskeyword when you open a shell file. This can
 " leak out, polluting other file types even after a 'set ft=' change. This
 " variable prevents the iskeyword change so it can't hurt anyone.
@@ -183,6 +180,26 @@ set showmode
 set shortmess=atIOT   " Abbrev. of messages (avoids 'hit enter')
 set showcmd
 
+
+""""""""""""""""""""""" }}}
+" Spelling              {{{
+"""""""""""""""""""""""
+
+" Setup my language
+set spelllang=en_au
+
+"   /usr/share/dict/words
+"
+"   ~/.vim/custom-dictionary.utf-8.add
+"   Custom words (version-controlled)
+"
+"   ~/.vim-local-dictionary.utf-8.add
+"   More custom words (*not* version controlled)
+"
+set spellfile=~/.vim/custom-dictionary.utf-8.add,~/.vim-local-dictionary.utf-8.add
+
+" Add to the local dict
+nnoremap zG 2zg
 
 """"""""""""""""""""""" }}}
 " Search                {{{
@@ -566,7 +583,7 @@ augroup grass_html
   au FileType html,eruby nnoremap <buffer> <leader>= Vat=
 
   " Change tab width and wrap for markdown
-  autocmd FileType markdown setlocal wrap softtabstop=4 tabstop=4 shiftwidth=4
+  autocmd FileType markdown setlocal wrap softtabstop=4 tabstop=4 shiftwidth=4 spell
 
   " Preview markdown files in Marked.app
   autocmd FileType markdown nnoremap <buffer> <leader>pm :silent !open -a Marked.app '%:p'<cr>
@@ -822,6 +839,8 @@ if has("gui_running")
 
   " Hide mouse after chars typed
   set mousehide
+
+  highlight SpellBad term=underline gui=undercurl guisp=Orange
 endif
 
 if has("gui_macvim")
