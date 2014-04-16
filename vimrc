@@ -722,6 +722,26 @@ let g:clojure_highlight_extra_exceptions = [
             \ 'throw+',
             \ ]
 
+" Avoid red so I can easily see mismatched parens
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'chartreuse3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkblue',    'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'DarkGoldenrod'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'DarkGoldenrod'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['darkyellow',  'SlateBlue1'],
+    \ ]
+
 
 """"""""""""""""""""""" }}}
 " Ruby                  {{{
