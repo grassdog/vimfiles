@@ -14,7 +14,7 @@ Plugins are managed via the excellent [Vundle](https://github.com/gmarik/vundle)
 Installation requires `git` and `ruby` in your path.
 
 ```sh
-    $ git clone https://github.com/grassdog/vimfiles ~/.vim
-    $ cd ~/.vim
+    $ git clone https://github.com/grassdog/vimfiles
+    $ cd vimfiles
     $ rake setup
 ```
