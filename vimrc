@@ -1,5 +1,5 @@
 """"""""""""""""""""""" }}}
-"  Preamble             {{{
+" Preamble              {{{
 """""""""""""""""""""""
 
 " Map Leaders
@@ -198,7 +198,7 @@ set spelllang=en_au
 "
 set spellfile=~/.vim/custom-dictionary.utf-8.add,~/.vim-local-dictionary.utf-8.add
 
-" Add to the local dict
+" Add word to the local dict
 nnoremap zG 2zg
 
 """"""""""""""""""""""" }}}
@@ -571,6 +571,18 @@ augroup END
 " HTML and Markdown     {{{
 """""""""""""""""""""""
 
+function! ExtendMarkdownSyntax()
+  " Define some sytax groups that won't be spell checked
+  " To be matched: Camel CCase CamelCase allDay
+  " To be ignored: Hi there
+  syntax match RGMixedCase /\v<(\u{-2,}\w*)|(\u+\w*\u+\w*)>/
+  syntax match RGCamelCase /\v<\l+\u+\w+>/
+  syntax match RGBareURL /https\?:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*/
+
+  " Highlight bare urls in markdown
+  hi def link RGBareURL markdownUrl
+endfun
+
 augroup grass_html
   autocmd!
 
@@ -590,6 +602,8 @@ augroup grass_html
 
   " Change tab width and wrap for markdown
   autocmd FileType markdown setlocal wrap softtabstop=4 tabstop=4 shiftwidth=4 spell
+
+  autocmd FileType markdown :call ExtendMarkdownSyntax()
 
   " Preview markdown files in Marked.app
   autocmd FileType markdown nnoremap <buffer> <leader>pm :silent !open -a Marked.app '%:p'<cr>
@@ -831,6 +845,11 @@ let g:UltiSnipsDontReverseSearchPath = "1"
 
 " Toggle indent guides
 noremap <leader>vi :IndentGuideToggle<cr>
+
+" Show the syntax group in place on the text under the cursor
+nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 if has("gui_running")
   " Show my current line
