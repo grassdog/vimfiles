@@ -201,6 +201,10 @@ set spellfile=~/.vim/custom-dictionary.utf-8.add,~/.vim-local-dictionary.utf-8.a
 " Add word to the local dict
 nnoremap zG 2zg
 
+" Toggle spelling
+noremap <F9> :setlocal spell! spell?<CR>
+
+
 """"""""""""""""""""""" }}}
 " Search                {{{
 """""""""""""""""""""""
@@ -417,6 +421,17 @@ inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 " Remove trailing white space and retab file
 command! KillWhitespace :normal :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>nohl<Bar>retab<CR>
 
+" Re-wrap the entire file
+nnoremap <leader>rwf ggVGgq
+
+" Format the entire file
+nnoremap <leader>rff ggVG=
+
+
+""""""""""""""""""""""" }}}
+" Proper quotes etc     {{{
+"""""""""""""""""""""""
+
 "
 " RemoveFancyCharacters COMMAND
 " Remove smart quotes, etc.
@@ -433,12 +448,6 @@ function! RemoveFancyCharacters()
     :exe ":%s/".join(keys(typo), '\|').'/\=typo[submatch(0)]/ge'
 endfunction
 command! RemoveFancyCharacters :call RemoveFancyCharacters()
-
-" Re-wrap the entire file
-nnoremap <leader>rwf ggVGgq
-
-" Format the entire file
-nnoremap <leader>rff ggVG=
 
 
 """"""""""""""""""""""" }}}
@@ -603,7 +612,7 @@ augroup grass_html
   " Change tab width and wrap for markdown
   autocmd FileType markdown setlocal wrap softtabstop=4 tabstop=4 shiftwidth=4 spell
 
-  autocmd FileType markdown :call ExtendMarkdownSyntax()
+  autocmd FileType markdown call ExtendMarkdownSyntax()
 
   " Preview markdown files in Marked.app
   autocmd FileType markdown nnoremap <buffer> <leader>pm :silent !open -a Marked.app '%:p'<cr>
