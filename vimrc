@@ -773,6 +773,20 @@ let g:rspec_command = "!rspec --format doc --no-color {spec}"
 
 
 """"""""""""""""""""""" }}}
+" Lisp                  {{{
+"""""""""""""""""""""""
+
+augroup grass_lisps
+  autocmd!
+
+  autocmd filetype lisp,scheme RainbowParenthesesActivate
+  autocmd syntax   lisp,scheme RainbowParenthesesLoadRound
+  autocmd syntax   lisp,scheme RainbowParenthesesLoadSquare
+  autocmd syntax   lisp,scheme RainbowParenthesesLoadBraces
+augroup END
+
+
+""""""""""""""""""""""" }}}
 " Vagrant               {{{
 """""""""""""""""""""""
 
@@ -835,10 +849,6 @@ augroup grass_miscfiles
 
   " Less
   autocmd BufNewFile,BufRead *.less set filetype=less
-
-  " Add indent stuff for scheme files
-  autocmd filetype lisp,scheme,art setlocal equalprg=~/.vim/tools/scheme-indent/scmindent.scm
-
 augroup END
 
 " Configure browser for haskell_doc.vim
