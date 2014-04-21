@@ -96,6 +96,7 @@ Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'tpope/vim-liquid'
 Bundle 'groenewege/vim-less'
 Bundle 'b4winckler/vim-objc'
+Bundle 'kovisoft/slimv'
 
 " Enable matchit
 runtime macros/matchit.vim
@@ -783,7 +784,15 @@ augroup grass_lisps
   autocmd syntax   lisp,scheme RainbowParenthesesLoadRound
   autocmd syntax   lisp,scheme RainbowParenthesesLoadSquare
   autocmd syntax   lisp,scheme RainbowParenthesesLoadBraces
+
+  autocmd filetype lisp,scheme setlocal foldmethod=marker
 augroup END
+
+let g:slimv_swank_scheme = '!~/.vim/tools/slimv/iterm.applescript "scheme" --load "~/.vim/tools/slimv/swank-mit-scheme.scm"'
+let g:slimv_leader = '\'
+let g:slimv_disable_clojure = 1
+let g:slimv_repl_split = 4
+let g:paredit_electric_return = 0
 
 
 """"""""""""""""""""""" }}}
