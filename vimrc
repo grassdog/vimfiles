@@ -792,6 +792,8 @@ let g:slimv_swank_scheme = '!~/.vim/tools/slimv/iterm.applescript "scheme" --loa
 let g:slimv_leader = '\'
 let g:slimv_disable_clojure = 1
 let g:slimv_repl_split = 4
+
+let g:paredit_disable_clojure = 1
 let g:paredit_electric_return = 0
 
 
@@ -877,6 +879,10 @@ command! Myrc :normal :edit $MYVIMRC<cr>
 command! Notes :normal :silent! vsplit ~/Dropbox/Notes<cr>4j
 command! WorkLog :normal :silent! edit ~/Dropbox/Notes/Work\ Log.md<cr>
 command! Scratch :normal :silent! edit ~/Dropbox/Notes/Scratch.md<cr>
+
+" Easier notes directory in command mode
+cnoremap <expr> nn  getcmdtype() == ':' ? fnameescape('~/Dropbox/Notes').'/' : 'nn'
+
 
 """"""""""""""""""""""" }}}
 " Snippets              {{{
