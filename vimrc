@@ -708,7 +708,10 @@ let g:clojure_fold_extra = [
             \
             \ ]
 
-let g:clojure_highlight_extra_defs = [
+let g:clojure_syntax_keywords = {
+    \ 'clojureMacro': [
+            \ 'defproject',
+            \ 'defcustom',
             \ 'defparser',
             \ 'deftest',
             \ 'match',
@@ -724,13 +727,10 @@ let g:clojure_highlight_extra_defs = [
             \ 'when-found',
             \ 'when-valid',
             \
-            \ 'defroutes'
-            \ ]
-
-let g:clojure_highlight_extra_exceptions = [
-            \ 'try+',
-            \ 'throw+',
-            \ ]
+            \ 'defroutes',
+            \ ],
+    \ 'clojureFunc': ['string/join', 'string/replace']
+    \ }
 
 " Avoid red so I can easily see mismatched parens
 let g:rbpt_colorpairs = [
