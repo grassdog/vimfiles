@@ -892,8 +892,9 @@ command! Notes :normal :silent! vsplit ~/Dropbox/Notes<cr>4j
 command! WorkLog :normal :silent! edit ~/Dropbox/Notes/Work\ Log.md<cr>
 command! Scratch :normal :silent! edit ~/Dropbox/Notes/Scratch.md<cr>
 
-" Easier notes directory in command mode
+" Directory shortcuts in command mode
 cnoremap <expr> nn  getcmdtype() == ':' ? fnameescape('~/Dropbox/Notes').'/' : 'nn'
+cnoremap <expr> pp  getcmdtype() == ':' ? fnameescape('~/code/projects').'/' : 'pp'
 
 
 """"""""""""""""""""""" }}}
