@@ -84,6 +84,7 @@ Bundle 'JSON.vim'
 Bundle 'guns/vim-clojure-static'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'tpope/vim-fireplace'
+Bundle 'tpope/vim-leiningen'
 Bundle 'guns/vim-sexp'
 Bundle 'tpope/vim-sexp-mappings-for-regular-people'
 
@@ -653,6 +654,14 @@ augroup END
 " Clojure               {{{
 """""""""""""""""""""""
 
+function! JumpToClojureSymbolWithoutNamespace()
+  let wordUnderCursor = expand("<cword>")
+  let symbol = matchstr(wordUnderCursor, '\(.*/\)\?\zs[^\/]\+\ze')
+  if !empty(symbol)
+    execute 'try | tjump ' . symbol . '| catch | echom ''Could not find tag ' . symbol . ''' | endtry'
+  endif
+endfunction
+
 augroup grass_clojure
   autocmd!
 
@@ -675,6 +684,9 @@ augroup grass_clojure
 
   " Eval and print current element and return cursor to where it was
   autocmd filetype clojure nnoremap <buffer> <leader>ce :normal cpie``<cr>
+
+  " Better ctag matching
+  autocmd filetype clojure nnoremap <buffer> <c-]> :call JumpToClojureSymbolWithoutNamespace()<CR>
 augroup END
 
 let g:clojure_fold_extra = [
